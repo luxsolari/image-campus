@@ -7,6 +7,8 @@ using namespace std;
 
 int main()
 {
+	// Constantes
+	const int LIMITE_SECUENCIA_LARGA = 50;
 	// Variables para el loop principal y confirmaciones.
 	char input;
 	bool continuar = true;
@@ -63,24 +65,32 @@ int main()
 		cout << endl << "Secuencia del intervalo: " << endl;
 		if (n1 > n2)
 		{
+			if ((n1 - n2) >= LIMITE_SECUENCIA_LARGA)
+			{
+				// Version "portable" de la funcion Sleep() que solo funciona en Windows
+				// Funciona incluyendo <chrono> y <thread>, necesita C++ 11
+				// https://stackoverflow.com/questions/58967466/pause-for-loop-for-1-second-in-c
+				cout << "Secuencia larga de numeros, puede tardar un rato..." << endl;
+				this_thread::sleep_for(0.5s);
+			}
+
 			for (int i = n1; i >= n2; i--)
 			{
 				cout << i << endl;
-				// Version "portable" de la funcion Sleep que solo funciona en Windows
-				// Funciona incluyendo <chrono> y <thread>, necesita C++ 11
-				// https://stackoverflow.com/questions/58967466/pause-for-loop-for-1-second-in-c
-				this_thread::sleep_for(0.25s);
+				this_thread::sleep_for(0.1s);
 			}
 		}
 		else
 		{
+			if ((n2 - n1) >= LIMITE_SECUENCIA_LARGA)
+			{
+				cout << "Secuencia larga de numeros, puede tardar un rato..." << endl;
+				this_thread::sleep_for(0.5s);
+			}
 			for (int i = n1; i <= n2; i++)
 			{
 				cout << i << endl;
-				// Version "portable" de la funcion Sleep que solo funciona en Windows
-				// Funciona incluyendo <chrono> y <thread>, necesita C++ 11
-				// https://stackoverflow.com/questions/58967466/pause-for-loop-for-1-second-in-c
-				this_thread::sleep_for(0.25s);
+				this_thread::sleep_for(0.1s);
 			}
 		}
 
@@ -106,8 +116,5 @@ int main()
 			}
 		} while (input != 'S' && input != 's' && input != 'N' && input != 'n');
 	}
-
-
-
 	return 0;
 }
