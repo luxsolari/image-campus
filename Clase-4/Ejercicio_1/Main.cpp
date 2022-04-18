@@ -67,7 +67,7 @@ int main()
 		{
 			if ((n1 - n2) >= LIMITE_SECUENCIA_LARGA)
 			{
-				// Version "portable" de la funcion Sleep() que solo funciona en Windows
+				// La funcion Sleep() está implementada solo para Windows, por lo que buscamos una versión mas "portable".
 				// Funciona incluyendo <chrono> y <thread>, necesita C++ 11
 				// https://stackoverflow.com/questions/58967466/pause-for-loop-for-1-second-in-c
 				cout << "Secuencia larga de numeros, puede tardar un rato..." << endl;
