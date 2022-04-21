@@ -9,11 +9,32 @@ enum class Elemento
 	TIJERA	= 3
 };
 
+enum class Resultado
+{
+	EMPATE = 0,
+	GANADOR_JUGADOR_A = 1,
+	GANADOR_JUGADOR_B = 2
+};
+
+void mostrarElecciones (string& nombreJugadorA, string& nombreJugadorB, Elemento eleccionJugador1, Elemento eleccionJugador2);
+Resultado calcularResultado (Elemento eleccionJugadorA, Elemento eleccionJugadorB);
+
 int main()
 {
-	constexpr int CANTIDAD_JUGADORES = 3;
+	constexpr int CANTIDAD_JUGADORES = 4;
 	string nombresJugadores[CANTIDAD_JUGADORES] = {};
 	Elemento eleccionesJugadores[CANTIDAD_JUGADORES] = {};
+	float puntajesJugadores[CANTIDAD_JUGADORES] = {};
+
+	cout << "MULTI-PLAYER ROCK PAPER SCISSORS!" << endl;
+	cout << "Esta version del juego permite hasta una cantidad arbitraria de jugadores! (por default son 4)." << endl;
+	cout << "Los jugadores se enfrentan en una ronda de todos contra todos, sin partidos de vuelta." << endl;
+	cout << "Las victorias dan 1 punto." << endl;
+	cout << "Los empates dan 0.5 puntos." << endl;
+	cout << "El ganador al final de todos los juegos sera el jugador con mas puntos acumulados." << endl;
+	cout << "-----------------------------------------------------------------------------------------------" << endl;
+	cout << "Presionar cualquier tecla para comenzar!" << endl;
+	cin.get();
 
 	for (int i = 0; i < CANTIDAD_JUGADORES; i++)
 	{
@@ -42,17 +63,15 @@ int main()
 		switch (inputJugador)
 		{
 			case 1:
-				eleccionesJugadores[i] = Elemento::PAPEL;
+				eleccionesJugadores[i] = Elemento::PIEDRA;
 				break;
 			case 2:
-				eleccionesJugadores[i] = Elemento::PIEDRA;
+				eleccionesJugadores[i] = Elemento::PAPEL;
 				break;
 			case 3:
 				eleccionesJugadores[i] = Elemento::TIJERA;
 				break;
 		}
-
-		system("cls");
 	}
 
 	// Lo que sigue es esencialmente una combinatioria de N elementos tomados de a dos, jugador A y jugador B, sin considerar repeticiones.
@@ -70,49 +89,98 @@ int main()
 	// Link a una calculadora para ver la teoria detras del asunto:
 	// https://www.hackmath.net/en/calculator/combinations-and-permutations?n=3&k=2&order=1&repeat=0
 	int nroJuego = 1;
+	cout << endl;
+	cout << "-----------------------------------------------------------------------------------------------" << endl;
 	for (int jugadorA = 0; jugadorA < CANTIDAD_JUGADORES; jugadorA ++)
 	{
 		for (int jugadorB = jugadorA + 1; jugadorB < CANTIDAD_JUGADORES; jugadorB ++)
 		{
 			if (jugadorA != jugadorB)
 			{
-				string eleccionJugadorA;
-				string eleccionJugadorB;
-
-				switch (eleccionesJugadores[jugadorA])
+				cout << "Juego nro. " << nroJuego << ": ";
+				mostrarElecciones(nombresJugadores[jugadorA], 
+					nombresJugadores[jugadorB], 
+					eleccionesJugadores[jugadorA], 
+					eleccionesJugadores[jugadorB]);
+				switch (calcularResultado(eleccionesJugadores[jugadorA], 
+					eleccionesJugadores[jugadorB]))
 				{
-				case Elemento::PIEDRA: 
-					eleccionJugadorA = "Piedra";
+				case Resultado::GANADOR_JUGADOR_A: 
+					puntajesJugadores[jugadorA] += 1;
 					break;
-				case Elemento::PAPEL:
-					eleccionJugadorA = "Papel";
+				case Resultado::GANADOR_JUGADOR_B: 
+					puntajesJugadores[jugadorB] += 1;
 					break;
-				case Elemento::TIJERA:
-					eleccionJugadorA = "Tijera";
-					break;
+				case Resultado::EMPATE:
+					puntajesJugadores[jugadorA] += 0.5f;
+					puntajesJugadores[jugadorB] += 0.5f;
+				default: break;
 				}
 
-				switch (eleccionesJugadores[jugadorB])
-				{
-				case Elemento::PIEDRA: 
-					eleccionJugadorB = "Piedra";
-					break;
-				case Elemento::PAPEL:
-					eleccionJugadorB = "Papel";
-					break;
-				case Elemento::TIJERA:
-					eleccionJugadorB = "Tijera";
-					break;
-				}
-
-				cout << "Juego " << nroJuego <<": "
-					 << nombresJugadores[jugadorA] << " - " << eleccionJugadorA << " "
-					 << " vs. "
-					 << nombresJugadores[jugadorB] << " - " << eleccionJugadorB << " "
-				<< endl;
 				nroJuego ++;
 			}
 		}
 	}
 
+	cout << endl;
+	cout << "RESULTADOS:" << endl;
+	for (int i = 0; i < CANTIDAD_JUGADORES; i++)
+	{
+		cout << "Jugador: " << nombresJugadores[i] << " Puntos: " << puntajesJugadores[i] << endl;
+	}
+
+}
+
+void mostrarElecciones(string& nombreJugadorA, string& nombreJugadorB, Elemento eleccionJugador1, Elemento eleccionJugador2)
+{
+	string eleccionJugador1String;
+	string eleccionJugador2String;
+
+	switch (eleccionJugador1)
+	{
+		case Elemento::PIEDRA:
+			eleccionJugador1String = "Piedra";
+			break;
+		case Elemento::PAPEL: 
+			eleccionJugador1String = "Papel";
+			break;
+		case Elemento::TIJERA:
+			eleccionJugador1String = "Tijera";
+			break;
+	}
+
+	switch (eleccionJugador2)
+	{
+		case Elemento::PIEDRA:
+			eleccionJugador2String = "Piedra";
+			break;
+		case Elemento::PAPEL: 
+			eleccionJugador2String = "Papel";
+			break;
+		case Elemento::TIJERA:
+			eleccionJugador2String = "Tijera";
+			break;
+	}
+
+	cout << nombreJugadorA << " [" << eleccionJugador1String << "] vs. " << nombreJugadorB << " [" << eleccionJugador2String << "]"<<  endl;
+}
+
+Resultado calcularResultado (Elemento eleccionJugadorA, Elemento eleccionJugadorB)
+{
+	switch (eleccionJugadorA)
+	{
+	case Elemento::PIEDRA:
+		if (eleccionJugadorB == Elemento::PAPEL) return Resultado::GANADOR_JUGADOR_B;
+		if (eleccionJugadorB == Elemento::TIJERA) return Resultado::GANADOR_JUGADOR_A;
+		break;
+	case Elemento::PAPEL:
+		if (eleccionJugadorB == Elemento::TIJERA) return Resultado::GANADOR_JUGADOR_B;
+		if (eleccionJugadorB == Elemento::PIEDRA) return Resultado::GANADOR_JUGADOR_A;
+		break;
+	case Elemento::TIJERA:
+		if (eleccionJugadorB == Elemento::PIEDRA) return Resultado::GANADOR_JUGADOR_B;
+		if (eleccionJugadorB == Elemento::PAPEL) return Resultado::GANADOR_JUGADOR_A;
+		break;
+	}
+	return Resultado::EMPATE;
 }
