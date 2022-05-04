@@ -15,10 +15,17 @@ int main()
 		cout << "Dame una cadena de texto y te muestro su inverso: ";
 		cin >> input;
 
-		char* arregloChars = new char[(int) input.length()];
+		// Inicializacion de un array "dinamico" usando el largo de la cadena como tamaño inicial.
+		char* arregloChars = new char[static_cast<int>(input.length())];
+
+		// Los strings de texto en C++ son en realidad "constantes" const char* [].
+		// Para poder asignarlo a un array de chars, hace falta quitarle el atributo const usando const_cast<char*>
+		// y luego asignar el resultado de esa conversion a mi array.
+		// https://stackoverflow.com/questions/25549562/how-to-convert-const-char-to-char-in-c
+		// https://stackoverflow.com/questions/51668988/how-to-convert-const-char-to-char-in-c
 		arregloChars = const_cast<char*>(input.c_str());
 
-		imprimirInvertido(arregloChars, (int) input.length());
+		imprimirInvertido(arregloChars, static_cast<int>(input.length()));
 
 		do
 		{
@@ -52,9 +59,8 @@ int main()
 			cin.ignore((std::numeric_limits<std::streamsize>::max()), '\n');
 		}
 		while (opcion != 'S' && opcion != 's' && opcion != 'N' && opcion != 'n');
+		delete[] arregloChars;
 	}
-
-
 	return 0;
 }
 
