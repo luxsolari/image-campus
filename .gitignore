@@ -470,4 +470,5 @@ _deps
 
 .DS_Store
 .vscode/
+output/
 # End of https://www.toptal.com/developers/gitignore/api/visualstudio,visualstudiocode,c++
