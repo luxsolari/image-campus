@@ -1,27 +1,12 @@
 #include <iostream>
+#include "utils.h"
 using namespace std;
-
-struct Palabra
-{
-	string palabra;
-	int longitud;
-	int posicionInicioX;
-	int posicionIncioY;
-};
-
-int getRandomNum (int min, int max);
-char getRandomChar();
 
 int main()
 {
-	// Incializar seed random
 	srand(time(0));
-
-	// Lista de "palabras"
-	// Palabra** listaPalabras = new Palabra*;
-
-    // Declarar array bi-dimensional
-    char** matrizSopaLetras;
+    
+    Casillero** grilla;
     unsigned long dimensionMatriz;
 
     // Pedir input del tamaño del array
@@ -32,40 +17,12 @@ int main()
     dimensionMatriz = stoul(inputDimension);
 
     // Inicializar array
-    matrizSopaLetras = new char*[dimensionMatriz];
-
-    for (int i = 0; i < dimensionMatriz; ++i) {
-        // Incializar columnas
-        matrizSopaLetras[i] = new char[dimensionMatriz];
-        for (int j = 0; j < dimensionMatriz; j++)
-        {
-            matrizSopaLetras[i][j] = getRandomChar();
-        }        
-    }
+    grilla = new Casillero*[dimensionMatriz]{};
+    randomizarGrilla(grilla, dimensionMatriz); 
+    inicializarDatosDePrueba(grilla, dimensionMatriz);
 
     // Mostrar matriz por pantalla
-    for (int i = 0; i < dimensionMatriz; i++)
-    {
-        for (int j = 0; j < dimensionMatriz; j++)
-        {
-            cout << matrizSopaLetras[i][j] << " ";
-        }
-        cout << endl;
-    }   
+    mostrarGrilla(grilla, dimensionMatriz);
 
     return 0;
-}
-
-int getRandomNum (int min, int max)
-{
-	return rand() % (max + 1 - min) + min;
-}
-
-char getRandomChar ()
-{
-	// Casting de tipo de dato (convertir de un tipo de dato a otro).
-	int min = (int)'A';
-	int max = (int)'Z';
-
-	return (char)getRandomNum(min, max);
 }
