@@ -15,8 +15,8 @@ int getRandomNumExclusive (const int min, const int max)
 char getRandomChar ()
 {
 	// Casting de tipo de dato (convertir de un tipo de dato a otro).
-	constexpr int min = static_cast<int>('-');
-	constexpr int max = static_cast<int>('-');
+	constexpr int min = static_cast<int>('A');
+	constexpr int max = static_cast<int>('Z');
 
 	return static_cast<char>(getRandomNumInclusive(min, max));
 }
