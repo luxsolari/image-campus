@@ -1,15 +1,15 @@
 #ifndef SOPALETRAS_STRUCTS_H
 #define SOPALETRAS_STRUCTS_H
-
 #include <string>
 
-using namespace std;
+using namespace std;  // NOLINT(clang-diagnostic-header-hygiene)
 enum class Orientacion
 {
     HORIZONTAL = 0,
     VERTICAL   = 1,
+    DIAGONAL   = 2,
     ///////////////
-    COUNT      = 2
+    COUNT      = 3
 };
 
 enum class DimensionGrilla
@@ -65,15 +65,16 @@ struct Palabra
 {
     string palabra;
     int longitud;
-    Coordenada posicionInicio;
     Orientacion orientacion;
+    Coordenada posicionInicio;
+    int intentosDeInsercion = 0;
 
-    Palabra (const string &palabra, int longitud, Coordenada posicionInicio, Orientacion orientacion)
+    Palabra (const string &palabra, Orientacion orientacion)
     {
         this->palabra = palabra;
-        this->longitud = longitud;
-        this->posicionInicio = posicionInicio;
+        this->longitud = static_cast<int>(strlen(palabra.c_str()));
         this->orientacion = orientacion;
+        this->posicionInicio = Coordenada(0, 0);
     }
 };
 

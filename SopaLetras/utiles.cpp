@@ -1,12 +1,15 @@
 #include "utiles.h"
-int getRandomNumInclusive (int min, int max)
+#include <iostream>
+#include <vector>
+
+int getRandomNumInclusive (const int min, const int max)
 {
-    return rand() % (max + 1 - min) + min;
+    return rand() % (max + 1 - min) + min;  // NOLINT(concurrency-mt-unsafe)
 }
 
-int getRandomNumExclusive (int min, int max)
+int getRandomNumExclusive (const int min, const int max)
 {
-    return rand() % (max + min) - min;
+    return rand() % (max + min) - min;  // NOLINT(concurrency-mt-unsafe)
 }
 
 char getRandomChar ()
@@ -18,117 +21,170 @@ char getRandomChar ()
 	return static_cast<char>(getRandomNumInclusive(min, max));
 }
 
-bool estaOcupado (Casillero** grilla, Coordenada posInicio, Coordenada posFinal, Orientacion orientacion)
+bool estaOcupado (const Casillero& casillero)
 {
-	int hits = 0;
-
-	switch (orientacion)
-	{
-	case Orientacion::HORIZONTAL:
-		for (int i = posInicio.coordX; i < posFinal.coordX; i++)
-		{
-			const Casillero casillero = grilla[posInicio.coordY][i];
-			if (!casillero.esAutogenerado)
-				hits ++;
-		}
-		break;
-	case Orientacion::VERTICAL:
-		for (int i = posInicio.coordY; i < posFinal.coordY; i++)
-		{
-			const Casillero casillero = grilla[i][posInicio.coordX];
-			if (!casillero.esAutogenerado)
-				hits ++;
-		}
-		break;
-	}
-	return hits;
+	if (casillero.esAutogenerado)
+        return false;
+	return true;
 }
 
-void randomizarGrilla (Casillero** grilla, unsigned long dimensionGrilla){
-	for (unsigned int i = 0; i < dimensionGrilla; ++i) 
+void insertarPalabra(Casillero** grilla, int dimensionGrilla, Palabra& palabra)
+{
+	int cantidadOcupadas;
+	int intentos = 1;
+	constexpr int intentosMax = 1000;
+	bool insertable = true;
+	Coordenada posicionInicio;
+
+	switch (palabra.orientacion)  // NOLINT(clang-diagnostic-switch-enum)
+	{
+	case Orientacion::HORIZONTAL:
+		// Elegir un lugar para insertar la palabra y verificar que sea posible
+		do
+		{
+			// Elegir una posicion al azar
+			posicionInicio = Coordenada(getRandomNumExclusive(0, dimensionGrilla - palabra.longitud), 
+					getRandomNumExclusive(0, dimensionGrilla));
+			palabra.posicionInicio = posicionInicio;
+
+			cantidadOcupadas = 0;
+			for (int i = 0; i < palabra.longitud; i++)
+			{
+				if (estaOcupado(grilla[posicionInicio.coordY][posicionInicio.coordX + i]) && 
+				grilla[posicionInicio.coordY][posicionInicio.coordX + i].contenido[0] != palabra.palabra[i])
+				{
+					cantidadOcupadas ++;
+				}
+			}
+
+			if (cantidadOcupadas > 0)
+				intentos ++;
+			if (intentos == intentosMax)
+			{
+				insertable = false;
+				palabra.intentosDeInsercion = intentosMax;
+			}
+		}
+		while (cantidadOcupadas != 0 && intentos <= intentosMax);
+
+		// Insertar la palabra si no hay espacios ocupados
+		if (insertable)
+		{
+			for (int i = 0; i < palabra.longitud; i++)
+			{
+				grilla[posicionInicio.coordY][posicionInicio.coordX + i] = Casillero(palabra.palabra[i], 
+					Coordenada(posicionInicio.coordY, posicionInicio.coordX + i), 
+					false);
+			}
+		}
+		palabra.intentosDeInsercion = intentos;
+		break;
+	case Orientacion::VERTICAL:
+		do
+		{
+			// Elegir una posicion al azar
+			posicionInicio = Coordenada(getRandomNumExclusive(0, dimensionGrilla), 
+					getRandomNumExclusive(0, dimensionGrilla - palabra.longitud));
+			palabra.posicionInicio = posicionInicio;
+
+			cantidadOcupadas = 0;
+			for (int i = 0; i < palabra.longitud; i++)
+			{
+				if (estaOcupado(grilla[posicionInicio.coordY + i][posicionInicio.coordX]) && 
+				grilla[posicionInicio.coordY + i][posicionInicio.coordX].contenido[0] != palabra.palabra[i])
+				{
+					cantidadOcupadas ++;
+				}
+			}
+
+			if (cantidadOcupadas > 0)
+				intentos ++;
+			if (intentos == intentosMax)
+			{
+				insertable = false;
+				palabra.intentosDeInsercion = intentosMax;
+			}
+		}
+		while (cantidadOcupadas != 0 && intentos <= intentosMax);
+
+		// Insertar la palabra si no hay espacios ocupados
+		if (insertable)
+		{
+			for (int i = 0; i < palabra.longitud; i++)
+			{
+				grilla[posicionInicio.coordY + i][posicionInicio.coordX] = Casillero(palabra.palabra[i], 
+					Coordenada(posicionInicio.coordY + i, posicionInicio.coordX), 
+					false);
+			}
+			palabra.intentosDeInsercion = intentos;
+		}
+		break;
+	case Orientacion::DIAGONAL:
+		do
+		{
+			// Elegir una posicion al azar
+			posicionInicio = Coordenada(getRandomNumExclusive(0, dimensionGrilla - palabra.longitud), 
+					getRandomNumExclusive(0, dimensionGrilla - palabra.longitud));
+			palabra.posicionInicio = posicionInicio;
+
+			cantidadOcupadas = 0;
+			for (int i = 0; i < palabra.longitud; i++)
+			{
+				if (estaOcupado(grilla[posicionInicio.coordY + i][posicionInicio.coordX + i]) && 
+				grilla[posicionInicio.coordY + i][posicionInicio.coordX + i].contenido[0] != palabra.palabra[i])
+				{
+					cantidadOcupadas ++;
+				}
+			}
+
+			if (cantidadOcupadas > 0)
+				intentos ++;
+			if (intentos == intentosMax)
+			{
+				insertable = false;
+				palabra.intentosDeInsercion = intentosMax;
+			}
+		}
+		while (cantidadOcupadas != 0 && intentos <= intentosMax);
+
+		// Insertar la palabra si no hay espacios ocupados
+		if (insertable)
+		{
+			for (int i = 0; i < palabra.longitud; i++)
+			{
+				grilla[posicionInicio.coordY + i][posicionInicio.coordX + i] = Casillero(palabra.palabra[i], 
+					Coordenada(posicionInicio.coordY + i, posicionInicio.coordX + i), 
+					false);
+			}
+			palabra.intentosDeInsercion = intentos;
+		}
+		break;
+	default: 
+		break;
+	}
+}
+
+void randomizarGrilla (Casillero** grilla, const int dimensionGrilla){
+	for (int i = 0; i < dimensionGrilla; ++i) 
 	{
         // Incializar columnas con letras aleatorias
         grilla[i] = new Casillero[dimensionGrilla];
-        for (unsigned int j = 0; j < dimensionGrilla; j++)
+        for (int j = 0; j < dimensionGrilla; j++)
         {
             grilla[i][j] = Casillero(getRandomChar(), Coordenada(i, j), true);
         }
     }
 }
 
-void mostrarGrilla (Casillero** grilla, unsigned long dimensionGrilla)
+void mostrarGrilla (Casillero** grilla, const int dimensionGrilla)
 {
-	for (unsigned int i = 0; i < dimensionGrilla; i++)
+	for (int i = 0; i < dimensionGrilla; i++)
 	{
-		for (unsigned int j = 0; j < dimensionGrilla; j++)
+		for (int j = 0; j < dimensionGrilla; j++)
 		{
-			cout << grilla[i][j].contenido << " ";
+			cout << grilla[i][j].contenido << " " ;
 		}
     cout << endl;
 	}
 }
 
-void inicializarDatosPrueba (Casillero** grilla, unsigned long dimensionGrilla)
-{
-    // Inicializamos un array de Palabras de prueba
-    const Palabra misPalabras[5] = {
-        {Palabra(
-            "UNO",
-            3,
-            Coordenada(getRandomNumInclusive(0, dimensionGrilla - 3), getRandomNumInclusive(0, dimensionGrilla - 3)),  // posicion de inicio
-            static_cast<Orientacion>(getRandomNumExclusive(0, static_cast<int>(Orientacion::COUNT))) // orientacion
-        )}, 
-        {Palabra(
-            "DOS",
-            3,
-            Coordenada(getRandomNumInclusive(0, dimensionGrilla - 3), getRandomNumInclusive(0, dimensionGrilla - 3)),
-            static_cast<Orientacion>(getRandomNumExclusive(0, static_cast<int>(Orientacion::COUNT)))
-        )}, 
-        {Palabra(
-            "TRES",
-            4,
-            Coordenada(getRandomNumInclusive(0, dimensionGrilla - 4), getRandomNumInclusive(0, dimensionGrilla - 4)),
-            static_cast<Orientacion>(getRandomNumExclusive(0, static_cast<int>(Orientacion::COUNT)))
-        )}, 
-        {Palabra(
-            "CUATRO",
-            6,
-            Coordenada(getRandomNumInclusive(0, dimensionGrilla - 6), getRandomNumInclusive(0, dimensionGrilla - 6)),
-            static_cast<Orientacion>(getRandomNumExclusive(0, static_cast<int>(Orientacion::COUNT)))
-        )}, 
-        {Palabra(
-            "CINCO",
-            5,
-            Coordenada(getRandomNumInclusive(0, dimensionGrilla - 5), getRandomNumInclusive(0, dimensionGrilla - 5)),
-            static_cast<Orientacion>(getRandomNumExclusive(0, static_cast<int>(Orientacion::COUNT)))
-        )}, 
-    };
-
-    // Insertamos palabras de prueba en la sopa
-    for (int i = 0; i < 5; i++)
-    {
-        Palabra palabra = misPalabras[i];
-        if (static_cast<unsigned>(palabra.longitud) <= dimensionGrilla)
-        {
-            switch (palabra.orientacion)
-            {
-            case Orientacion::VERTICAL:
-                for (int j = 0; j < palabra.longitud; j++)
-                {
-                    grilla[palabra.posicionInicio.coordY + j][palabra.posicionInicio.coordX] 
-                    = Casillero(palabra.palabra[j], Coordenada(palabra.posicionInicio.coordX, (palabra.posicionInicio.coordY + j)), false);
-                }
-                break;
-            case Orientacion::HORIZONTAL:
-                for (int j = 0; j < palabra.longitud; j++)
-                {
-                    grilla[palabra.posicionInicio.coordY][palabra.posicionInicio.coordX + j]
-                    = Casillero(palabra.palabra[j], Coordenada(palabra.posicionInicio.coordY, (palabra.posicionInicio.coordX + j)), false);
-                }
-                break;
-            default:
-                break;
-            }
-        }
-    }
-}
