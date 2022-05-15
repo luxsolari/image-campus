@@ -1,13 +1,14 @@
 ﻿#include <iostream>
 #include <string>
+#include <limits>
 #include "utils.h"
 using namespace std;
 
 int main()
 {
-	srand(time(nullptr));
+	srand(static_cast<unsigned>(time(nullptr)));
 	bool mainLoop = true;
-	char input;
+	char input = '\0';
 
 	while (mainLoop)
 	{

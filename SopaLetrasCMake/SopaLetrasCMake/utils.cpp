@@ -47,11 +47,11 @@ bool estaOcupado (Casillero** grilla, Coordenada posInicio, Coordenada posFinal,
 }
 
 void randomizarGrilla(Casillero** grilla, unsigned long dimensionMatriz){
-	for (int i = 0; i < dimensionMatriz; ++i) 
+	for (unsigned int i = 0; i < dimensionMatriz; ++i) 
 	{
         // Incializar columnas con letras aleatorias
         grilla[i] = new Casillero[dimensionMatriz];
-        for (int j = 0; j < dimensionMatriz; j++)
+        for (unsigned int j = 0; j < dimensionMatriz; j++)
         {
             grilla[i][j] = Casillero(getRandomChar(), Coordenada(i, j), true);
         }
@@ -60,9 +60,9 @@ void randomizarGrilla(Casillero** grilla, unsigned long dimensionMatriz){
 
 void mostrarGrilla(Casillero** grilla, unsigned long dimensionMatriz)
 {
-	for (int i = 0; i < dimensionMatriz; i++)
+	for (unsigned int i = 0; i < dimensionMatriz; i++)
 	{
-		for (int j = 0; j < dimensionMatriz; j++)
+		for (unsigned int j = 0; j < dimensionMatriz; j++)
 		{
 			cout << grilla[i][j].contenido << " ";
 		}
@@ -110,7 +110,7 @@ void inicializarDatosDePrueba (Casillero** grilla, unsigned long dimensionMatriz
     for (int i = 0; i < 5; i++)
     {
         Palabra palabra = misPalabras[i];
-        if (palabra.longitud <= dimensionMatriz)
+        if (static_cast<unsigned>(palabra.longitud) <= dimensionMatriz)
         {
             switch (palabra.orientacion)
             {
