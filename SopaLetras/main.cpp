@@ -20,7 +20,7 @@ int main()
 		int palabrasTotales = 0;
 		vector<Palabra> palabrasAEncontrar;
 
-		// Seleccion de tamaño de grilla
+		// Seleccion de tamaÃ±o de grilla
 		do
 		{
 			system("cls");  // NOLINT(concurrency-mt-unsafe)
