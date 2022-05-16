@@ -81,7 +81,7 @@ struct Palabra
     Palabra (const string &palabra, Orientacion orientacion)
     {
         this->palabra = palabra;
-        this->longitud = static_cast<int>(strlen(palabra.c_str()));
+        this->longitud = palabra.length();
         this->orientacion = orientacion;
         this->posicionInicio = Coordenada(0, 0);
     }
