@@ -1,8 +1,8 @@
 #ifndef SOPALETRAS_STRUCTS_H
 #define SOPALETRAS_STRUCTS_H
 #include <string>
-
 using namespace std;  // NOLINT(clang-diagnostic-header-hygiene)
+
 enum class Orientacion
 {
     HORIZONTAL = 0,
@@ -14,9 +14,9 @@ enum class Orientacion
 
 enum class DimensionGrilla
 {
-    CHICO   = 8,
-    MEDIANO = 16,
-    GRANDE  = 24,
+    CHICO   = 16,
+    MEDIANO = 24,
+    GRANDE  = 32,
     /////////////
     COUNT   = 3
 };

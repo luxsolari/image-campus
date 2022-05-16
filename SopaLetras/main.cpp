@@ -1,7 +1,9 @@
 #include <iostream>
 #include <string>
 #include <limits>
+#include <vector>
 #include "utiles.h"
+#include "tematicas.h"
 
 int main()
 {
@@ -13,13 +15,23 @@ int main()
 	{
 		bool inputCorrecto = false;
 		int inputDimension;
+
+		int inputPVP;
+		bool modoPVP = false;
+
 		int dimensionGrilla = 0;
+		int palabrasEncontradas = 0;
+		int palabrasTotales = 0;
+
+		vector<Palabra> palabrasAEncontrar;
+
+		// Seleccion de tamaño de grilla
 		do
 		{
 			cout << "Elige la dimension para la grilla de las siguientes opciones:" << endl;
-			cout << "[1] Chico  -  8 x 8 " << endl;
-			cout << "[2] Medio  - 16 x 16" << endl;
-			cout << "[3] Grande - 24 x 24" << endl;
+			cout << "[1] Chico  - 16 x 16 " << endl;
+			cout << "[2] Medio  - 24 x 24" << endl;
+			cout << "[3] Grande - 32 x 32" << endl;
 			cout << "-> ";
 			cin >> inputDimension;
 
@@ -30,12 +42,15 @@ int main()
 				{
 				case 1:
 					dimensionGrilla = static_cast<int>(DimensionGrilla::CHICO);
+					palabrasTotales = 10;
 					break;
 				case 2:
 					dimensionGrilla = static_cast<int>(DimensionGrilla::MEDIANO);
+					palabrasTotales = 20;
 					break;
 				case 3:
 					dimensionGrilla = static_cast<int>(DimensionGrilla::GRANDE);
+					palabrasTotales = 25;
 					break;
 				default: 
 					break;
@@ -45,34 +60,103 @@ int main()
 			{
 				cin.clear();
 				cin.ignore((std::numeric_limits<std::streamsize>::max()), '\n');
-				cout << "Solo se permite ingresar numeros" << endl;
+				system("cls");
 			}
-
 		} while (!inputCorrecto);
-		
 		// ReSharper disable once CppUseAuto
-		Casillero** grilla = new Casillero * [dimensionGrilla] {};
+		Casillero** grilla = new Casillero* [dimensionGrilla] {};
 		randomizarGrilla(grilla, dimensionGrilla);
 
-		Palabra misPalabras[10] = {
-			Palabra("AZUL", static_cast<Orientacion>(getRandomNumExclusive(0, static_cast<int>(Orientacion::COUNT)))),
-			Palabra("NARANJA", static_cast<Orientacion>(getRandomNumExclusive(0, static_cast<int>(Orientacion::COUNT)))),
-			Palabra("AMARILLO", static_cast<Orientacion>(getRandomNumExclusive(0, static_cast<int>(Orientacion::COUNT)))),
-			Palabra("ROJO", static_cast<Orientacion>(getRandomNumExclusive(0, static_cast<int>(Orientacion::COUNT)))),
-			Palabra("VERDE", static_cast<Orientacion>(getRandomNumExclusive(0, static_cast<int>(Orientacion::COUNT)))),
-			Palabra("BLANCO", static_cast<Orientacion>(getRandomNumExclusive(0, static_cast<int>(Orientacion::COUNT)))),
-			Palabra("NEGRO", static_cast<Orientacion>(getRandomNumExclusive(0, static_cast<int>(Orientacion::COUNT)))),
-			Palabra("VIOLETA", static_cast<Orientacion>(getRandomNumExclusive(0, static_cast<int>(Orientacion::COUNT)))),
-			Palabra("ROSA", static_cast<Orientacion>(getRandomNumExclusive(0, static_cast<int>(Orientacion::COUNT)))),
-			Palabra("TURQUESA", static_cast<Orientacion>(getRandomNumExclusive(0, static_cast<int>(Orientacion::COUNT)))),
-		};
-		for (int i = 0; i < 10; i++)
+		// Seleccion de solitario o pvp
+		do
 		{
-			if (misPalabras[i].longitud < dimensionGrilla)
-				insertarPalabra(grilla, dimensionGrilla, misPalabras[i]);
+			inputCorrecto = false;
+			cout << "Elige to modo de juego:" << endl;
+			cout << "[1] Solitario" << endl;
+			cout << "[2] PvP"		<< endl;
+			cout << "-> ";
+			cin >> inputPVP;
+
+			if (cin.good() && (inputPVP > 0 && inputPVP < 3))
+			{
+				inputCorrecto = true;
+				if (inputPVP == 2)
+					modoPVP = true;
+			}
+			else
+			{
+				cin.clear();
+				cin.ignore((std::numeric_limits<std::streamsize>::max()), '\n');
+				system("cls");
+			}
+		} while (!inputCorrecto);
+
+		if (modoPVP)
+		{
+			// Insertar palabras a mano
+			cout << "El modo PvP aun esta en construccion!" << endl;
 		}
-		
-		mostrarGrilla(grilla, dimensionGrilla);
+		else
+		{
+			int inputTematica;
+			do
+			{
+				inputCorrecto = false;
+				cout << "Elige una de las siguientes tematicas de palabras:" << endl;
+				cout << "[1] Colores" << endl;
+				cout << "[2] Paises y ciudades" << endl;
+				cout << "[3] Computacion" << endl;
+				cout << "[4] Videojuegos" << endl;
+				cout << "-> ";
+				cin >> inputTematica;
+
+				if (cin.good() && (inputDimension > 0 && inputDimension < 5))
+				{
+					inputCorrecto = true;
+					switch (inputTematica)
+					{
+					case 1:
+						while (palabrasAEncontrar.size() < palabrasTotales)
+						{
+							const int indiceAInsertar = getRandomNumExclusive(0, 30);
+							bool insertable = true;
+							for (int j = 0; j < palabrasAEncontrar.size(); j++)
+							{
+								if (palabrasAEncontrar.at(j).palabra == colores[indiceAInsertar])
+								{
+									insertable = false;
+									break;
+								}
+							}
+
+							if (insertable)
+							{
+								Palabra palabra = Palabra(
+									colores[indiceAInsertar], 
+									static_cast<Orientacion>(getRandomNumExclusive(0, static_cast<int>(Orientacion::COUNT)))
+								);
+								insertarPalabra(grilla, dimensionGrilla, palabra);
+								palabrasAEncontrar.push_back(palabra);
+							}
+						}
+						break;
+					case 2:
+						break;
+					case 3:
+						break;
+					case 4:
+						break;
+					}
+				}
+				else
+				{
+					cin.clear();
+					cin.ignore((std::numeric_limits<std::streamsize>::max()), '\n');
+					system("cls");
+				}
+			} while (!inputCorrecto);
+			mostrarGrilla(grilla, dimensionGrilla);
+		}
 
 		// Limpiar recursos
 		for (int i = 0; i < dimensionGrilla; i++)
