@@ -1,5 +1,5 @@
 #pragma once
-const string colores[30] = {
+const std::string colores[30] = {
 	"MARRON",
 	"BEIGE",
 	"ROJO",
@@ -32,7 +32,7 @@ const string colores[30] = {
 	"COBALTO"
 };
 
-const string paisesCiudades[30] = {
+const std::string paisesCiudades[30] = {
 	"MARRON",
 	"BEIGE",
 	"ROJO",
@@ -65,7 +65,7 @@ const string paisesCiudades[30] = {
 	"COBALTO"
 };
 
-const string computacion[30] = {
+const std::string computacion[30] = {
 	"MARRON",
 	"BEIGE",
 	"ROJO",
@@ -98,7 +98,7 @@ const string computacion[30] = {
 	"COBALTO"
 };
 
-const string videojuegos[30] = {
+const std::string videojuegos[30] = {
 	"MARRON",
 	"BEIGE",
 	"ROJO",

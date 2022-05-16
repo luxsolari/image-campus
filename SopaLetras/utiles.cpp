@@ -1,6 +1,5 @@
 #include "utiles.h"
 #include <iostream>
-#include <vector>
 
 int getRandomNumInclusive (const int min, const int max)
 {
@@ -10,6 +9,15 @@ int getRandomNumInclusive (const int min, const int max)
 int getRandomNumExclusive (const int min, const int max)
 {
     return rand() % (max + min) - min;  // NOLINT(concurrency-mt-unsafe)
+}
+
+//function for converting string to upper
+string stringToUpper(string oString)
+{
+   for(int i = 0; i < static_cast<int>(oString.length()); i++){  // NOLINT(modernize-loop-convert)
+       oString[i] = toupper(oString[i]);  // NOLINT(bugprone-narrowing-conversions, cppcoreguidelines-narrowing-conversions, clang-diagnostic-implicit-int-conversion)
+    }
+    return oString;
 }
 
 char getRandomChar ()
@@ -28,11 +36,10 @@ bool estaOcupado (const Casillero& casillero)
 	return true;
 }
 
-void insertarPalabra(Casillero** grilla, int dimensionGrilla, Palabra& palabra)
+void insertarEnGrilla(Casillero** grilla, const int dimensionGrilla, Palabra& palabra, const bool alAzar)
 {
 	int cantidadOcupadas;
 	int intentos = 1;
-	constexpr int intentosMax = 1000;
 	bool insertable = true;
 	Coordenada posicionInicio;
 
@@ -42,10 +49,17 @@ void insertarPalabra(Casillero** grilla, int dimensionGrilla, Palabra& palabra)
 		// Elegir un lugar para insertar la palabra y verificar que sea posible
 		do
 		{
-			// Elegir una posicion al azar
-			posicionInicio = Coordenada(getRandomNumExclusive(0, dimensionGrilla - palabra.longitud), 
+			if (alAzar)
+			{
+				// Elegir una posicion al azar
+				posicionInicio = Coordenada(getRandomNumExclusive(0, dimensionGrilla - palabra.longitud), 
 					getRandomNumExclusive(0, dimensionGrilla));
-			palabra.posicionInicio = posicionInicio;
+				palabra.posicionInicio = posicionInicio;
+			}
+			else
+			{
+				posicionInicio = palabra.posicionInicio;
+			}
 
 			cantidadOcupadas = 0;
 			for (int i = 0; i < palabra.longitud; i++)
@@ -59,13 +73,13 @@ void insertarPalabra(Casillero** grilla, int dimensionGrilla, Palabra& palabra)
 
 			if (cantidadOcupadas > 0)
 				intentos ++;
-			if (intentos == intentosMax)
+			if (intentos == INTENTOS_MAX)
 			{
 				insertable = false;
-				palabra.intentosDeInsercion = intentosMax;
+				palabra.intentosDeInsercion = INTENTOS_MAX;
 			}
 		}
-		while (cantidadOcupadas != 0 && intentos <= intentosMax);
+		while (cantidadOcupadas != 0 && intentos <= INTENTOS_MAX);
 
 		// Insertar la palabra si no hay espacios ocupados
 		if (insertable)
@@ -82,10 +96,17 @@ void insertarPalabra(Casillero** grilla, int dimensionGrilla, Palabra& palabra)
 	case Orientacion::VERTICAL:
 		do
 		{
-			// Elegir una posicion al azar
-			posicionInicio = Coordenada(getRandomNumExclusive(0, dimensionGrilla), 
+			if (alAzar)
+			{
+				// Elegir una posicion al azar
+				posicionInicio = Coordenada(getRandomNumExclusive(0, dimensionGrilla), 
 					getRandomNumExclusive(0, dimensionGrilla - palabra.longitud));
-			palabra.posicionInicio = posicionInicio;
+				palabra.posicionInicio = posicionInicio;
+			}
+			else
+			{
+				posicionInicio = palabra.posicionInicio;
+			}
 
 			cantidadOcupadas = 0;
 			for (int i = 0; i < palabra.longitud; i++)
@@ -99,13 +120,13 @@ void insertarPalabra(Casillero** grilla, int dimensionGrilla, Palabra& palabra)
 
 			if (cantidadOcupadas > 0)
 				intentos ++;
-			if (intentos == intentosMax)
+			if (intentos == INTENTOS_MAX)
 			{
 				insertable = false;
-				palabra.intentosDeInsercion = intentosMax;
+				palabra.intentosDeInsercion = INTENTOS_MAX;
 			}
 		}
-		while (cantidadOcupadas != 0 && intentos <= intentosMax);
+		while (cantidadOcupadas != 0 && intentos <= INTENTOS_MAX);
 
 		// Insertar la palabra si no hay espacios ocupados
 		if (insertable)
@@ -122,10 +143,17 @@ void insertarPalabra(Casillero** grilla, int dimensionGrilla, Palabra& palabra)
 	case Orientacion::DIAGONAL:
 		do
 		{
-			// Elegir una posicion al azar
-			posicionInicio = Coordenada(getRandomNumExclusive(0, dimensionGrilla - palabra.longitud), 
+			if (alAzar)
+			{
+				// Elegir una posicion al azar
+				posicionInicio = Coordenada(getRandomNumExclusive(0, dimensionGrilla - palabra.longitud), 
 					getRandomNumExclusive(0, dimensionGrilla - palabra.longitud));
-			palabra.posicionInicio = posicionInicio;
+				palabra.posicionInicio = posicionInicio;
+			}
+			else
+			{
+				posicionInicio = palabra.posicionInicio;
+			}
 
 			cantidadOcupadas = 0;
 			for (int i = 0; i < palabra.longitud; i++)
@@ -139,13 +167,13 @@ void insertarPalabra(Casillero** grilla, int dimensionGrilla, Palabra& palabra)
 
 			if (cantidadOcupadas > 0)
 				intentos ++;
-			if (intentos == intentosMax)
+			if (intentos == INTENTOS_MAX)
 			{
 				insertable = false;
-				palabra.intentosDeInsercion = intentosMax;
+				palabra.intentosDeInsercion = INTENTOS_MAX;
 			}
 		}
-		while (cantidadOcupadas != 0 && intentos <= intentosMax);
+		while (cantidadOcupadas != 0 && intentos <= INTENTOS_MAX);
 
 		// Insertar la palabra si no hay espacios ocupados
 		if (insertable)
@@ -188,3 +216,45 @@ void mostrarGrilla (Casillero** grilla, const int dimensionGrilla)
 	}
 }
 
+void inicializarPalabrasABuscar(vector<Palabra>& palabrasAEncontrar, const string palabrasTematicas[], int palabrasTotales)
+{
+	while (static_cast<int>(palabrasAEncontrar.size()) < palabrasTotales)
+	{
+		const int indiceAInsertar = getRandomNumExclusive(0, 30);
+		bool insertable = true;
+		for (int j = 0; j < static_cast<int>(palabrasAEncontrar.size()); j++)  // NOLINT(modernize-loop-convert)
+		{
+			if (palabrasAEncontrar.at(j).palabra == palabrasTematicas[indiceAInsertar])
+			{
+				insertable = false;
+				break;
+			}
+		}
+
+		if (insertable)
+		{
+			Palabra palabra = Palabra(
+				palabrasTematicas[indiceAInsertar],
+				static_cast<Orientacion>(getRandomNumExclusive(0, static_cast<int>(Orientacion::COUNT)))
+			);
+			palabrasAEncontrar.push_back(palabra);
+		}
+	}
+}
+
+Estado estaEnLista(vector<Palabra>& palabrasAEncontrar, const string& palabraBuscada)
+{
+	for (auto& element : palabrasAEncontrar)
+	{
+		
+		if (element.palabra == palabraBuscada && element.encontrada)
+			return Estado::REPETIDO;
+
+		if (element.palabra == palabraBuscada && !element.encontrada)
+		{
+			element.encontrada = true;
+			return Estado::ENCONTRADO;
+		}
+	}
+	return Estado::NO_ENCONTRADO;
+}

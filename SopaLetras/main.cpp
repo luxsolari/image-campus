@@ -1,9 +1,9 @@
-#include <iostream>
-#include <string>
-#include <limits>
-#include <vector>
 #include "utiles.h"
 #include "tematicas.h"
+#include <chrono>
+#include <thread>
+#include <iostream>
+#include <limits>
 
 int main()
 {
@@ -15,20 +15,15 @@ int main()
 	{
 		bool inputCorrecto = false;
 		int inputDimension;
-
-		int inputPVP;
-		bool modoPVP = false;
-
+		int inputTematica;
 		int dimensionGrilla = 0;
-		int palabrasEncontradas = 0;
 		int palabrasTotales = 0;
-
 		vector<Palabra> palabrasAEncontrar;
 
 		// Seleccion de tamaño de grilla
 		do
 		{
-			system("cls");
+			system("cls");  // NOLINT(concurrency-mt-unsafe)
 			cout << "Elige la dimension para la grilla de las siguientes opciones:" << endl;
 			cout << "[1] Chico  - 16 x 16 " << endl;
 			cout << "[2] Medio  - 24 x 24" << endl;
@@ -43,125 +38,149 @@ int main()
 				{
 				case 1:
 					dimensionGrilla = static_cast<int>(DimensionGrilla::CHICO);
-					palabrasTotales = 10;
 					break;
 				case 2:
 					dimensionGrilla = static_cast<int>(DimensionGrilla::MEDIANO);
-					palabrasTotales = 20;
 					break;
 				case 3:
 					dimensionGrilla = static_cast<int>(DimensionGrilla::GRANDE);
-					palabrasTotales = 25;
 					break;
-				default: 
+				default:
 					break;
 				}
+				palabrasTotales = static_cast<int>(dimensionGrilla * 0.75);
 			}
 			else
 			{
 				cin.clear();
 				cin.ignore((std::numeric_limits<std::streamsize>::max()), '\n');
-				system("cls");
+				system("cls");  // NOLINT(concurrency-mt-unsafe)
 			}
 		} while (!inputCorrecto);
 		// ReSharper disable once CppUseAuto
-		Casillero** grilla = new Casillero* [dimensionGrilla] {};
+		Casillero** grilla = new Casillero * [dimensionGrilla] {};  // NOLINT(modernize-use-auto)
 		randomizarGrilla(grilla, dimensionGrilla);
 
-		// Seleccion de solitario o pvp
+		// Seleccion de tematica de palabras
+		system("cls");  // NOLINT(concurrency-mt-unsafe)
 		do
 		{
-			system("cls");
 			inputCorrecto = false;
-			cout << "Elige to modo de juego:" << endl;
-			cout << "[1] Solitario" << endl;
-			cout << "[2] PvP"		<< endl;
+			cout << "Elige una de las siguientes tematicas de palabras:" << endl;
+			cout << "[1] Colores" << endl;
+			cout << "[2] Paises y ciudades" << endl;
+			cout << "[3] Computacion" << endl;
+			cout << "[4] Videojuegos" << endl;
 			cout << "-> ";
-			cin >> inputPVP;
+			cin >> inputTematica;
 
-			if (cin.good() && (inputPVP > 0 && inputPVP < 3))
+			if (cin.good() && (inputDimension > 0 && inputDimension < 5))
 			{
 				inputCorrecto = true;
-				if (inputPVP == 2)
-					modoPVP = true;
+				// ReSharper disable once CppDefaultCaseNotHandledInSwitchStatement
+				switch (inputTematica)  // NOLINT(hicpp-multiway-paths-covered)
+				{
+				case 1:
+					inicializarPalabrasABuscar(palabrasAEncontrar, colores, palabrasTotales);
+					break;
+				case 2:
+					inicializarPalabrasABuscar(palabrasAEncontrar, paisesCiudades, palabrasTotales);
+					break;
+				case 3:
+					inicializarPalabrasABuscar(palabrasAEncontrar, computacion, palabrasTotales);
+					break;
+				case 4:
+					inicializarPalabrasABuscar(palabrasAEncontrar, videojuegos, palabrasTotales);
+					break;
+				}
+				for (int i = 0; i < static_cast<int>(palabrasAEncontrar.size()); ++i)  // NOLINT(modernize-loop-convert)
+				{
+					insertarEnGrilla(grilla, dimensionGrilla, palabrasAEncontrar.at(i), true);
+				}
 			}
 			else
 			{
 				cin.clear();
 				cin.ignore((std::numeric_limits<std::streamsize>::max()), '\n');
-				system("cls");
+				system("cls");  // NOLINT(concurrency-mt-unsafe)
 			}
 		} while (!inputCorrecto);
 
-		if (modoPVP)
+		cin.clear();
+		cin.ignore((std::numeric_limits<std::streamsize>::max()), '\n');
+		// Game Loop
+		bool jugando = true;
+		int palabrasEncontradas = 0;
+		int vidasRestantes = 2;
+		while (jugando)
 		{
-			// Insertar palabras a mano
-			cout << "El modo PvP aun esta en construccion!" << endl;
-		}
-		else
-		{
-			system("cls");
-			int inputTematica;
-			do
+			if (palabrasEncontradas < palabrasTotales)
 			{
-				inputCorrecto = false;
-				cout << "Elige una de las siguientes tematicas de palabras:" << endl;
-				cout << "[1] Colores" << endl;
-				cout << "[2] Paises y ciudades" << endl;
-				cout << "[3] Computacion" << endl;
-				cout << "[4] Videojuegos" << endl;
-				cout << "-> ";
-				cin >> inputTematica;
-
-				if (cin.good() && (inputDimension > 0 && inputDimension < 5))
+				string palabraABuscar;
+				do
 				{
-					inputCorrecto = true;
-					switch (inputTematica)
-					{
-					case 1:
-						while (palabrasAEncontrar.size() < palabrasTotales)
-						{
-							const int indiceAInsertar = getRandomNumExclusive(0, 30);
-							bool insertable = true;
-							for (int j = 0; j < palabrasAEncontrar.size(); j++)
-							{
-								if (palabrasAEncontrar.at(j).palabra == colores[indiceAInsertar])
-								{
-									insertable = false;
-									break;
-								}
-							}
+					system("cls");  // NOLINT(concurrency-mt-unsafe)
+					cout << "Palabras encontradas: " << palabrasEncontradas << "/" << palabrasTotales << endl;
+					cout << "Vidas restantes: " << vidasRestantes << endl;
+					mostrarGrilla(grilla, dimensionGrilla);
 
-							if (insertable)
-							{
-								Palabra palabra = Palabra(
-									colores[indiceAInsertar], 
-									static_cast<Orientacion>(getRandomNumExclusive(0, static_cast<int>(Orientacion::COUNT)))
-								);
-								insertarPalabra(grilla, dimensionGrilla, palabra);
-								palabrasAEncontrar.push_back(palabra);
-							}
+					inputCorrecto = true;
+					cout << "Ingresa una palabra entre 1 y " << dimensionGrilla << " letras: ";
+					getline(cin, palabraABuscar);
+
+					if (palabraABuscar.length() < 1 || static_cast<int>(palabraABuscar.length()) >= dimensionGrilla)
+					{
+						cout << "La palabra no tiene la longitud correcta! Perdiste 1 vida." << endl;
+						this_thread::sleep_for(1.5s);
+
+						vidasRestantes -= 1;
+
+						if (vidasRestantes < 0)
+						{
+							jugando = false;
+							cout << "Te quedaste sin vidas! GAME OVER!" << endl;
+							this_thread::sleep_for(2s);
 						}
-						break;
-					case 2:
-						break;
-					case 3:
-						break;
-					case 4:
-						break;
 					}
 				}
-				else
-				{
-					cin.clear();
-					cin.ignore((std::numeric_limits<std::streamsize>::max()), '\n');
-					system("cls");
-				}
-			} while (!inputCorrecto);
+				while (!inputCorrecto && jugando);
 
-			system("cls");
-			cout << "Palabras encontradas: " << palabrasEncontradas << "/" << palabrasTotales << endl;
-			mostrarGrilla(grilla, dimensionGrilla);
+				if (vidasRestantes >= 0)
+				{
+					palabraABuscar = stringToUpper(palabraABuscar);
+					// ReSharper disable once CppIncompleteSwitchStatement
+					// ReSharper disable once CppDefaultCaseNotHandledInSwitchStatement
+					switch (estaEnLista(palabrasAEncontrar, palabraABuscar))  // NOLINT(clang-diagnostic-switch)
+					{
+					case Estado::ENCONTRADO:
+						cout << "Encontraste una palabra! Excelente!" << endl;
+						palabrasEncontradas += 1;
+						break;
+					case Estado::REPETIDO:
+						cout << "Esa palabra ya la encontraste." << endl;
+						break;
+					case Estado::NO_ENCONTRADO:
+						cout << "Esa palabra no esta en la grilla! Perdiste 1 vida." << endl;
+						vidasRestantes -= 1;
+						break;
+					}
+
+					this_thread::sleep_for(1.5s);
+
+					if (vidasRestantes < 0)
+					{
+						jugando = false;
+						cout << "Te quedaste sin vidas! GAME OVER!" << endl;
+						this_thread::sleep_for(2s);
+					}
+				}
+			}
+			else
+			{
+				cout << "Encontraste todas las palabras! GANASTE!!" << endl;
+				jugando = false;
+				this_thread::sleep_for(2s);
+			}
 		}
 
 		// Limpiar recursos
@@ -174,7 +193,7 @@ int main()
 		do
 		{
 			cout << endl;
-			cout << "Ingresar nuevamente? (s/n): ";
+			cout << "Jugar de nuevo? (s/n): ";
 			cin >> input;
 			switch (input)
 			{
