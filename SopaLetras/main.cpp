@@ -28,6 +28,7 @@ int main()
 		// Seleccion de tamaño de grilla
 		do
 		{
+			system("cls");
 			cout << "Elige la dimension para la grilla de las siguientes opciones:" << endl;
 			cout << "[1] Chico  - 16 x 16 " << endl;
 			cout << "[2] Medio  - 24 x 24" << endl;
@@ -70,6 +71,7 @@ int main()
 		// Seleccion de solitario o pvp
 		do
 		{
+			system("cls");
 			inputCorrecto = false;
 			cout << "Elige to modo de juego:" << endl;
 			cout << "[1] Solitario" << endl;
@@ -98,6 +100,7 @@ int main()
 		}
 		else
 		{
+			system("cls");
 			int inputTematica;
 			do
 			{
@@ -155,6 +158,9 @@ int main()
 					system("cls");
 				}
 			} while (!inputCorrecto);
+
+			system("cls");
+			cout << "Palabras encontradas: " << palabrasEncontradas << "/" << palabrasTotales << endl;
 			mostrarGrilla(grilla, dimensionGrilla);
 		}
 
