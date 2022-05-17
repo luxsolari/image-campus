@@ -1,6 +1,6 @@
 #ifndef SOPALETRAS_STRUCTS_H
 #define SOPALETRAS_STRUCTS_H
-using namespace std;  // NOLINT(clang-diagnostic-header-hygiene)
+#include "tematicas.h"
 
 enum class Orientacion
 {

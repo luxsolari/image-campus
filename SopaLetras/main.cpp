@@ -1,9 +1,4 @@
 #include "utiles.h"
-#include "tematicas.h"
-#include <chrono>
-#include <thread>
-#include <iostream>
-#include <limits>
 
 int main()
 {
@@ -38,7 +33,7 @@ int main()
 				{
 				case 1:
 					dimensionGrilla = static_cast<int>(DimensionGrilla::CHICO);
-					palabrasTotales = 10;
+					palabrasTotales = 8;
 					break;
 				case 2:
 					dimensionGrilla = static_cast<int>(DimensionGrilla::MEDIANO);

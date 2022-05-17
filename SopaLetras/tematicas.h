@@ -1,5 +1,7 @@
 #pragma once
-const std::string colores[30] = {
+#include "globals.h"
+
+const string colores[MAX_ARRAY_SIZE] = {
 	"MARRON",
 	"BEIGE",
 	"ROJO",
@@ -29,10 +31,15 @@ const std::string colores[30] = {
 	"PLATINO",
 	"LILA",
 	"FUCSIA",
-	"COBALTO"
+	"COBALTO",
+	"AZUL OSCURO",
+	"AZUL PURPURA",
+	"GRIS OSCURO",
+	"ROJO OSCURO",
+	"AMATISTA"
 };
 
-const std::string paisesCiudades[30] = {
+const string paisesCiudades[MAX_ARRAY_SIZE] = {
 	"FRANCIA",
 	"AUSTRALIA",
 	"JAPON",
@@ -62,10 +69,15 @@ const std::string paisesCiudades[30] = {
 	"NUEVAYORK",
 	"MONTEVIDEO",
 	"SANTIAGO",
-	"BARCELONA"
+	"BARCELONA",
+	"CORDOBA",
+	"VIENA",
+	"LOSANGELES",
+	"LASVEGAS",
+	"NAPOLES"
 };
 
-const std::string computacion[30] = {
+const string computacion[MAX_ARRAY_SIZE] = {
 	"MONITOR",
 	"MEMORIA",
 	"DISCORIGIDO",
@@ -95,10 +107,15 @@ const std::string computacion[30] = {
 	"BAJONIVEL",
 	"VARIABLE",
 	"CONSTANTE",
-	"PROGRAMA"
+	"PROGRAMA",
+	"COMPILADOR",
+	"ARCHIVO",
+	"CARPETA",
+	"REGISTRO",
+	"INSTRUCCION"
 };
 
-const std::string videojuegos[30] = {
+const string videojuegos[MAX_ARRAY_SIZE] = {
 	"DISCOELYSIUM",
 	"ASSASSINSCREED",
 	"FARCRY",
@@ -118,7 +135,6 @@ const std::string videojuegos[30] = {
 	"BATTLEFIELD",
 	"FINALFANTASY",
 	"DEATHSTRANDING",
-	"METALGEARSOLID",
 	"MASSEFFECT",
 	"ELDERSCROLLS",
 	"DARKSOULS",
@@ -128,5 +144,11 @@ const std::string videojuegos[30] = {
 	"GRANTURISMO",
 	"DOOM",
 	"COUNTERSTRIKE",
-	"HALFLIFE"
+	"HALFLIFE",
+	"CELESTE",
+	"UNDERTALE",
+	"NIER",
+	"GRIS",
+	"DRAGONAGE",
+	"PORTAL"
 };

@@ -1,5 +1,4 @@
 #include "utiles.h"
-#include <iostream>
 
 int getRandomNumInclusive (const int min, const int max)
 {
@@ -23,8 +22,8 @@ string stringToUpper(string oString)
 char getRandomChar ()
 {
 	// Casting de tipo de dato (convertir de un tipo de dato a otro).
-	constexpr int min = static_cast<int>('A');
-	constexpr int max = static_cast<int>('Z');
+	constexpr int min = static_cast<int>(' ');
+	constexpr int max = static_cast<int>(' ');
 
 	return static_cast<char>(getRandomNumInclusive(min, max));
 }
@@ -142,7 +141,7 @@ void insertarEnGrilla(Casillero** grilla, const int dimensionGrilla, Palabra& pa
 			for (int i = 0; i < palabra.longitud; i++)
 			{
 				Casillero casilleroAInsertar = Casillero(palabra.palabra[i], 
-					Coordenada(posicionInicio.coordY, posicionInicio.coordX + i), 
+					Coordenada(posicionInicio.coordY + i, posicionInicio.coordX), 
 					false);
 
 				if(grilla[posicionInicio.coordY + i][posicionInicio.coordX].contenido[0] == casilleroAInsertar.contenido[0])
@@ -278,7 +277,7 @@ void inicializarPalabrasABuscar(vector<Palabra>& palabrasAEncontrar, const strin
 {
 	while (static_cast<int>(palabrasAEncontrar.size()) < palabrasTotales)
 	{
-		const int indiceAInsertar = getRandomNumExclusive(0, 30);
+		const int indiceAInsertar = getRandomNumExclusive(0, MAX_ARRAY_SIZE);
 		if (palabrasTematicas[indiceAInsertar].length() < static_cast<unsigned>(dimensionGrilla))
 		{
 			bool insertable = true;
