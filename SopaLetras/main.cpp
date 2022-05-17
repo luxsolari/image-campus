@@ -2,7 +2,7 @@
 
 int main()
 {
-	srand(static_cast<unsigned>(time(nullptr)));  // NOLINT(cert-msc51-cpp)
+	srand(static_cast<unsigned>(time(nullptr)));
 	bool mainLoop = true;
 	char input = '\0';
 
@@ -18,7 +18,7 @@ int main()
 		// Seleccion de tamaño de grilla
 		do
 		{
-			system("cls");  // NOLINT(concurrency-mt-unsafe)
+			system("cls"); 
 			cout << "Elige la dimension para la grilla de las siguientes opciones:" << endl;
 			cout << "[1] Chico  - 16 x 16 " << endl;
 			cout << "[2] Medio  - 24 x 24" << endl;
@@ -51,15 +51,15 @@ int main()
 			{
 				cin.clear();
 				cin.ignore((std::numeric_limits<std::streamsize>::max()), '\n');
-				system("cls");  // NOLINT(concurrency-mt-unsafe)
+				system("cls"); 
 			}
 		} while (!inputCorrecto);
-		// ReSharper disable once CppUseAuto
-		Casillero** grilla = new Casillero * [dimensionGrilla] {};  // NOLINT(modernize-use-auto)
+
+		Casillero** grilla = new Casillero * [dimensionGrilla] {}; 
 		randomizarGrilla(grilla, dimensionGrilla);
 
 		// Seleccion de tematica de palabras
-		system("cls");  // NOLINT(concurrency-mt-unsafe)
+		system("cls"); 
 		do
 		{
 			inputCorrecto = false;
@@ -74,8 +74,7 @@ int main()
 			if (cin.good() && (inputDimension > 0 && inputDimension < 5))
 			{
 				inputCorrecto = true;
-				// ReSharper disable once CppDefaultCaseNotHandledInSwitchStatement
-				switch (inputTematica)  // NOLINT(hicpp-multiway-paths-covered)
+				switch (inputTematica)
 				{
 				case 1:
 					inicializarPalabrasABuscar(palabrasAEncontrar, colores, palabrasTotales, dimensionGrilla);
@@ -90,7 +89,7 @@ int main()
 					inicializarPalabrasABuscar(palabrasAEncontrar, videojuegos, palabrasTotales, dimensionGrilla);
 					break;
 				}
-				for (int i = 0; i < static_cast<int>(palabrasAEncontrar.size()); ++i)  // NOLINT(modernize-loop-convert)
+				for (int i = 0; i < static_cast<int>(palabrasAEncontrar.size()); ++i)
 				{
 					insertarEnGrilla(grilla, dimensionGrilla, palabrasAEncontrar.at(i), true);
 				}
@@ -99,7 +98,7 @@ int main()
 			{
 				cin.clear();
 				cin.ignore((std::numeric_limits<std::streamsize>::max()), '\n');
-				system("cls");  // NOLINT(concurrency-mt-unsafe)
+				system("cls");
 			}
 		} while (!inputCorrecto);
 
@@ -111,7 +110,7 @@ int main()
 		int vidasRestantes = 2;
 		while (jugando)
 		{
-			system("cls");  // NOLINT(concurrency-mt-unsafe)
+			system("cls"); 
 			cout << "Palabras encontradas: " << palabrasEncontradas << "/" << palabrasTotales << endl;
 			cout << "Vidas restantes: " << vidasRestantes << endl;
 			mostrarGrilla(grilla, dimensionGrilla);
@@ -149,9 +148,7 @@ int main()
 
 				if (vidasRestantes >= 0)
 				{
-					// ReSharper disable once CppIncompleteSwitchStatement
-					// ReSharper disable once CppDefaultCaseNotHandledInSwitchStatement
-					switch (estaEnLista(palabrasAEncontrar, palabraABuscar))  // NOLINT(clang-diagnostic-switch)
+					switch (estaEnLista(palabrasAEncontrar, palabraABuscar))
 					{
 					case Estado::ENCONTRADO:
 						if (vidasRestantes < 1)
@@ -209,7 +206,7 @@ int main()
 			{
 			case 'S':
 			case 's':
-				system("cls");  // NOLINT(concurrency-mt-unsafe)
+				system("cls");
 				break;
 			case 'N':
 			case 'n':

@@ -2,19 +2,19 @@
 
 int getRandomNumInclusive (const int min, const int max)
 {
-    return rand() % (max + 1 - min) + min;  // NOLINT(concurrency-mt-unsafe)
+    return rand() % (max + 1 - min) + min; 
 }
 
 int getRandomNumExclusive (const int min, const int max)
 {
-    return rand() % (max + min) - min;  // NOLINT(concurrency-mt-unsafe)
+    return rand() % (max + min) - min;
 }
 
 //function for converting string to upper
 string stringToUpper(string oString)
 {
-   for(int i = 0; i < static_cast<int>(oString.length()); i++){  // NOLINT(modernize-loop-convert)
-       oString[i] = toupper(oString[i]);  // NOLINT(bugprone-narrowing-conversions, cppcoreguidelines-narrowing-conversions, clang-diagnostic-implicit-int-conversion)
+   for(int i = 0; i < static_cast<int>(oString.length()); i++){  
+       oString[i] = toupper(oString[i]);
     }
     return oString;
 }
@@ -22,8 +22,8 @@ string stringToUpper(string oString)
 char getRandomChar ()
 {
 	// Casting de tipo de dato (convertir de un tipo de dato a otro).
-	constexpr int min = static_cast<int>(' ');
-	constexpr int max = static_cast<int>(' ');
+	constexpr int min = static_cast<int>('A');
+	constexpr int max = static_cast<int>('Z');
 
 	return static_cast<char>(getRandomNumInclusive(min, max));
 }
@@ -42,10 +42,10 @@ void insertarEnGrilla(Casillero** grilla, const int dimensionGrilla, Palabra& pa
 	bool insertable = true;
 	Coordenada posicionInicio;
 
-	switch (palabra.orientacion)  // NOLINT(clang-diagnostic-switch-enum)
+	switch (palabra.orientacion)  
 	{
 	case Orientacion::HORIZONTAL:
-		// Elegir un lugar para insertar la palabra y verificar que sea posible
+		// Intentar encontrar lugar para insertar la palabra
 		do
 		{
 			if (alAzar)
@@ -57,9 +57,11 @@ void insertarEnGrilla(Casillero** grilla, const int dimensionGrilla, Palabra& pa
 			}
 			else
 			{
+				// Insertar en la posicion indicada
 				posicionInicio = palabra.posicionInicio;
 			}
 
+			// Buscar espacios ocupados y señalarlos
 			cantidadOcupadas = 0;
 			for (int i = 0; i < palabra.longitud; i++)
 			{
@@ -80,7 +82,7 @@ void insertarEnGrilla(Casillero** grilla, const int dimensionGrilla, Palabra& pa
 		}
 		while (cantidadOcupadas != 0 && intentos <= INTENTOS_MAX);
 
-		// Insertar la palabra si no hay espacios ocupados
+		// Insertar la palabra
 		if (insertable)
 		{
 			for (int i = 0; i < palabra.longitud; i++)
@@ -105,7 +107,6 @@ void insertarEnGrilla(Casillero** grilla, const int dimensionGrilla, Palabra& pa
 		{
 			if (alAzar)
 			{
-				// Elegir una posicion al azar
 				posicionInicio = Coordenada(getRandomNumExclusive(0, dimensionGrilla), 
 					getRandomNumExclusive(0, dimensionGrilla - palabra.longitud));
 				palabra.posicionInicio = posicionInicio;
@@ -135,7 +136,6 @@ void insertarEnGrilla(Casillero** grilla, const int dimensionGrilla, Palabra& pa
 		}
 		while (cantidadOcupadas != 0 && intentos <= INTENTOS_MAX);
 
-		// Insertar la palabra si no hay espacios ocupados
 		if (insertable)
 		{
 			for (int i = 0; i < palabra.longitud; i++)
@@ -159,7 +159,6 @@ void insertarEnGrilla(Casillero** grilla, const int dimensionGrilla, Palabra& pa
 		{
 			if (alAzar)
 			{
-				// Elegir una posicion al azar
 				posicionInicio = Coordenada(getRandomNumExclusive(0, dimensionGrilla - palabra.longitud), 
 					getRandomNumExclusive(0, dimensionGrilla - palabra.longitud));
 				palabra.posicionInicio = posicionInicio;
@@ -189,7 +188,6 @@ void insertarEnGrilla(Casillero** grilla, const int dimensionGrilla, Palabra& pa
 		}
 		while (cantidadOcupadas != 0 && intentos <= INTENTOS_MAX);
 
-		// Insertar la palabra si no hay espacios ocupados
 		if (insertable)
 		{
 			for (int i = 0; i < palabra.longitud; i++)
@@ -215,9 +213,7 @@ void insertarEnGrilla(Casillero** grilla, const int dimensionGrilla, Palabra& pa
 
 void marcarPalabra (Casillero** grilla, const Palabra& palabra)
 {
-	// ReSharper disable once CppDefaultCaseNotHandledInSwitchStatement
-	// ReSharper disable once CppIncompleteSwitchStatement
-	switch (palabra.orientacion)  // NOLINT(clang-diagnostic-switch)
+	switch (palabra.orientacion) 
 	{
 	case Orientacion::HORIZONTAL:
 		for (int i = 0; i < palabra.longitud; i++)
@@ -252,7 +248,6 @@ void marcarPalabra (Casillero** grilla, const Palabra& palabra)
 void randomizarGrilla (Casillero** grilla, const int dimensionGrilla){
 	for (int i = 0; i < dimensionGrilla; ++i) 
 	{
-        // Incializar columnas con letras aleatorias
         grilla[i] = new Casillero[dimensionGrilla];
         for (int j = 0; j < dimensionGrilla; j++)
         {
@@ -281,7 +276,7 @@ void inicializarPalabrasABuscar(vector<Palabra>& palabrasAEncontrar, const strin
 		if (palabrasTematicas[indiceAInsertar].length() < static_cast<unsigned>(dimensionGrilla))
 		{
 			bool insertable = true;
-			for (int j = 0; j < static_cast<int>(palabrasAEncontrar.size()); j++)  // NOLINT(modernize-loop-convert)
+			for (int j = 0; j < static_cast<int>(palabrasAEncontrar.size()); j++)
 			{
 				if (palabrasAEncontrar.at(j).palabra == palabrasTematicas[indiceAInsertar])
 				{

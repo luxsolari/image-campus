@@ -88,4 +88,4 @@ struct Palabra
     }
 };
 
-#endif //SOPALETRAS_STRUCTS_H
+#endif 
