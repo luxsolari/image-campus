@@ -38,17 +38,19 @@ int main()
 				{
 				case 1:
 					dimensionGrilla = static_cast<int>(DimensionGrilla::CHICO);
+					palabrasTotales = 10;
 					break;
 				case 2:
 					dimensionGrilla = static_cast<int>(DimensionGrilla::MEDIANO);
+					palabrasTotales = 16;
 					break;
 				case 3:
 					dimensionGrilla = static_cast<int>(DimensionGrilla::GRANDE);
+					palabrasTotales = 24;
 					break;
 				default:
 					break;
 				}
-				palabrasTotales = static_cast<int>(dimensionGrilla * 0.75);
 			}
 			else
 			{
@@ -81,16 +83,16 @@ int main()
 				switch (inputTematica)  // NOLINT(hicpp-multiway-paths-covered)
 				{
 				case 1:
-					inicializarPalabrasABuscar(palabrasAEncontrar, colores, palabrasTotales);
+					inicializarPalabrasABuscar(palabrasAEncontrar, colores, palabrasTotales, dimensionGrilla);
 					break;
 				case 2:
-					inicializarPalabrasABuscar(palabrasAEncontrar, paisesCiudades, palabrasTotales);
+					inicializarPalabrasABuscar(palabrasAEncontrar, paisesCiudades, palabrasTotales, dimensionGrilla);
 					break;
 				case 3:
-					inicializarPalabrasABuscar(palabrasAEncontrar, computacion, palabrasTotales);
+					inicializarPalabrasABuscar(palabrasAEncontrar, computacion, palabrasTotales, dimensionGrilla);
 					break;
 				case 4:
-					inicializarPalabrasABuscar(palabrasAEncontrar, videojuegos, palabrasTotales);
+					inicializarPalabrasABuscar(palabrasAEncontrar, videojuegos, palabrasTotales, dimensionGrilla);
 					break;
 				}
 				for (int i = 0; i < static_cast<int>(palabrasAEncontrar.size()); ++i)  // NOLINT(modernize-loop-convert)
@@ -114,19 +116,24 @@ int main()
 		int vidasRestantes = 2;
 		while (jugando)
 		{
+			system("cls");  // NOLINT(concurrency-mt-unsafe)
+			cout << "Palabras encontradas: " << palabrasEncontradas << "/" << palabrasTotales << endl;
+			cout << "Vidas restantes: " << vidasRestantes << endl;
+			mostrarGrilla(grilla, dimensionGrilla);
 			if (palabrasEncontradas < palabrasTotales)
 			{
 				string palabraABuscar;
 				do
 				{
-					system("cls");  // NOLINT(concurrency-mt-unsafe)
-					cout << "Palabras encontradas: " << palabrasEncontradas << "/" << palabrasTotales << endl;
-					cout << "Vidas restantes: " << vidasRestantes << endl;
-					mostrarGrilla(grilla, dimensionGrilla);
-
 					inputCorrecto = true;
 					cout << "Ingresa una palabra entre 1 y " << dimensionGrilla << " letras: ";
 					getline(cin, palabraABuscar);
+
+					// funciones para pasar a mayuscula y remover espacios
+					// https://stackoverflow.com/questions/83439/remove-spaces-from-stdstring-in-c
+					// https://stackoverflow.com/a/55642979
+					palabraABuscar = stringToUpper(palabraABuscar);
+					palabraABuscar.erase(remove(palabraABuscar.begin(), palabraABuscar.end(), ' '), palabraABuscar.end());
 
 					if (palabraABuscar.length() < 1 || static_cast<int>(palabraABuscar.length()) >= dimensionGrilla)
 					{
@@ -147,17 +154,25 @@ int main()
 
 				if (vidasRestantes >= 0)
 				{
-					palabraABuscar = stringToUpper(palabraABuscar);
 					// ReSharper disable once CppIncompleteSwitchStatement
 					// ReSharper disable once CppDefaultCaseNotHandledInSwitchStatement
 					switch (estaEnLista(palabrasAEncontrar, palabraABuscar))  // NOLINT(clang-diagnostic-switch)
 					{
 					case Estado::ENCONTRADO:
-						cout << "Encontraste una palabra! Excelente!" << endl;
+						if (vidasRestantes < 1)
+						{
+							cout << "Encontraste una palabra! Excelente! Recuperaste 1 vida." << endl;
+							vidasRestantes += 1;
+						}
+						else
+							cout << "Encontraste una palabra! Excelente!" << endl;
+						
+						marcarPalabra(grilla, buscarPalabra(palabrasAEncontrar, palabraABuscar));
 						palabrasEncontradas += 1;
 						break;
 					case Estado::REPETIDO:
-						cout << "Esa palabra ya la encontraste." << endl;
+						cout << "Esa palabra ya la encontraste. Perdiste 1 vida." << endl;
+						vidasRestantes -= 1;
 						break;
 					case Estado::NO_ENCONTRADO:
 						cout << "Esa palabra no esta en la grilla! Perdiste 1 vida." << endl;

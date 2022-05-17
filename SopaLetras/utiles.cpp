@@ -86,9 +86,17 @@ void insertarEnGrilla(Casillero** grilla, const int dimensionGrilla, Palabra& pa
 		{
 			for (int i = 0; i < palabra.longitud; i++)
 			{
-				grilla[posicionInicio.coordY][posicionInicio.coordX + i] = Casillero(palabra.palabra[i], 
+				Casillero casilleroAInsertar = Casillero(palabra.palabra[i], 
 					Coordenada(posicionInicio.coordY, posicionInicio.coordX + i), 
 					false);
+
+				if(grilla[posicionInicio.coordY][posicionInicio.coordX + i].contenido[0] == casilleroAInsertar.contenido[0])
+				{
+					casilleroAInsertar.esCompartido = true;
+				}
+
+				grilla[posicionInicio.coordY][posicionInicio.coordX + i] = casilleroAInsertar;
+
 			}
 		}
 		palabra.intentosDeInsercion = intentos;
@@ -133,9 +141,16 @@ void insertarEnGrilla(Casillero** grilla, const int dimensionGrilla, Palabra& pa
 		{
 			for (int i = 0; i < palabra.longitud; i++)
 			{
-				grilla[posicionInicio.coordY + i][posicionInicio.coordX] = Casillero(palabra.palabra[i], 
-					Coordenada(posicionInicio.coordY + i, posicionInicio.coordX), 
+				Casillero casilleroAInsertar = Casillero(palabra.palabra[i], 
+					Coordenada(posicionInicio.coordY, posicionInicio.coordX + i), 
 					false);
+
+				if(grilla[posicionInicio.coordY + i][posicionInicio.coordX].contenido[0] == casilleroAInsertar.contenido[0])
+				{
+					casilleroAInsertar.esCompartido = true;
+				}
+
+				grilla[posicionInicio.coordY + i][posicionInicio.coordX] = casilleroAInsertar;
 			}
 			palabra.intentosDeInsercion = intentos;
 		}
@@ -180,14 +195,57 @@ void insertarEnGrilla(Casillero** grilla, const int dimensionGrilla, Palabra& pa
 		{
 			for (int i = 0; i < palabra.longitud; i++)
 			{
-				grilla[posicionInicio.coordY + i][posicionInicio.coordX + i] = Casillero(palabra.palabra[i], 
+				Casillero casilleroAInsertar = Casillero(palabra.palabra[i], 
 					Coordenada(posicionInicio.coordY + i, posicionInicio.coordX + i), 
 					false);
+
+				if(grilla[posicionInicio.coordY + i][posicionInicio.coordX + i].contenido[0] == casilleroAInsertar.contenido[0])
+				{
+					casilleroAInsertar.esCompartido = true;
+				}
+
+				grilla[posicionInicio.coordY + i][posicionInicio.coordX + i] = casilleroAInsertar;
 			}
 			palabra.intentosDeInsercion = intentos;
 		}
 		break;
 	default: 
+		break;
+	}
+}
+
+void marcarPalabra (Casillero** grilla, const Palabra& palabra)
+{
+	// ReSharper disable once CppDefaultCaseNotHandledInSwitchStatement
+	// ReSharper disable once CppIncompleteSwitchStatement
+	switch (palabra.orientacion)  // NOLINT(clang-diagnostic-switch)
+	{
+	case Orientacion::HORIZONTAL:
+		for (int i = 0; i < palabra.longitud; i++)
+		{
+			if (!grilla[palabra.posicionInicio.coordY][palabra.posicionInicio.coordX + i].esCompartido)
+			{
+				grilla[palabra.posicionInicio.coordY][palabra.posicionInicio.coordX + i].contenido = '*';
+			}
+		}
+		break;
+	case Orientacion::VERTICAL:
+		for (int i = 0; i < palabra.longitud; i++)
+		{
+			if (!grilla[palabra.posicionInicio.coordY + i][palabra.posicionInicio.coordX].esCompartido)
+			{
+				grilla[palabra.posicionInicio.coordY + i][palabra.posicionInicio.coordX].contenido = '*';
+			}
+		}
+		break;
+	case Orientacion::DIAGONAL:
+		for (int i = 0; i < palabra.longitud; i++)
+		{
+			if (!grilla[palabra.posicionInicio.coordY + i][palabra.posicionInicio.coordX + i].esCompartido)
+			{
+				grilla[palabra.posicionInicio.coordY + i][palabra.posicionInicio.coordX + i].contenido = '*';
+			}
+		}
 		break;
 	}
 }
@@ -210,34 +268,37 @@ void mostrarGrilla (Casillero** grilla, const int dimensionGrilla)
 	{
 		for (int j = 0; j < dimensionGrilla; j++)
 		{
-			cout << grilla[i][j].contenido << " " ;
+			cout << grilla[i][j].contenido << " ";
 		}
     cout << endl;
 	}
 }
 
-void inicializarPalabrasABuscar(vector<Palabra>& palabrasAEncontrar, const string palabrasTematicas[], int palabrasTotales)
+void inicializarPalabrasABuscar(vector<Palabra>& palabrasAEncontrar, const string palabrasTematicas[], int palabrasTotales, int dimensionGrilla)
 {
 	while (static_cast<int>(palabrasAEncontrar.size()) < palabrasTotales)
 	{
 		const int indiceAInsertar = getRandomNumExclusive(0, 30);
-		bool insertable = true;
-		for (int j = 0; j < static_cast<int>(palabrasAEncontrar.size()); j++)  // NOLINT(modernize-loop-convert)
+		if (palabrasTematicas[indiceAInsertar].length() < static_cast<unsigned>(dimensionGrilla))
 		{
-			if (palabrasAEncontrar.at(j).palabra == palabrasTematicas[indiceAInsertar])
+			bool insertable = true;
+			for (int j = 0; j < static_cast<int>(palabrasAEncontrar.size()); j++)  // NOLINT(modernize-loop-convert)
 			{
-				insertable = false;
-				break;
+				if (palabrasAEncontrar.at(j).palabra == palabrasTematicas[indiceAInsertar])
+				{
+					insertable = false;
+					break;
+				}
 			}
-		}
 
-		if (insertable)
-		{
-			Palabra palabra = Palabra(
-				palabrasTematicas[indiceAInsertar],
-				static_cast<Orientacion>(getRandomNumExclusive(0, static_cast<int>(Orientacion::COUNT)))
-			);
-			palabrasAEncontrar.push_back(palabra);
+			if (insertable)
+			{
+				Palabra palabra = Palabra(
+					palabrasTematicas[indiceAInsertar],
+					static_cast<Orientacion>(getRandomNumExclusive(0, static_cast<int>(Orientacion::COUNT)))
+				);
+				palabrasAEncontrar.push_back(palabra);
+			}	
 		}
 	}
 }
@@ -246,7 +307,6 @@ Estado estaEnLista(vector<Palabra>& palabrasAEncontrar, const string& palabraBus
 {
 	for (auto& element : palabrasAEncontrar)
 	{
-		
 		if (element.palabra == palabraBuscada && element.encontrada)
 			return Estado::REPETIDO;
 
@@ -257,4 +317,14 @@ Estado estaEnLista(vector<Palabra>& palabrasAEncontrar, const string& palabraBus
 		}
 	}
 	return Estado::NO_ENCONTRADO;
+}
+
+Palabra buscarPalabra (vector<Palabra>& palabrasAEncontrar, const string& palabraBuscada)
+{
+	for (Palabra& palabra : palabrasAEncontrar)
+	{
+		if (palabra.palabra == palabraBuscada)
+			return palabra;
+	}
+	return {"", Orientacion::HORIZONTAL};
 }

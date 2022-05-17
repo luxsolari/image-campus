@@ -52,6 +52,7 @@ struct Casillero
     string contenido;
     Coordenada posicion;
     bool esAutogenerado = false;
+    bool esCompartido = false;
 
     Casillero() = default;
     Casillero (char contenido, Coordenada posicion, bool esAutogenerado)
@@ -81,7 +82,7 @@ struct Palabra
     Palabra (const string &palabra, Orientacion orientacion)
     {
         this->palabra = palabra;
-        this->longitud = palabra.length();
+        this->longitud = static_cast<int>(palabra.length());
         this->orientacion = orientacion;
         this->posicionInicio = Coordenada(0, 0);
     }
