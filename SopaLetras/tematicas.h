@@ -33,9 +33,9 @@ const string colores[MAX_ARRAY_SIZE] = {
 	"FUCSIA",
 	"COBALTO",
 	"AZULOSCURO",
-	"AZULPURPURA",
-	"GRISOSCURO",
-	"ROJOOSCURO",
+	"AMBAR",
+	"BERMELLON",
+	"ESMERALDA",
 	"AMATISTA"
 };
 

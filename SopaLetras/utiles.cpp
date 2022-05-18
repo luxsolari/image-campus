@@ -35,12 +35,13 @@ bool estaOcupado (const Casillero& casillero)
 	return true;
 }
 
-void insertarEnGrilla(Casillero** grilla, const int dimensionGrilla, Palabra& palabra, const bool alAzar)
+bool insertarEnGrilla(Casillero** grilla, const int dimensionGrilla, Palabra& palabra, const bool alAzar)
 {
 	int cantidadOcupadas;
 	int intentos = 1;
 	bool insertable = true;
 	Coordenada posicionInicio;
+	bool insertado = false;
 
 	switch (palabra.orientacion)  
 	{
@@ -91,7 +92,8 @@ void insertarEnGrilla(Casillero** grilla, const int dimensionGrilla, Palabra& pa
 					Coordenada(posicionInicio.coordY, posicionInicio.coordX + i), 
 					false);
 
-				if(grilla[posicionInicio.coordY][posicionInicio.coordX + i].contenido[0] == casilleroAInsertar.contenido[0])
+				if(grilla[posicionInicio.coordY][posicionInicio.coordX + i].contenido[0] == casilleroAInsertar.contenido[0]
+					&& !grilla[posicionInicio.coordY][posicionInicio.coordX + i].esAutogenerado)
 				{
 					casilleroAInsertar.esCompartido = true;
 				}
@@ -99,6 +101,7 @@ void insertarEnGrilla(Casillero** grilla, const int dimensionGrilla, Palabra& pa
 				grilla[posicionInicio.coordY][posicionInicio.coordX + i] = casilleroAInsertar;
 
 			}
+			return insertado = true;
 		}
 		palabra.intentosDeInsercion = intentos;
 		break;
@@ -144,7 +147,8 @@ void insertarEnGrilla(Casillero** grilla, const int dimensionGrilla, Palabra& pa
 					Coordenada(posicionInicio.coordY + i, posicionInicio.coordX), 
 					false);
 
-				if(grilla[posicionInicio.coordY + i][posicionInicio.coordX].contenido[0] == casilleroAInsertar.contenido[0])
+				if(grilla[posicionInicio.coordY + i][posicionInicio.coordX].contenido[0] == casilleroAInsertar.contenido[0]
+					&& !grilla[posicionInicio.coordY + i][posicionInicio.coordX].esAutogenerado)
 				{
 					casilleroAInsertar.esCompartido = true;
 				}
@@ -152,6 +156,7 @@ void insertarEnGrilla(Casillero** grilla, const int dimensionGrilla, Palabra& pa
 				grilla[posicionInicio.coordY + i][posicionInicio.coordX] = casilleroAInsertar;
 			}
 			palabra.intentosDeInsercion = intentos;
+			return insertado = true;
 		}
 		break;
 	case Orientacion::DIAGONAL:
@@ -196,7 +201,8 @@ void insertarEnGrilla(Casillero** grilla, const int dimensionGrilla, Palabra& pa
 					Coordenada(posicionInicio.coordY + i, posicionInicio.coordX + i), 
 					false);
 
-				if(grilla[posicionInicio.coordY + i][posicionInicio.coordX + i].contenido[0] == casilleroAInsertar.contenido[0])
+				if(grilla[posicionInicio.coordY + i][posicionInicio.coordX + i].contenido[0] == casilleroAInsertar.contenido[0]
+					&& !grilla[posicionInicio.coordY + i][posicionInicio.coordX + i].esAutogenerado)
 				{
 					casilleroAInsertar.esCompartido = true;
 				}
@@ -204,11 +210,13 @@ void insertarEnGrilla(Casillero** grilla, const int dimensionGrilla, Palabra& pa
 				grilla[posicionInicio.coordY + i][posicionInicio.coordX + i] = casilleroAInsertar;
 			}
 			palabra.intentosDeInsercion = intentos;
+			return insertado = true;
 		}
 		break;
-	default: 
+	default:
 		break;
 	}
+	return insertado = false;
 }
 
 void marcarPalabra (Casillero** grilla, const Palabra& palabra)
@@ -218,6 +226,8 @@ void marcarPalabra (Casillero** grilla, const Palabra& palabra)
 	case Orientacion::HORIZONTAL:
 		for (int i = 0; i < palabra.longitud; i++)
 		{
+			grilla[palabra.posicionInicio.coordY][palabra.posicionInicio.coordX + i].colorFondo = Color::LightGreen;
+			grilla[palabra.posicionInicio.coordY][palabra.posicionInicio.coordX + i].colorTexto = Color::Black;
 			if (!grilla[palabra.posicionInicio.coordY][palabra.posicionInicio.coordX + i].esCompartido)
 			{
 				grilla[palabra.posicionInicio.coordY][palabra.posicionInicio.coordX + i].contenido = '*';
@@ -227,6 +237,8 @@ void marcarPalabra (Casillero** grilla, const Palabra& palabra)
 	case Orientacion::VERTICAL:
 		for (int i = 0; i < palabra.longitud; i++)
 		{
+			grilla[palabra.posicionInicio.coordY + i][palabra.posicionInicio.coordX].colorFondo = Color::LightGreen;
+			grilla[palabra.posicionInicio.coordY + i][palabra.posicionInicio.coordX].colorTexto = Color::Black;
 			if (!grilla[palabra.posicionInicio.coordY + i][palabra.posicionInicio.coordX].esCompartido)
 			{
 				grilla[palabra.posicionInicio.coordY + i][palabra.posicionInicio.coordX].contenido = '*';
@@ -236,6 +248,8 @@ void marcarPalabra (Casillero** grilla, const Palabra& palabra)
 	case Orientacion::DIAGONAL:
 		for (int i = 0; i < palabra.longitud; i++)
 		{
+			grilla[palabra.posicionInicio.coordY + i][palabra.posicionInicio.coordX + i].colorFondo = Color::LightGreen;
+			grilla[palabra.posicionInicio.coordY + i][palabra.posicionInicio.coordX + i].colorTexto = Color::Black;
 			if (!grilla[palabra.posicionInicio.coordY + i][palabra.posicionInicio.coordX + i].esCompartido)
 			{
 				grilla[palabra.posicionInicio.coordY + i][palabra.posicionInicio.coordX + i].contenido = '*';
@@ -262,9 +276,15 @@ void mostrarGrilla (Casillero** grilla, const int dimensionGrilla)
 	{
 		for (int j = 0; j < dimensionGrilla; j++)
 		{
-			cout << grilla[i][j].contenido << " ";
+			setBackgroundColor(grilla[i][j].colorFondo);
+			setForegroundColor(grilla[i][j].colorTexto);
+			cout << grilla[i][j].contenido;
+			setBackgroundColor(Color::Black);
+			setForegroundColor(Color::White);
+			cout << " ";
+
 		}
-    cout << endl;
+		cout << endl;
 	}
 }
 
@@ -273,9 +293,11 @@ void inicializarPalabrasABuscar(vector<Palabra>& palabrasAEncontrar, const strin
 	while (static_cast<int>(palabrasAEncontrar.size()) < palabrasTotales)
 	{
 		const int indiceAInsertar = getRandomNumExclusive(0, MAX_ARRAY_SIZE);
+		// agregar palabras que no excedan el tamaño de la grilla
 		if (palabrasTematicas[indiceAInsertar].length() < static_cast<unsigned>(dimensionGrilla))
 		{
 			bool insertable = true;
+			// verificar que la palabra ya no haya sido agregada antes
 			for (int j = 0; j < static_cast<int>(palabrasAEncontrar.size()); j++)
 			{
 				if (palabrasAEncontrar.at(j).palabra == palabrasTematicas[indiceAInsertar])
@@ -287,10 +309,28 @@ void inicializarPalabrasABuscar(vector<Palabra>& palabrasAEncontrar, const strin
 
 			if (insertable)
 			{
+				Orientacion orientacion;
+				if (dimensionGrilla > static_cast<int>(DimensionGrilla::CHICO))
+				{
+					if (static_cast<int>(palabrasAEncontrar.size()) < palabrasTotales * 0.3)
+						orientacion = Orientacion::HORIZONTAL;
+					else if (static_cast<int>(palabrasAEncontrar.size()) < palabrasTotales * 0.6)
+						orientacion = Orientacion::VERTICAL;
+					else
+						orientacion = Orientacion::DIAGONAL;
+				}
+				else
+				{
+					if (static_cast<int>(palabrasAEncontrar.size()) < palabrasTotales * 0.4)
+						orientacion = Orientacion::HORIZONTAL;
+					else
+						orientacion = Orientacion::VERTICAL;
+				}
+
 				Palabra palabra = Palabra(
 					palabrasTematicas[indiceAInsertar],
-					static_cast<Orientacion>(getRandomNumExclusive(0, static_cast<int>(Orientacion::COUNT)))
-				);
+					orientacion);
+
 				palabrasAEncontrar.push_back(palabra);
 			}	
 		}
@@ -321,4 +361,77 @@ Palabra buscarPalabra (vector<Palabra>& palabrasAEncontrar, const string& palabr
 			return palabra;
 	}
 	return {"", Orientacion::HORIZONTAL};
+}
+
+Vector2 getConsoleDimensions ()
+{
+	Vector2 dimensions;
+
+	CONSOLE_SCREEN_BUFFER_INFO csbi;
+	HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
+
+	GetConsoleScreenBufferInfo(handle, &csbi);
+
+	dimensions.x = csbi.srWindow.Right - csbi.srWindow.Left + 1;
+	dimensions.y = csbi.srWindow.Bottom - csbi.srWindow.Top + 1;
+
+	return dimensions;
+}
+
+void setCursorPosition (Vector2 position)
+{
+	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+	COORD pos = {(short) position.x, (short) position.y };
+
+	SetConsoleCursorPosition(hConsole, pos);
+}
+
+void setBackgroundColor (Color color)
+{
+	HANDLE outputHandle = GetStdHandle(STD_OUTPUT_HANDLE);
+	WORD wAttrib = 0;
+	CONSOLE_SCREEN_BUFFER_INFO screenBufferInfo;
+
+	GetConsoleScreenBufferInfo(outputHandle, &screenBufferInfo);
+	wAttrib = screenBufferInfo.wAttributes;
+
+	wAttrib &= ~(BACKGROUND_BLUE | BACKGROUND_GREEN | BACKGROUND_RED | BACKGROUND_INTENSITY);
+
+	int c = (int)color;
+
+	if (c & (int)Color::Blue)
+		wAttrib |= BACKGROUND_BLUE;
+	if (c & (int)Color::Green)
+		wAttrib |= BACKGROUND_GREEN;
+	if (c & (int)Color::Red)
+		wAttrib |= BACKGROUND_RED;
+	if (c & (int)Color::Gray)
+		wAttrib |= BACKGROUND_INTENSITY;
+
+	SetConsoleTextAttribute(outputHandle, wAttrib);
+}
+
+void setForegroundColor (Color color)
+{
+	HANDLE outputHandle = GetStdHandle(STD_OUTPUT_HANDLE);
+	WORD wAttrib = 0;
+	CONSOLE_SCREEN_BUFFER_INFO screenBufferInfo;
+
+	GetConsoleScreenBufferInfo(outputHandle, &screenBufferInfo);
+	wAttrib = screenBufferInfo.wAttributes;
+
+	wAttrib &= ~(FOREGROUND_BLUE | FOREGROUND_GREEN | FOREGROUND_RED | FOREGROUND_INTENSITY);
+
+	int c = (int)color;
+
+	if (c & (int)Color::Blue)
+		wAttrib |= FOREGROUND_BLUE;
+	if (c & (int)Color::Green)
+		wAttrib |= FOREGROUND_GREEN;
+	if (c & (int)Color::Red)
+		wAttrib |= FOREGROUND_RED;
+	if (c & (int)Color::Gray)
+		wAttrib |= FOREGROUND_INTENSITY;
+
+	SetConsoleTextAttribute(outputHandle, wAttrib);
 }

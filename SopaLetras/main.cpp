@@ -14,7 +14,26 @@ int main()
 		int dimensionGrilla = 0;
 		int palabrasTotales = 0;
 		vector<Palabra> palabrasAEncontrar;
-
+		cout << "Bienvenido a la Sopa de Letras" << endl;
+		cout << "Reglas de juego:" << endl;
+		cout << endl;
+		cout << "* Elegi una dimension para la GRILLA de letras y una TEMATICA de palabras." << endl;
+		cout << "* La cantidad de palabras a buscar esta determinada por la dimension de la GRILLA." << endl;
+		cout << "* Se insertaran ALEATORIAMENTE palabras de la tematica seleccionada." << endl;
+		cout << "* Pueden buscarse NOMBRES o FRASES con espacios. No importan MAYUSCULAS o minusculas." << endl;
+		cout << endl;
+		cout << "* Las palabras se disponen en HORIZONTAL, VERTICAL y DIAGONAL en las grillas media y grande," << endl;
+		cout << "  mientras que en la grilla chica solo se disponen en HORIZONTAL y VERTICAL." << endl;
+		cout << endl;
+		cout << "* Las palabras encontradas se marcaran en la grilla con color." << endl;
+		cout << "* Las letras de palabras encontradas que NO esten compartidas con otra(s) palabra(s) seran marcadas con asteriscos (*)." << endl;
+		cout << endl;
+		cout << "* Comenzaras el juego con 3 VIDAS, cada palabra incorrecta (o ya encontrada) RESTA 1 vida." << endl;
+		cout << endl;
+		cout << "* El juego TERMINA al encontrar todas las palabras, o perder todas las vidas. Suerte!" << endl;
+		cout << "-> ";
+		cin.get();
+		cin.clear();
 		// Seleccion de tamaño de grilla
 		do
 		{
@@ -50,7 +69,7 @@ int main()
 			else
 			{
 				cin.clear();
-				cin.ignore((std::numeric_limits<std::streamsize>::max()), '\n');
+				cin.ignore();
 				system("cls"); 
 			}
 		} while (!inputCorrecto);
@@ -64,9 +83,9 @@ int main()
 		{
 			inputCorrecto = false;
 			cout << "Elige una de las siguientes tematicas de palabras:" << endl;
-			cout << "[1] Colores" << endl;
+			cout << "[1] Colores y tonalidades" << endl;
 			cout << "[2] Paises y ciudades" << endl;
-			cout << "[3] Computacion" << endl;
+			cout << "[3] Computacion e informatica" << endl;
 			cout << "[4] Videojuegos" << endl;
 			cout << "-> ";
 			cin >> inputTematica;
@@ -97,13 +116,13 @@ int main()
 			else
 			{
 				cin.clear();
-				cin.ignore((std::numeric_limits<std::streamsize>::max()), '\n');
+				cin.ignore();
 				system("cls");
 			}
 		} while (!inputCorrecto);
 
 		cin.clear();
-		cin.ignore((std::numeric_limits<std::streamsize>::max()), '\n');
+		cin.ignore();
 		// Game Loop
 		bool jugando = true;
 		int palabrasEncontradas = 0;

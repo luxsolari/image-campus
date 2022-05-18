@@ -29,6 +29,21 @@ enum class Estado
     COUNT         = 3
 };
 
+struct Vector2
+{
+	int x;
+	int y;
+};
+
+enum class Color
+{
+	Black, Blue, Green,
+	Cyan, Red, Magenta,
+	Brown, White, Gray,
+	LightBlue, LightGreen, LightCyan,
+	LightRed, LightMagenta, Yellow
+};
+
 struct Coordenada
 {
     int coordX;
@@ -53,6 +68,8 @@ struct Casillero
     Coordenada posicion;
     bool esAutogenerado = false;
     bool esCompartido = false;
+	Color colorTexto = Color::White;
+    Color colorFondo = Color::Black;
 
     Casillero() = default;
     Casillero (char contenido, Coordenada posicion, bool esAutogenerado)
