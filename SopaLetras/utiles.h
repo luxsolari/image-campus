@@ -1,5 +1,4 @@
-#ifndef SOPALETRAS_UTILES_H
-#define SOPALETRAS_UTILES_H
+#pragma once
 #include "structs.h"
 
 // Funciones para numeros aleatorios
@@ -13,7 +12,8 @@ void randomizarGrilla (Casillero** grilla, int dimensionGrilla);
 void mostrarGrilla (Casillero** grilla, int dimensionGrilla);
 bool estaOcupado (const Casillero& casillero);
 bool insertarEnGrilla (Casillero ** grilla, int dimensionGrilla, Palabra& palabra, bool alAzar);
-void marcarPalabra (Casillero** grilla, const Palabra& palabra);
+void marcarPalabra (Casillero** grilla, const Palabra& palabra, Color color);
+void revelarRespuestas (Casillero** grilla, int dimensionGrilla);
 
 // Funciones para las palabras a encontrar
 void inicializarPalabrasABuscar (vector<Palabra>& palabrasAEncontrar, const string palabrasTematicas[], int palabrasTotales, int dimensionGrilla);
@@ -24,4 +24,3 @@ Vector2 getConsoleDimensions ();
 void setCursorPosition (Vector2 position);
 void setBackgroundColor (Color color);
 void setForegroundColor (Color color);
-#endif //SOPALETRAS_UTILES_H

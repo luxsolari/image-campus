@@ -1,5 +1,4 @@
-#ifndef SOPALETRAS_STRUCTS_H
-#define SOPALETRAS_STRUCTS_H
+#pragma once
 #include "tematicas.h"
 
 enum class Orientacion
@@ -66,6 +65,7 @@ struct Casillero
 {
     string contenido;
     Coordenada posicion;
+
     bool esAutogenerado = false;
     bool esCompartido = false;
 	Color colorTexto = Color::White;
@@ -95,6 +95,7 @@ struct Palabra
     Coordenada posicionInicio;
     int intentosDeInsercion = 0;
     bool encontrada = false;
+    bool marcada = false;
 
     Palabra (const string &palabra, Orientacion orientacion)
     {
@@ -104,5 +105,3 @@ struct Palabra
         this->posicionInicio = Coordenada(0, 0);
     }
 };
-
-#endif 

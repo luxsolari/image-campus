@@ -219,44 +219,57 @@ bool insertarEnGrilla(Casillero** grilla, const int dimensionGrilla, Palabra& pa
 	return insertado = false;
 }
 
-void marcarPalabra (Casillero** grilla, const Palabra& palabra)
+void marcarPalabra (Casillero** grilla, const Palabra& palabra, Color color)
 {
 	switch (palabra.orientacion) 
 	{
 	case Orientacion::HORIZONTAL:
 		for (int i = 0; i < palabra.longitud; i++)
 		{
-			grilla[palabra.posicionInicio.coordY][palabra.posicionInicio.coordX + i].colorFondo = Color::LightGreen;
-			grilla[palabra.posicionInicio.coordY][palabra.posicionInicio.coordX + i].colorTexto = Color::Black;
-			if (!grilla[palabra.posicionInicio.coordY][palabra.posicionInicio.coordX + i].esCompartido)
+			grilla[palabra.posicionInicio.coordY][palabra.posicionInicio.coordX + i].colorTexto = color;
+			if (grilla[palabra.posicionInicio.coordY][palabra.posicionInicio.coordX + i].esCompartido)
 			{
-				grilla[palabra.posicionInicio.coordY][palabra.posicionInicio.coordX + i].contenido = '*';
+				grilla[palabra.posicionInicio.coordY][palabra.posicionInicio.coordX + i].colorTexto = Color::Yellow;
 			}
 		}
 		break;
 	case Orientacion::VERTICAL:
 		for (int i = 0; i < palabra.longitud; i++)
 		{
-			grilla[palabra.posicionInicio.coordY + i][palabra.posicionInicio.coordX].colorFondo = Color::LightGreen;
-			grilla[palabra.posicionInicio.coordY + i][palabra.posicionInicio.coordX].colorTexto = Color::Black;
-			if (!grilla[palabra.posicionInicio.coordY + i][palabra.posicionInicio.coordX].esCompartido)
+			grilla[palabra.posicionInicio.coordY + i][palabra.posicionInicio.coordX].colorTexto = color;
+			if (grilla[palabra.posicionInicio.coordY + i][palabra.posicionInicio.coordX].esCompartido)
 			{
-				grilla[palabra.posicionInicio.coordY + i][palabra.posicionInicio.coordX].contenido = '*';
+				grilla[palabra.posicionInicio.coordY + i][palabra.posicionInicio.coordX].colorTexto = Color::Yellow;
 			}
 		}
 		break;
 	case Orientacion::DIAGONAL:
 		for (int i = 0; i < palabra.longitud; i++)
 		{
-			grilla[palabra.posicionInicio.coordY + i][palabra.posicionInicio.coordX + i].colorFondo = Color::LightGreen;
-			grilla[palabra.posicionInicio.coordY + i][palabra.posicionInicio.coordX + i].colorTexto = Color::Black;
-			if (!grilla[palabra.posicionInicio.coordY + i][palabra.posicionInicio.coordX + i].esCompartido)
+			grilla[palabra.posicionInicio.coordY + i][palabra.posicionInicio.coordX + i].colorTexto = color;
+			if (grilla[palabra.posicionInicio.coordY + i][palabra.posicionInicio.coordX + i].esCompartido)
 			{
-				grilla[palabra.posicionInicio.coordY + i][palabra.posicionInicio.coordX + i].contenido = '*';
+				grilla[palabra.posicionInicio.coordY + i][palabra.posicionInicio.coordX + i].colorTexto = Color::Yellow;
 			}
 		}
 		break;
 	}
+}
+
+void revelarRespuestas (Casillero** grilla, const int dimensionGrilla)
+{
+	for (int i = 0; i < dimensionGrilla; ++i) 
+	{
+        for (int j = 0; j < dimensionGrilla; j++)
+        {
+            if (grilla[i][j].esAutogenerado) grilla[i][j].contenido = ' ';
+			else if (grilla[i][j].colorTexto != Color::LightGreen)
+			{
+				grilla[i][j].colorTexto = Color::LightRed;
+				grilla[i][j].colorFondo = Color::Black;
+			}
+        }
+    }
 }
 
 void randomizarGrilla (Casillero** grilla, const int dimensionGrilla){
@@ -298,14 +311,14 @@ void inicializarPalabrasABuscar(vector<Palabra>& palabrasAEncontrar, const strin
 		{
 			bool insertable = true;
 			// verificar que la palabra ya no haya sido agregada antes
-			for (int j = 0; j < static_cast<int>(palabrasAEncontrar.size()); j++)
+			/*for (int j = 0; j < static_cast<int>(palabrasAEncontrar.size()); j++)
 			{
 				if (palabrasAEncontrar.at(j).palabra == palabrasTematicas[indiceAInsertar])
 				{
 					insertable = false;
 					break;
 				}
-			}
+			}*/
 
 			if (insertable)
 			{
@@ -339,16 +352,47 @@ void inicializarPalabrasABuscar(vector<Palabra>& palabrasAEncontrar, const strin
 
 Estado estaEnLista(vector<Palabra>& palabrasAEncontrar, const string& palabraBuscada)
 {
-	for (auto& element : palabrasAEncontrar)
-	{
-		if (element.palabra == palabraBuscada && element.encontrada)
-			return Estado::REPETIDO;
+	vector<Palabra> coincidencias = {};
 
-		if (element.palabra == palabraBuscada && !element.encontrada)
+	for (Palabra& element : palabrasAEncontrar)
+	{
+		if (element.palabra == palabraBuscada)
+			coincidencias.push_back(element);
+	}
+
+	if (!coincidencias.empty())
+	{
+		int noEncontradas = 0;
+		for (const Palabra& coincidencia : coincidencias)
 		{
-			element.encontrada = true;
-			return Estado::ENCONTRADO;
+			if (!coincidencia.encontrada) noEncontradas ++;
 		}
+
+		if (noEncontradas == 0) return Estado::REPETIDO;
+
+		// Magia negra para borrar elementos que cumplan un criterio especifico de una lista
+		// https://stackoverflow.com/a/32062165
+		palabrasAEncontrar.erase(
+			remove_if(palabrasAEncontrar.begin(), palabrasAEncontrar.end(), [&](Palabra const &p)
+			{
+				return (p.palabra == palabraBuscada);
+			}), palabrasAEncontrar.end());
+
+		for (Palabra& coincidencia : coincidencias)
+		{
+			if (!coincidencia.encontrada)
+			{
+				coincidencia.encontrada = true;
+				palabrasAEncontrar.push_back(coincidencia);
+				break;
+			}
+		}
+		for (Palabra& coincidencia : coincidencias)
+		{
+			if (!coincidencia.encontrada || coincidencia.marcada)
+				palabrasAEncontrar.push_back(coincidencia);
+		}
+		return Estado::ENCONTRADO;
 	}
 	return Estado::NO_ENCONTRADO;
 }
@@ -357,8 +401,11 @@ Palabra buscarPalabra (vector<Palabra>& palabrasAEncontrar, const string& palabr
 {
 	for (Palabra& palabra : palabrasAEncontrar)
 	{
-		if (palabra.palabra == palabraBuscada)
+		if (palabra.palabra == palabraBuscada && palabra.encontrada && !palabra.marcada)
+		{
+			palabra.marcada = true;
 			return palabra;
+		}
 	}
 	return {"", Orientacion::HORIZONTAL};
 }

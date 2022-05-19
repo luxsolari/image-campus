@@ -26,11 +26,13 @@ int main()
 		cout << "  mientras que en la grilla chica solo se disponen en HORIZONTAL y VERTICAL." << endl;
 		cout << endl;
 		cout << "* Las palabras encontradas se marcaran en la grilla con color." << endl;
+		cout << "* Puede haber palabras repetidas." << endl;
 		cout << "* Las letras de palabras encontradas que NO esten compartidas con otra(s) palabra(s) seran marcadas con asteriscos (*)." << endl;
 		cout << endl;
 		cout << "* Comenzaras el juego con 3 VIDAS, cada palabra incorrecta (o ya encontrada) RESTA 1 vida." << endl;
 		cout << endl;
-		cout << "* El juego TERMINA al encontrar todas las palabras, o perder todas las vidas. Suerte!" << endl;
+		cout << "* El juego TERMINA al encontrar todas las palabras, o perder todas las vidas." << endl;
+		cout << "  Tambien puedes ingresar el comando /ME RINDO para terminar el juego." << endl;
 		cout << "-> ";
 		cin.get();
 		cin.clear();
@@ -123,10 +125,12 @@ int main()
 
 		cin.clear();
 		cin.ignore();
-		// Game Loop
+
+		
 		bool jugando = true;
 		int palabrasEncontradas = 0;
 		int vidasRestantes = 2;
+		// Game Loop
 		while (jugando)
 		{
 			system("cls"); 
@@ -160,12 +164,33 @@ int main()
 							jugando = false;
 							cout << "Te quedaste sin vidas! GAME OVER!" << endl;
 							this_thread::sleep_for(2s);
+
+							revelarRespuestas(grilla, dimensionGrilla);
+
+							system("cls"); 
+							cout << "Palabras encontradas: " << palabrasEncontradas << "/" << palabrasTotales << endl;
+							cout << "Vidas restantes: " << vidasRestantes << endl;
+							mostrarGrilla(grilla, dimensionGrilla);
 						}
+					}
+
+					if (palabraABuscar == COMANDO_RENDIRSE)
+					{
+						jugando = false;
+						cout << "Te RENDISTE! GAME OVER!" << endl;
+						this_thread::sleep_for(2s);
+
+						revelarRespuestas(grilla, dimensionGrilla);
+
+						system("cls"); 
+						cout << "Palabras encontradas: " << palabrasEncontradas << "/" << palabrasTotales << endl;
+						cout << "Vidas restantes: " << vidasRestantes << endl;
+						mostrarGrilla(grilla, dimensionGrilla);
 					}
 				}
 				while (!inputCorrecto && jugando);
 
-				if (vidasRestantes >= 0)
+				if (vidasRestantes >= 0 && jugando)
 				{
 					switch (estaEnLista(palabrasAEncontrar, palabraABuscar))
 					{
@@ -178,7 +203,7 @@ int main()
 						else
 							cout << "Encontraste una palabra! Excelente!" << endl;
 						
-						marcarPalabra(grilla, buscarPalabra(palabrasAEncontrar, palabraABuscar));
+						marcarPalabra(grilla, buscarPalabra(palabrasAEncontrar, palabraABuscar), Color::LightGreen);
 						palabrasEncontradas += 1;
 						break;
 					case Estado::REPETIDO:
@@ -196,8 +221,16 @@ int main()
 					if (vidasRestantes < 0)
 					{
 						jugando = false;
+						vidasRestantes = 0;
 						cout << "Te quedaste sin vidas! GAME OVER!" << endl;
 						this_thread::sleep_for(2s);
+
+						revelarRespuestas(grilla, dimensionGrilla);
+
+						system("cls"); 
+						cout << "Palabras encontradas: " << palabrasEncontradas << "/" << palabrasTotales << endl;
+						cout << "Vidas restantes: " << vidasRestantes << endl;
+						mostrarGrilla(grilla, dimensionGrilla);
 					}
 				}
 			}
@@ -206,6 +239,11 @@ int main()
 				cout << "Encontraste todas las palabras! GANASTE!!" << endl;
 				jugando = false;
 				this_thread::sleep_for(2s);
+				system("cls");
+				revelarRespuestas(grilla, dimensionGrilla);
+				cout << "Palabras encontradas: " << palabrasEncontradas << "/" << palabrasTotales << endl;
+				cout << "Vidas restantes: " << vidasRestantes << endl;
+				mostrarGrilla(grilla, dimensionGrilla);
 			}
 		}
 
