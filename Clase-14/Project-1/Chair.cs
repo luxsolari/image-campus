@@ -28,4 +28,14 @@
         this.precio = precio;
         this.reclinable = reclinable;
     }
+
+    public override String ToString()
+    {
+        return  this.cantidadPatas + " " +
+                this.material.ToString() + " " +
+                this.masa + " " +
+                this.pesoMaximo + " " +
+                this.precio + " " +
+                this.reclinable;
+    }
 }
