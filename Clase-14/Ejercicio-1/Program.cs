@@ -1,21 +1,87 @@
 ﻿using System;
 
-class Program
+internal static class Program
 {
-    static void Main()
+    private static void Main()
     {
-        // Creamos un objeto random para sacar numeros aleatorios de ahi.
+        int offsetX = 1;
+        int offsetY = 5;
+        int width = Console.BufferWidth - offsetX;
+        int height = Console.BufferHeight - offsetY;
         Random random = new Random();
+        bool salir = false;
 
-        do
+        DibujarMarco(width, height, offsetX, offsetY);
+        Star[] stars = new Star[3]
         {
-            Console.WriteLine("Vamos a crear estrellas! Decime el nombre para tu estrella: ");
-            String nombre = Console.ReadLine();
-            Star star1 = new Star(nombre, random.Next() % 11 + 30, random.Next() % 11);
-            star1.PrintCoordinates();
-            star1.Show();
-        } while (!Console.ReadKey(true).Key.Equals(ConsoleKey.Escape));
+            new Star("Polaris", random.Next(offsetX+1, width-1), random.Next(offsetY+1, height-1)), 
+            new Star("Altair",  random.Next(offsetX+1, width-1), random.Next(offsetY+1, height-1)), 
+            new Star("Canopus", random.Next(offsetX+1, width-1), random.Next(offsetY+1, height-1))
+        };
 
+        for (int i = 0; i < stars.Length; i++)
+        {
+            stars[i].Show();
+        }
+
+        Console.SetCursorPosition(0,0);
+        for (int i = 0; i < stars.Length; i++)
+        {
+            stars[i].PrintCoordinates();
+            Console.Write("\t");
+        }
+
+        while (!salir)
+        {
+            ConsoleKey key = Console.ReadKey(true).Key;
+            switch (key)
+            {
+                case ConsoleKey.Escape:
+                    Console.Clear();
+                    salir = true;
+                    break;
+                default:
+                    Console.SetCursorPosition(0,0);
+                    for (int i = 0; i < stars.Length; i++)
+                    {
+                        stars[i].PrintCoordinates();
+                        Console.Write("\t");
+                    }
+                    for (int i = 0; i < stars.Length; i++)
+                    {
+                        stars[i].Hide();
+                        stars[i].Move(random.Next(offsetX+1, width-1), random.Next(offsetY+1, height-1));
+                        stars[i].Show();
+                    }
+                    break;
+            }
+        }
+    }
+
+    static void DibujarMarco(int width, int height, int offsetX, int offsetY)
+    {
+        Console.SetCursorPosition(offsetX - 1, offsetY - 1);
+
+        // Dibujamos un marco en la consola
+        for (int i = 0; i <= height; i++)
+        {
+            if (i == 0 || i == height)
+            {
+                for (int j = 0; j <= width; j++)
+                {
+                    if (j == 0 || j == width) Console.Write("+");
+                    else Console.Write("-");
+                }
+            }
+            else
+            {
+                for (int j = 0; j <= width; j++)
+                {
+                    if (j == 0 || j == width) Console.Write("|");
+                    else Console.Write(" ");
+                }
+            }
+        }
     }
 }
 

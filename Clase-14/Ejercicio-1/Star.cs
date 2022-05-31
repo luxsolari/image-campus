@@ -18,23 +18,23 @@ public class Star
     {
         Console.SetCursorPosition(this.posX, this.posY);
         Console.Write("*");
-        Console.WriteLine();
     }
 
     public void Hide()
     {
         Console.SetCursorPosition(this.posX, this.posY);
-        Console.WriteLine();
+        Console.Write(" ");
     }
 
     public void Move(int posX, int posY)
     {
-
+        this.posX = posX;
+        this.posY = posY;
     }
 
     public void PrintCoordinates()
     {
-        Console.WriteLine("Estrella " + this.name + " Posicion: X=" + this.posX + " Y=" + this.posY);
+        Console.Write(this.name + " Posicion: X=" + this.posX + " Y=" + this.posY);
     }
 
     public int GetPosX()
