@@ -4,32 +4,18 @@ class Program
 {
     static void Main()
     {
-        Star miEstrella = new Star(0, 0);
-        Star miEstrella2 = new Star(2, 2);
-        Console.WriteLine("Estrella 1: " + Star.miNumerito);
-        Console.WriteLine("Estrella 2: " + Star.miNumerito);
+        // Creamos un objeto random para sacar numeros aleatorios de ahi.
+        Random random = new Random();
 
-        Console.Title = "Mi programa genial";
-        int consoleWidth = Console.BufferWidth;   //120 caracteres
-        int consoleHeight = Console.BufferHeight; //30  caracteres
-
-        Console.WriteLine("Dimensiones de consola: " + consoleWidth + "x" + consoleHeight);
-        Console.WriteLine();
-
-
-        for (int i = 0; i <= Console.BufferHeight / 2; i++)
+        do
         {
-            Console.SetCursorPosition((consoleWidth / 2) - 15, i + 1);
-            Console.Write("-");
-            for (int j = 0; j < 30; j++)
-            {
-                if (i == 0 || i == consoleHeight / 2) Console.Write('*');
-                else Console.Write(' ');
-            }
-            Console.Write("-");
-        }
+            Console.WriteLine("Vamos a crear estrellas! Decime el nombre para tu estrella: ");
+            String nombre = Console.ReadLine();
+            Star star1 = new Star(nombre, random.Next() % 11 + 30, random.Next() % 11);
+            star1.PrintCoordinates();
+            star1.Show();
+        } while (!Console.ReadKey(true).Key.Equals(ConsoleKey.Escape));
 
-        Console.ReadKey();
     }
 }
 
