@@ -43,6 +43,13 @@ internal static class Program
                     salir = true;
                     break;
                 default:
+                    if (Console.BufferWidth != width + offsetX || Console.BufferHeight != height + offsetY)
+                    {
+                        width = Console.BufferWidth - offsetX;
+                        height = Console.BufferHeight - offsetY;
+                        Console.Clear();
+                        DibujarMarco(width, height, offsetX, offsetY);
+                    }
                     Console.SetCursorPosition(0,0);
                     Console.WriteLine();
                     Console.SetCursorPosition(0, 0);
