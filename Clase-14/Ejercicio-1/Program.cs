@@ -25,10 +25,12 @@ internal static class Program
         }
 
         Console.SetCursorPosition(0,0);
+        Console.WriteLine();
+        Console.SetCursorPosition(0, 0);
         for (int i = 0; i < stars.Length; i++)
         {
             stars[i].PrintCoordinates();
-            Console.Write("\t");
+            Console.Write("  ");
         }
 
         while (!salir)
@@ -42,10 +44,12 @@ internal static class Program
                     break;
                 default:
                     Console.SetCursorPosition(0,0);
+                    Console.WriteLine();
+                    Console.SetCursorPosition(0, 0);
                     for (int i = 0; i < stars.Length; i++)
                     {
                         stars[i].PrintCoordinates();
-                        Console.Write("\t");
+                        Console.Write("  ");
                     }
                     for (int i = 0; i < stars.Length; i++)
                     {
