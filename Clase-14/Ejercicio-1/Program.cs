@@ -25,8 +25,6 @@ internal static class Program
         }
 
         Console.SetCursorPosition(0,0);
-        Console.WriteLine();
-        Console.SetCursorPosition(0, 0);
         for (int i = 0; i < stars.Length; i++)
         {
             stars[i].PrintCoordinates();
@@ -49,20 +47,36 @@ internal static class Program
                         height = Console.BufferHeight - offsetY;
                         Console.Clear();
                         DibujarMarco(width, height, offsetX, offsetY);
+
+                        Console.SetCursorPosition(0,0);
+                        for (int i = 0; i < stars.Length; i++)
+                        {
+                            stars[i].PrintCoordinates();
+                            Console.Write("  ");
+                        }
+                        for (int i = 0; i < stars.Length; i++)
+                        {
+                            stars[i].Move(random.Next(offsetX+1, width-1), random.Next(offsetY+1, height));
+                            stars[i].Show();
+                        }
+
                     }
-                    Console.SetCursorPosition(0,0);
-                    Console.WriteLine();
-                    Console.SetCursorPosition(0, 0);
-                    for (int i = 0; i < stars.Length; i++)
+                    else
                     {
-                        stars[i].PrintCoordinates();
-                        Console.Write("  ");
-                    }
-                    for (int i = 0; i < stars.Length; i++)
-                    {
-                        stars[i].Hide();
-                        stars[i].Move(random.Next(offsetX+1, width-1), random.Next(offsetY+1, height-1));
-                        stars[i].Show();
+                        Console.SetCursorPosition(0,0);
+                        Console.WriteLine();
+                        Console.SetCursorPosition(0, 0);
+                        for (int i = 0; i < stars.Length; i++)
+                        {
+                            stars[i].PrintCoordinates();
+                            Console.Write("  ");
+                        }
+                        for (int i = 0; i < stars.Length; i++)
+                        {
+                            stars[i].Hide();
+                            stars[i].Move(random.Next(offsetX+1, width-1), random.Next(offsetY+1, height));
+                            stars[i].Show();
+                        }
                     }
                     break;
             }
