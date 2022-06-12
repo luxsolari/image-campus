@@ -2,8 +2,8 @@
 {
     static void Main(string[] args)
     {
-        Archer archer = new Archer(50, 10, "Archer", 25);
-        Mage mage = new Mage(50, 100, "Mage", 22);
+        Archer archer = new Archer(50, 3, "Archer", 25);
+        Mage mage = new Mage(50, 50, "Mage", 22);
 
 
         for (int i = 0; i < 5; i++)

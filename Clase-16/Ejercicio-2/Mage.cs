@@ -13,10 +13,12 @@
 
     public void EnchantTarget(int targetMagicResist)
     {
-        if (mana > 0)
+        float manaCost = 10f + targetMagicResist * 0.05f;
+
+        if (mana >= manaCost )
         {
-            this.mana -= 10f;
             Random random = new Random();
+            this.mana -= manaCost;
             float hitChance = Math.Clamp(100.0f - (targetMagicResist - this.castingLevel), 0.0f, 100.0f) / 2;
 
             if (random.Next(100) < hitChance)
