@@ -22,7 +22,7 @@ namespace Game
             Vector2f playerPosition = new Vector2f(windowSize.X / 2f, windowSize.Y / 2f);
 
             // Instanciamos un player de ejemplo
-            player = new Player(playerPosition, Color.Red, Color.White, 1.5f, 150f, 128f);
+            player = new Player(playerPosition, Color.Red, Color.White, 1.5f, 150f, 200f);
             player.Graphic.Position = new Vector2f(playerPosition.X - player.Graphic.Radius, playerPosition.Y - player.Graphic.Radius);
 
             // Suscripcion a evento
@@ -40,7 +40,7 @@ namespace Game
         private void Update(Time deltaTime)
         {
             player.Update(deltaTime.AsSeconds());
-            Console.WriteLine("Delta time: " + deltaTime.AsMilliseconds() + " ms.");
+            Thread.Sleep(12);
         }
 
         // 3. Draw() dibujar frame en pantalla
@@ -69,17 +69,27 @@ namespace Game
         {
             Clock clock = new Clock();
             isRunning = true;
+            int framesRendered = 0;
+            float elapsedTime = 0;
             
             Start();
 
             while (isRunning)
             {
                 Time deltaTime = clock.Restart();
-                
                 ProcessInput();
                 Update(deltaTime);
                 Draw();
+                framesRendered ++;
+                elapsedTime += deltaTime.AsSeconds();
 
+                if (elapsedTime >= 1.0f) // un segundo pasó, mostramos el conteo de FPS.
+                {
+                    Console.WriteLine($"FPS: {framesRendered / elapsedTime}");
+                    elapsedTime = 0;
+                    framesRendered = 0;
+                }
+                
             }
 
             Finish();
