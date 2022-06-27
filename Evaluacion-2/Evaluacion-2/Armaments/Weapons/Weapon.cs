@@ -4,20 +4,22 @@ namespace Evaluacion_2.Armaments.Weapons;
 
 public abstract class Weapon
 {
-    protected string name;
-    protected float baseDmg;
-    protected float weight;
-    
-    protected float criticalChance;
-    protected float criticalMultiplier;
+    protected string Name { get; }
+    protected float BaseDmg { get; }
+    protected float Weight { get; }
 
-    protected Weapon(string name, float baseDmg, float weight, float criticalChance, float criticalMultiplier)
+    protected float BaseCriticalChance { get; }
+    protected float BaseCriticalMultiplier { get; }
+    protected bool IsTwoHanded { get; }
+
+    protected Weapon(string name, float baseDmg, float weight, float baseCriticalChance, float baseCriticalMultiplier, bool isTwoHanded)
     {
-        this.name = name;
-        this.baseDmg = baseDmg;
-        this.weight = weight;
-        this.criticalChance = criticalChance;
-        this.criticalMultiplier = criticalMultiplier;
+        this.Name = name;
+        this.BaseDmg = baseDmg;
+        this.Weight = weight;
+        this.BaseCriticalChance = baseCriticalChance;
+        this.BaseCriticalMultiplier = baseCriticalMultiplier;
+        this.IsTwoHanded = isTwoHanded;
     }
 
     public abstract float GetTotalAtkDamage(ref AttackType attackType, ref bool isCritical);

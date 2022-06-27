@@ -11,6 +11,7 @@
     <ItemGroup>
       <Folder Include="Armaments\Armors" />
       <Folder Include="Armaments\Shields" />
+      <Folder Include="Resources" />
     </ItemGroup>
 
 </Project>
