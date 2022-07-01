@@ -3,15 +3,9 @@
     <PropertyGroup>
         <OutputType>Exe</OutputType>
         <TargetFramework>net6.0</TargetFramework>
-        <RootNamespace>Evaluacion_2</RootNamespace>
+        <RootNamespace>Evaluacion_II</RootNamespace>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
     </PropertyGroup>
-
-    <ItemGroup>
-      <Folder Include="Armaments\Armors" />
-      <Folder Include="Armaments\Shields" />
-      <Folder Include="Resources" />
-    </ItemGroup>
 
 </Project>

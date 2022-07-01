@@ -31,14 +31,14 @@ public class Player
         Vector2f input = new Vector2f(0, 0);
 
         if (Keyboard.IsKeyPressed(Keyboard.Key.Left))
-            input.X -= 1f;
+            input.X -= 100f;
         if (Keyboard.IsKeyPressed(Keyboard.Key.Right))
-            input.X += 1f;
+            input.X += 100f;
         if (Keyboard.IsKeyPressed(Keyboard.Key.Up))
-            input.Y -= 1f;
+            input.Y -= 100f;
         if (Keyboard.IsKeyPressed(Keyboard.Key.Down))
-            input.Y += 1f;
-
+            input.Y += 100f;
+        
         Vector2f translation = VectorUtils.Normalize(input) * speed * deltaTime ;
         this.graphic.Position += translation;
     }

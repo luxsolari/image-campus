@@ -4,14 +4,35 @@
     <projectFile>Game/Game.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="16aef005-f941-4c48-8f1b-b7b3a8a58a38" name="Changes" comment="" />
+    <list default="true" id="16aef005-f941-4c48-8f1b-b7b3a8a58a38" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Game/AnimatedEntity.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Game/AnimationData.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Game/Entity.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Evaluacion-2/.idea/.idea.Evaluacion-2/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Evaluacion-2/.idea/.idea.Evaluacion-2/.idea/indexLayout.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Evaluacion-2/.idea/.idea.Evaluacion-2/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Evaluacion-2/Evaluacion-2.sln" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Evaluacion-2/Evaluacion-2/Armaments/Weapons/Axe.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Evaluacion-2/Evaluacion-2/Armaments/Weapons/Spear.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Evaluacion-2/Evaluacion-2/Armaments/Weapons/Sword.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Evaluacion-2/Evaluacion-2/Armaments/Weapons/Weapon.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Evaluacion-2/Evaluacion-2/Core/Game.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Evaluacion-2/Evaluacion-2/Evaluacion-2.csproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Evaluacion-2/Evaluacion-2/Program.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Evaluacion-2/Evaluacion-2/Utils/AttackType.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Evaluacion-2/Evaluacion-2/Utils/Material.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Game/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Game.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Game.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/GameLoop.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Game/GameLoop.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Player.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d598ea51b65ad64269dd51b15bd20c8f4f5332/RenderWindow.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/48e251d5bde8e8ac3e249215d28bc45ecca9b5a0/Texture.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -21,14 +42,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Game" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
@@ -58,6 +79,10 @@
       <option name="presentableId" value="Default" />
       <updated>1656178733281</updated>
       <workItem from="1656178738408" duration="96000" />
+      <workItem from="1656541641531" duration="2867000" />
+      <workItem from="1656546632265" duration="49000" />
+      <workItem from="1656549837101" duration="1454000" />
+      <workItem from="1656624240788" duration="1504000" />
     </task>
     <servers />
   </component>
@@ -66,6 +91,17 @@
   </component>
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>

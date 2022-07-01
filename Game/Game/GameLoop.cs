@@ -8,7 +8,7 @@ namespace Game
     {
         private RenderWindow window;
         private bool isRunning;
-        private Player player;
+        private Entity player;
 
         public GameLoop (RenderWindow window)
         {
@@ -22,9 +22,10 @@ namespace Game
             Vector2f playerPosition = new Vector2f(windowSize.X / 2f, windowSize.Y / 2f);
 
             // Instanciamos un player de ejemplo
-            player = new Player(playerPosition, Color.Red, Color.White, 1.5f, 150f, 200f);
-            player.Graphic.Position = new Vector2f(playerPosition.X - player.Graphic.Radius, playerPosition.Y - player.Graphic.Radius);
+            //player = new Player(playerPosition, Color.Red, Color.White, 1.5f, 150f, 100f);
+            //player.Graphic.Position = new Vector2f(playerPosition.X - player.Graphic.Radius, playerPosition.Y - player.Graphic.Radius);
 
+            player = new Entity("assets/images/player.png");
             // Suscripcion a evento
             window.Closed += OnCloseWindow;
         }
@@ -40,7 +41,7 @@ namespace Game
         private void Update(Time deltaTime)
         {
             player.Update(deltaTime.AsSeconds());
-            Thread.Sleep(12);
+            Thread.Sleep(12); 
         }
 
         // 3. Draw() dibujar frame en pantalla
@@ -85,7 +86,9 @@ namespace Game
 
                 if (elapsedTime >= 1.0f) // un segundo pasó, mostramos el conteo de FPS.
                 {
-                    Console.WriteLine($"FPS: {framesRendered / elapsedTime}");
+                    Console.SetCursorPosition(0, 1);
+                    Console.Write($"FPS: {(int)(framesRendered / elapsedTime)}");
+                    Console.WriteLine();
                     elapsedTime = 0;
                     framesRendered = 0;
                 }
