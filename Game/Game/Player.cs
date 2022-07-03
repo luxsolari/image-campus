@@ -3,31 +3,55 @@ using SFML.System;
 using SFML.Window;
 using SFML.Graphics;
 
-public class Player
+class Player : AnimatedEntity
 {
     // Fields
-    private CircleShape graphic;
     private float speed;
     
-    // Properties
-    public CircleShape Graphic
-    {
-        get => this.graphic;
-        set => this.graphic = value;
-    }
 
-    public Player(Vector2f playerPosition, Color fillColor, Color outlineColor, float outlineThickness, float radius, float speed)
+    public Player(string imageFilePath, Vector2i frameSize, float speed) : base(imageFilePath, frameSize)
     {
-        this.Graphic = new CircleShape(radius);
-        this.Graphic.FillColor = fillColor;
-        this.Graphic.OutlineColor = outlineColor;
-        this.Graphic.OutlineThickness = outlineThickness;
-        this.Graphic.Position = playerPosition;
         this.speed = speed;
+        AnimationData idleLeft = new AnimationData()
+        {
+            frameRate = 1,
+            framesCount = 3,
+            rowIndex = 0,
+            loop = true,
+        };
+        AnimationData idleRight = new AnimationData()
+        {
+            frameRate = 1,
+            framesCount = 2,
+            rowIndex = 1,
+            loop = true,
+        };
+        AnimationData walkLeft = new AnimationData()
+        {
+            frameRate = 11,
+            framesCount = 2,
+            rowIndex = 2,
+            loop = true,
+        };
+        AnimationData walkRight = new AnimationData()
+        {
+            frameRate = 1,
+            framesCount = 2,
+            rowIndex = 3,
+            loop = true,
+        };
+
+        AddAnimation("idleLeft", idleLeft);
+        AddAnimation("idleRight", idleRight);
+        AddAnimation("walkLeft", walkLeft);
+        AddAnimation("walkRight", walkRight);
+
+        SetCurrentAnimation("idleLeft");
     }
 
-    public void Update(float deltaTime)
+    public override void Update(float deltaTime)
     {
+        base.Update(deltaTime);
         Vector2f input = new Vector2f(0, 0);
 
         if (Keyboard.IsKeyPressed(Keyboard.Key.Left))
@@ -40,6 +64,6 @@ public class Player
             input.Y += 100f;
         
         Vector2f translation = VectorUtils.Normalize(input) * speed * deltaTime ;
-        this.graphic.Position += translation;
+        Translate(translation);
     }
 }

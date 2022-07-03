@@ -8,7 +8,7 @@ namespace Game
     {
         private RenderWindow window;
         private bool isRunning;
-        private Entity player;
+        private Player player;
 
         public GameLoop (RenderWindow window)
         {
@@ -21,11 +21,7 @@ namespace Game
             Vector2u windowSize = window.Size;
             Vector2f playerPosition = new Vector2f(windowSize.X / 2f, windowSize.Y / 2f);
 
-            // Instanciamos un player de ejemplo
-            //player = new Player(playerPosition, Color.Red, Color.White, 1.5f, 150f, 100f);
-            //player.Graphic.Position = new Vector2f(playerPosition.X - player.Graphic.Radius, playerPosition.Y - player.Graphic.Radius);
-
-            player = new Entity("assets/images/player.png");
+            player = new Player("assets/images/spritesheet.png", new Vector2i(48, 48), 100f);
             // Suscripcion a evento
             window.Closed += OnCloseWindow;
         }
