@@ -24,19 +24,19 @@ public struct BaseStats
 
     public BaseStats(float attackDamage, float attackSpeed, float maxHealth, float armor, float magicResist, float healthRegen, Resource resource) : this()
     {
-        AttackDamage = attackDamage;
-        AttackSpeed = attackSpeed;
-        MaxHealth = maxHealth;
-        Armor = armor;
-        MagicResist = magicResist;
-        HealthRegen = healthRegen;
-        Resource = resource;
+        AttackDamage    = attackDamage;
+        AttackSpeed     = attackSpeed;
+        MaxHealth       = maxHealth;
+        Armor           = armor;
+        MagicResist     = magicResist;
+        HealthRegen     = healthRegen;
+        Resource        = resource;
         
-        CriticalChance = 0.0f;
-        CriticalRate = 0.75f;
-        ArmorPenetration = 0.0f;
-        MagicPenetration = 0.0f;
-        AbilityPower = 0.0f;
+        CriticalChance      = 0.0f;
+        CriticalRate        = 0.75f;
+        ArmorPenetration    = 0.0f;
+        MagicPenetration    = 0.0f;
+        AbilityPower        = 0.0f;
     }
 
     public override string ToString()

@@ -1,6 +1,9 @@
 ﻿namespace Evaluacion_II.Items;
 
-public abstract class Consumable : Item
+public class Consumable : Item
 {
-    
+    public Consumable(string? name) : base(name)
+    {
+        
+    }
 }

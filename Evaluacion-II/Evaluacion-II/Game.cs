@@ -5,38 +5,55 @@ namespace Evaluacion_II;
 
 public class Game
 {
-    private Champion teemo;
+    public bool IsRunning = true;
+    private int counter = 0;
+    private Input? inputHandler;
 
     private void Start()
     {
-        teemo = new("Teemo", new BaseStats
-            (
-                attackDamage: 54f,
-                attackSpeed: 0.69f, 
-                maxHealth: 580f, 
-                armor: 24f, 
-                magicResist:30f, 
-                healthRegen:5.5f, 
-                resource:new Resource(type: ResourceType.Mana, maxResourceAmount: 334f, resourceRegenAmount: 9.6f)
-            ),
-            roles: new List<Role> {Role.Marksman, Role.Assassin}
-        );
+        Console.Clear();
+        Console.WriteLine("Started!");
+        Console.SetCursorPosition(0, Console.WindowHeight);
+        Console.Write("Press R to reset timer, press Q to quit.");
     }
 
     private void Update()
     {
-        
+        Console.SetCursorPosition(0,0);
+        Console.Write("                     ");
+        Console.SetCursorPosition(0,0);
+        Console.Write($"Running... {counter}");
+        if (inputHandler?.GetReadInput() is { Key: ConsoleKey.R })
+        {
+            counter = -1;
+            Console.SetCursorPosition(0,0);
+            Console.Write("Timer Reset!");
+            inputHandler.ResetReadInput();
+        }
+        counter++;
+        Thread.Sleep(1000);
     }
 
     private void Finish()
     {
+        Console.SetCursorPosition(0, 0);
+        Console.Write("                     ");
+        Console.SetCursorPosition(0, 0);
+        Console.WriteLine("Finished!");
         
     }
     public void Play()
     {
         this.Start();
-        this.Update();
-        Console.ReadKey(true);
+        while (IsRunning)
+        {
+            this.Update();
+        }
         this.Finish();
+    }
+
+    public void AddInput(Input input)
+    {
+        this.inputHandler = input;
     }
 }

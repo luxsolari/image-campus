@@ -11,6 +11,7 @@ public class Champion
     private BaseStats baseStats;
     private List<Role> roles;
     private List<Item> inventory = new List<Item>();
+    public bool isAttacking;
 
     // properties
     public string Name => name;
@@ -23,12 +24,12 @@ public class Champion
         this.baseStats = baseStats;
         this.roles = roles;
     }
-
+    
     public void PrintInfo()
     {
         Console.WriteLine($"Name: {this.Name}");
         Console.WriteLine($"Basic Stats: \n{this.Stats}");
-        Console.WriteLine($"Roles: ");
+        Console.WriteLine("Roles: ");
         foreach (Role role in Roles)
         {
             Console.WriteLine($"\t{role}");
