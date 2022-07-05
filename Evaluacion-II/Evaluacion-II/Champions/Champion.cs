@@ -1,32 +1,38 @@
-﻿using Evaluacion_II.Enums;
+﻿using System;
+using Evaluacion_II.Enums;
+using Evaluacion_II.Items;
 
 namespace Evaluacion_II.Champions;
 
 public class Champion
 {
-    private BaseChampionData BaseChampionData;
+    // fields
+    private string name;
+    private BaseStats baseStats;
+    private List<Role> roles;
+    private List<Item> inventory = new List<Item>();
 
-    public Champion(BaseChampionData baseChampionData)
+    // properties
+    public string Name => name;
+    public BaseStats Stats => baseStats;
+    public List<Role> Roles => roles;
+
+    public Champion(string name, BaseStats baseStats, List<Role> roles)
     {
-        BaseChampionData = baseChampionData;
+        this.name = name;
+        this.baseStats = baseStats;
+        this.roles = roles;
     }
 
-    public void Attack()
+    public void PrintInfo()
     {
-        
-    }
-
-    public void showChampionInfo()
-    {
-        // Mostrar datos del champ.
-        Console.WriteLine(this.BaseChampionData.Name);
-        Console.Write($"Roles: ");
-        foreach (Role role in this.BaseChampionData.Roles)
+        Console.WriteLine($"Name: {this.Name}");
+        Console.WriteLine($"Basic Stats: \n{this.Stats}");
+        Console.WriteLine($"Roles: ");
+        foreach (Role role in Roles)
         {
-            Console.Write($"{role} ");
+            Console.WriteLine($"\t{role}");
         }
-        Console.WriteLine("");
-        Console.WriteLine($"{this.BaseChampionData.AttackRange}");
     }
-
 }
+

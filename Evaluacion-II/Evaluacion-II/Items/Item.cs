@@ -1,6 +1,6 @@
 ﻿namespace Evaluacion_II.Items;
 
-public class Item
+public abstract class Item
 {
     
 }
