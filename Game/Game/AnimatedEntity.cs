@@ -64,7 +64,6 @@ class AnimatedEntity : Entity
             else if (animation.loop) 
                 currentImagePosition.X = 0;
 
-            (this.Graphic)
             this.sprite.TextureRect = new IntRect() { 
                 Left   = currentImagePosition.X * frameSize.X,
                 Top    = currentImagePosition.Y * frameSize.Y, 

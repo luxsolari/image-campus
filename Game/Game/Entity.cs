@@ -7,7 +7,7 @@ public class Entity
 {
     // Imagen => Textura => Sprite
     private readonly Texture texture;
-    private readonly Sprite sprite;
+    protected readonly Sprite sprite;
 
     public Vector2f Position
     {

@@ -14,28 +14,28 @@ class Player : AnimatedEntity
         this.speed = speed;
         AnimationData idleLeft = new AnimationData()
         {
-            frameRate = 1,
+            frameRate = 6,
             framesCount = 3,
             rowIndex = 0,
             loop = true,
         };
         AnimationData idleRight = new AnimationData()
         {
-            frameRate = 1,
+            frameRate = 6,
             framesCount = 2,
             rowIndex = 1,
             loop = true,
         };
         AnimationData walkLeft = new AnimationData()
         {
-            frameRate = 11,
+            frameRate = 6,
             framesCount = 2,
             rowIndex = 2,
             loop = true,
         };
         AnimationData walkRight = new AnimationData()
         {
-            frameRate = 1,
+            frameRate = 6,
             framesCount = 2,
             rowIndex = 3,
             loop = true,

@@ -11,7 +11,6 @@ public class Champion
     private BaseStats baseStats;
     private List<Role> roles;
     private List<Item> inventory = new List<Item>();
-    public bool isAttacking;
 
     // properties
     public string Name => name;
