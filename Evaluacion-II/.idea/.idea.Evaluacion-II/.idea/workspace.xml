@@ -5,10 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="89313555-ebed-4112-91f8-1f40a829a16f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Evaluacion-II/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Evaluacion-II/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Evaluacion-II/Champions/Champion.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Evaluacion-II/Champions/Champion.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Evaluacion-II/Game.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Evaluacion-II/Game.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Evaluacion-II/Input.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Evaluacion-II/Input.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Evaluacion-II/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Evaluacion-II/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Game/.idea/.idea.Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Game/.idea/.idea.Game/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Game/Game/Game.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/../Game/Game/Game.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,6 +66,7 @@
       <workItem from="1657033555149" duration="8177000" />
       <workItem from="1657064691123" duration="2214000" />
       <workItem from="1657067457598" duration="60000" />
+      <workItem from="1657117270669" duration="372000" />
     </task>
     <task id="LOCAL-00001" summary="TONS OF CHANGES">
       <created>1657001114476</created>

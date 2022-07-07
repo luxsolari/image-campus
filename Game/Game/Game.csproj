@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-    <Exec Command="xcopy &quot;$(ProjectDir)assets&quot; &quot;$(OutDir)assets\&quot; /s /y" />
+    <Exec Command="cp -R &quot;$(ProjectDir)assets&quot; &quot;$(OutDir)assets\&quot;" />
   </Target>
 
 </Project>

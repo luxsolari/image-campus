@@ -9,6 +9,8 @@ namespace Game
         private RenderWindow window;
         private bool isRunning;
         private Player player;
+        private Entity background;
+        private Entity ground;
 
         public GameLoop (RenderWindow window)
         {
@@ -21,6 +23,14 @@ namespace Game
             Vector2u windowSize = window.Size;
             Vector2f playerPosition = new Vector2f(windowSize.X / 2f, windowSize.Y / 2f);
 
+
+            background = new Entity("filepath para un background");
+            background.Graphic.TextureRect = new IntRect(0, 0, 3000, (int)1080);
+            ground.Graphic.TextureRect = new IntRect(0, 0, 1080, 1920);
+            background.Graphic.Texture.Repeated = true;
+            ground.Graphic.Texture.Repeated = true;
+            
+            ground = new Entity("filepath del ground");
             player = new Player("assets/images/spritesheet.png", new Vector2i(48, 48), 100f);
             // Suscripcion a evento
             window.Closed += OnCloseWindow;
@@ -44,6 +54,8 @@ namespace Game
         private void Draw()
         {
             window.Clear(Color.Black);
+            //window.Draw(background.Graphic);
+            //window.Draw(ground.Graphic);
             window.Draw(player.Graphic);
             window.Display();
         }

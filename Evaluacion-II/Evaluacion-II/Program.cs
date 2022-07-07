@@ -6,6 +6,5 @@ public static class Program
         Game game = new Game();
         Thread thread1 = new Thread(game.Play);
         
-
     }
 }

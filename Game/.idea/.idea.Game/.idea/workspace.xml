@@ -5,34 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="16aef005-f941-4c48-8f1b-b7b3a8a58a38" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Game/AnimatedEntity.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Game/AnimationData.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Game/Entity.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Evaluacion-2/.idea/.idea.Evaluacion-2/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Evaluacion-2/.idea/.idea.Evaluacion-2/.idea/indexLayout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Evaluacion-2/.idea/.idea.Evaluacion-2/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Evaluacion-2/Evaluacion-2.sln" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Evaluacion-2/Evaluacion-2/Armaments/Weapons/Axe.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Evaluacion-2/Evaluacion-2/Armaments/Weapons/Spear.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Evaluacion-2/Evaluacion-2/Armaments/Weapons/Sword.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Evaluacion-2/Evaluacion-2/Armaments/Weapons/Weapon.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Evaluacion-2/Evaluacion-2/Core/Game.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Evaluacion-2/Evaluacion-2/Evaluacion-2.csproj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Evaluacion-2/Evaluacion-2/Program.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Evaluacion-2/Evaluacion-2/Utils/AttackType.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Evaluacion-2/Evaluacion-2/Utils/Material.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Evaluacion-II/.idea/.idea.Evaluacion-II/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Evaluacion-II/.idea/.idea.Evaluacion-II/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Evaluacion-II/Evaluacion-II/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Evaluacion-II/Evaluacion-II/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Game/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Entity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Entity.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game/Game.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Game.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game/GameLoop.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Game/GameLoop.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Player.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/48e251d5bde8e8ac3e249215d28bc45ecca9b5a0/Texture.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -47,6 +30,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.C#&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -83,6 +67,8 @@
       <workItem from="1656546632265" duration="49000" />
       <workItem from="1656549837101" duration="1454000" />
       <workItem from="1656624240788" duration="1504000" />
+      <workItem from="1657116913461" duration="345000" />
+      <workItem from="1657150668640" duration="2101000" />
     </task>
     <servers />
   </component>

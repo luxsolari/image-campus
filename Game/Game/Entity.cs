@@ -25,7 +25,7 @@ public class Entity
         set => this.sprite.Scale = value;
     }
 
-    public Drawable Graphic => this.sprite;
+    public Sprite Graphic => this.sprite;
     
     public Entity(string imageFilePath)
     {
