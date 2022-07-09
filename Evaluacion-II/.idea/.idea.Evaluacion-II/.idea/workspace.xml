@@ -4,7 +4,7 @@
     <projectFile>Evaluacion-II/Evaluacion-II.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="89313555-ebed-4112-91f8-1f40a829a16f" name="Changes" comment="">
+    <list default="true" id="89313555-ebed-4112-91f8-1f40a829a16f" name="Changes" comment="codigo para generacion de champs en evaluacion 2, leer y escribir json en archivo">
       <change afterPath="$PROJECT_DIR$/Evaluacion-II/Champions/ChampionGenerator.cs" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Evaluacion-II/Champions/Skill.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Evaluacion-II/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Evaluacion-II/.idea/workspace.xml" afterDir="false" />
@@ -29,6 +29,12 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c9e6ebf51a89e6989486513df713e9efcb20f423a98b12ccfab69966d4bf4/Int32.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/deec43f597a9d64b29aa8610df63423ef6788e2e69b0781e24abada6fb0798b/ThrowHelper.Serialization.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/f58a99c5c0f2eec064aecf6ad0b03f8b83f1273783482b8d11772c15ebb2491/JsonConverterOfT.ReadCore.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/luxsolari/code/image-campus/Evaluacion-II/Evaluacion-II/Champions/BaseStats.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/luxsolari/code/image-campus/Evaluacion-II/Evaluacion-II/Champions/Champion.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/luxsolari/code/image-campus/Evaluacion-II/Evaluacion-II/Game.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/luxsolari/code/image-campus/Evaluacion-II/Evaluacion-II/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../Game/Game/GameLoop.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/luxsolari/code/image-campus/Game/Game/GameLoop.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -85,7 +91,7 @@
       <workItem from="1657117270669" duration="372000" />
       <workItem from="1657233715781" duration="13698000" />
       <workItem from="1657260700656" duration="1997000" />
-      <workItem from="1657318993675" duration="18181000" />
+      <workItem from="1657318993675" duration="18509000" />
     </task>
     <task id="LOCAL-00001" summary="TONS OF CHANGES">
       <created>1657001114476</created>
@@ -94,7 +100,14 @@
       <option name="project" value="LOCAL" />
       <updated>1657001114476</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="codigo para generacion de champs en evaluacion 2, leer y escribir json en archivo">
+      <created>1657340519247</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1657340519247</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -116,7 +129,8 @@
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="TONS OF CHANGES" />
-    <option name="LAST_COMMIT_MESSAGE" value="TONS OF CHANGES" />
+    <MESSAGE value="codigo para generacion de champs en evaluacion 2, leer y escribir json en archivo" />
+    <option name="LAST_COMMIT_MESSAGE" value="codigo para generacion de champs en evaluacion 2, leer y escribir json en archivo" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
