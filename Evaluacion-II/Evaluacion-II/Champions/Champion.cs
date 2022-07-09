@@ -3,36 +3,33 @@ using Evaluacion_II.Enums;
 using Evaluacion_II.Items;
 
 namespace Evaluacion_II.Champions;
-
+[Serializable]
 public class Champion
 {
-    // fields
-    private string name;
-    private BaseStats baseStats;
-    private List<Role> roles;
-    private List<Item> inventory = new List<Item>();
+    public string Name { get; set; }
+    public BaseStats Stats { get; set; }
+    public Role PrimaryRole { get; set; }
 
-    // properties
-    public string Name => name;
-    public BaseStats Stats => baseStats;
-    public List<Role> Roles => roles;
-
-    public Champion(string name, BaseStats baseStats, List<Role> roles)
+    public Champion()
     {
-        this.name = name;
-        this.baseStats = baseStats;
-        this.roles = roles;
+        
+    }
+
+    public Champion(string name, BaseStats stats, Role primaryRole)
+    {
+        Name = name;
+        Stats = stats;
+        PrimaryRole = primaryRole;
+    }
+    public void AutoAttack()
+    {
+        
     }
     
     public void PrintInfo()
     {
         Console.WriteLine($"Name: {this.Name}");
         Console.WriteLine($"Basic Stats: \n{this.Stats}");
-        Console.WriteLine("Roles: ");
-        foreach (Role role in Roles)
-        {
-            Console.WriteLine($"\t{role}");
-        }
     }
 }
 

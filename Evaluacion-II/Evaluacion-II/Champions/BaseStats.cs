@@ -9,10 +9,10 @@ public struct BaseStats
     public float ArmorPenetration { get; set; }
     public float MagicPenetration { get; set; }
     
-    public float AttackSpeed    { get; set; } //
+    public float Agility    { get; set; } //
     public float CriticalChance { get; set; }
-    public float CriticalRate   { get; set; }
-    
+    public float CriticalRate { get; set; }
+
     // Defensive stats
     public float MaxHealth   { get; set; }  //
     public float Armor       { get; set; }  //
@@ -21,34 +21,42 @@ public struct BaseStats
     // Other
     public float HealthRegen { get; set; } //
     public Resource Resource { get; set; } //
-
-    public BaseStats(float attackDamage, float attackSpeed, float maxHealth, float armor, float magicResist, float healthRegen, Resource resource) : this()
+    
+    public BaseStats(
+        float modAttackDamage, 
+        float modAgility, 
+        float modMaxHealth, 
+        float modArmor, 
+        float modMagicResist, 
+        float modHealthRegen, 
+        float modCritChance, 
+        float modCritRate,
+        Resource resource) : this()
     {
-        AttackDamage    = attackDamage;
-        AttackSpeed     = attackSpeed;
-        MaxHealth       = maxHealth;
-        Armor           = armor;
-        MagicResist     = magicResist;
-        HealthRegen     = healthRegen;
-        Resource        = resource;
-        
-        CriticalChance      = 0.0f;
-        CriticalRate        = 0.75f;
+        AttackDamage        = 50 * modAttackDamage;
+        Agility             = 50 * modAgility;
+        MaxHealth           = 1000 * modMaxHealth;
+        Armor               = 25 * modArmor;
+        MagicResist         = 25 * modMagicResist;
+        HealthRegen         = 10 * modHealthRegen;
+        CriticalChance      = 1  * modCritChance;
+        CriticalRate        = 1  * modCritRate;
         ArmorPenetration    = 0.0f;
         MagicPenetration    = 0.0f;
         AbilityPower        = 0.0f;
+        Resource            = resource;
     }
 
     public override string ToString()
     {
-        string statsString = $"\tAttack Damage: {this.AttackDamage}" +
-                             $"\tAttack Speed: {this.AttackSpeed}\n" +
-                             $"\tMax Health: {this.MaxHealth}\t" +
-                             $"\tHealth Regen: {this.HealthRegen}\n" +
-                             $"\tArmor: {this.Armor}\t" +
-                             $"\tMagic Resist: {this.MagicResist}\n" +
-                             $"\tMax {this.Resource.Type}: {this.Resource.MaxResourceAmount}\t" +
-                             $"\t{this.Resource.Type} Regen: {this.Resource.ResourceRegenAmount}";
+        string statsString = $"Attack Damage: {this.AttackDamage}\n" +
+                             $"Agility      : {this.Agility}\n" +
+                             $"Max Health   : {this.MaxHealth}\n" +
+                             $"Health Regen : {this.HealthRegen}\n" +
+                             $"Armor        : {this.Armor}\n" +
+                             $"Magic Resist : {this.MagicResist}\n" +
+                             $"Max {this.Resource.Type}   : {this.Resource.MaxResourceAmount}\n" +
+                             $"{this.Resource.Type} Regen : {this.Resource.ResourceRegenAmount}\n";
         return statsString;
     }
-}
+}   

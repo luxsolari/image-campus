@@ -2,7 +2,7 @@
 
 public enum Role
 {
-    Fighter,
+    Fighter = 1,
     Mage,
     Marksman,
     Assassin,
