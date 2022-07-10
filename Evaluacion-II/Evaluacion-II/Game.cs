@@ -26,7 +26,14 @@ public class Game
         Console.SetCursorPosition(0, 0);
         Console.WriteLine("                 ");
         Console.SetCursorPosition(0, 0);
-        Console.WriteLine($"Timer: {timer}");
+        Console.WriteLine($"Timer: {timer}  ");
+        Console.SetCursorPosition(0, 1);
+        Console.WriteLine($"----------------");
+
+        bool isCritical = false;
+        this.player1.AutoAttack(player2, isCritical: ref isCritical);
+        this.player2.AutoAttack(player1, isCritical: ref isCritical);
+        
         timer++;
         Thread.Sleep(1000);
     }
