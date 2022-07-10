@@ -1,4 +1,6 @@
 using Evaluacion_II.Champions;
+using Evaluacion_II.Enums;
+using Evaluacion_II.Items;
 
 namespace Evaluacion_II;
 
@@ -23,17 +25,54 @@ public class Game
     
     private void Update()
     {
-        Console.SetCursorPosition(0, 0);
-        Console.WriteLine("                 ");
-        Console.SetCursorPosition(0, 0);
-        Console.WriteLine($"Timer: {timer}  ");
-        Console.SetCursorPosition(0, 1);
-        Console.WriteLine($"----------------");
 
         bool isCritical = false;
-        this.player1.AutoAttack(player2, isCritical: ref isCritical);
-        this.player2.AutoAttack(player1, isCritical: ref isCritical);
-        
+        Random random = new Random();
+
+        if (!player1.IsAlive())
+        {
+            gameRunning = false;
+            Console.WriteLine($"{player2.Name} ha ganado la batalla.");
+        }
+        else if (!player2.IsAlive())
+        {
+            gameRunning = false;
+            Console.WriteLine($"{player1.Name} ha ganado la batalla.");
+        }
+        else
+        {
+            Console.WriteLine($"----------------");
+            float bonusCriticalChance = 0.0f;
+            foreach (Item item in player1.inventory)
+            {
+                if (item is Weapon) bonusCriticalChance += ((item as Weapon)!).BonusCriticalChance;
+            }
+            if (random.NextSingle() >= 1 - (player1.Stats.CriticalChance + bonusCriticalChance)) 
+                isCritical = true;
+            this.player1.AutoAttack(player2, AttackType.Normal, isCritical: ref isCritical);
+            
+            if (player2.IsAlive())
+            {
+                isCritical = false;
+                bonusCriticalChance = 0.0f;
+                foreach (Item item in player2.inventory)
+                {
+                    if (item is Weapon) bonusCriticalChance += ((item as Weapon)!).BonusCriticalChance;
+                }
+                Console.WriteLine($"----------------");
+                if (random.NextSingle() >= 1 - (player1.Stats.CriticalChance + bonusCriticalChance)) 
+                    isCritical = true;
+                this.player2.AutoAttack(player1, AttackType.Normal, isCritical: ref isCritical);    
+            }
+            else
+            {
+                gameRunning = false;
+                Console.WriteLine($"{player1.Name} ha ganado la batalla.");
+            }
+            
+            Console.WriteLine($"----------------");
+        }
+
         timer++;
         Thread.Sleep(1000);
     }

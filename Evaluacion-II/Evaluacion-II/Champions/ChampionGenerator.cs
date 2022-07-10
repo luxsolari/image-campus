@@ -29,7 +29,7 @@ public static class ChampionGenerator
         {
             case Role.Fighter:
                 baseStats = new BaseStats(modAttackDamage: 2f, modAgility: 1.1f, modMaxHealth: 1.2f, modArmor: 0.9f,
-                    modMagicResist: 0.8f, modHealthRegen: 3f, modCritChance: 0.3f, modCritRate: 1.75f, 
+                    modMagicResist: 0.8f, modHealthRegen: 3f, modCritChance: 0.2f, modCritRate: 1.75f, 
                     new Resource(ResourceType.Energy, 100, 20));
                 break;
             case Role.Mage:
@@ -39,12 +39,12 @@ public static class ChampionGenerator
                 break;
             case Role.Marksman:
                 baseStats = new BaseStats(modAttackDamage: 2.25f, modAgility: 1.25f, modMaxHealth: 0.5f, modArmor: 0.5f,
-                    modMagicResist: 0.5f, modHealthRegen: 1.25f, modCritChance: 0.5f, modCritRate: 1.75f,
+                    modMagicResist: 0.5f, modHealthRegen: 1.25f, modCritChance: 0.3f, modCritRate: 1.75f,
                     new Resource(ResourceType.Energy, 100, 20));
                 break;
             case Role.Assassin:
                 baseStats = new BaseStats(modAttackDamage: 2f, modAgility: 1.5f, modMaxHealth: 1f, modArmor: 1f,
-                    modMagicResist: 1f, modHealthRegen: 1.2f, modCritChance: 0.4f, modCritRate: 1.85f,
+                    modMagicResist: 1f, modHealthRegen: 1.2f, modCritChance: 0.3f, modCritRate: 1.85f,
                     new Resource(ResourceType.Energy, 100, 20));
                 break;
             case Role.Tank:
@@ -59,7 +59,7 @@ public static class ChampionGenerator
                 break;
             case Role.Specialist:
                 baseStats = new BaseStats(modAttackDamage: 1.75f, modAgility: 1.5f, modMaxHealth: 1.1f, modArmor: 1f,
-                    modMagicResist: 1f, modHealthRegen: 1.1f, modCritChance: 0.3f, modCritRate: 1.75f,
+                    modMagicResist: 1f, modHealthRegen: 1.1f, modCritChance: 0.25f, modCritRate: 1.75f,
                     new Resource(ResourceType.Energy, 100, 20));
                 break;
         }

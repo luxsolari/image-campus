@@ -4,12 +4,13 @@
     <projectFile>Evaluacion-II/Evaluacion-II.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="89313555-ebed-4112-91f8-1f40a829a16f" name="Changes" comment="">
+    <list default="true" id="89313555-ebed-4112-91f8-1f40a829a16f" name="Changes" comment="sistema de batalla ultra basico">
+      <change afterPath="$PROJECT_DIR$/Evaluacion-II/Enums/AttackType.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Evaluacion-II/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Evaluacion-II/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Evaluacion-II/Champions/Champion.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Evaluacion-II/Champions/Champion.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Evaluacion-II/Champions/ChampionGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Evaluacion-II/Champions/ChampionGenerator.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Evaluacion-II/Game.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Evaluacion-II/Game.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Evaluacion-II/Items/Weapon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Evaluacion-II/Items/Weapon.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Evaluacion-II/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Evaluacion-II/Program.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +24,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c9e6ebf51a89e6989486513df713e9efcb20f423a98b12ccfab69966d4bf4/Int32.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/deec43f597a9d64b29aa8610df63423ef6788e2e69b0781e24abada6fb0798b/ThrowHelper.Serialization.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/f58a99c5c0f2eec064aecf6ad0b03f8b83f1273783482b8d11772c15ebb2491/JsonConverterOfT.ReadCore.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/luxsolari/code/image-campus/Evaluacion-II/Evaluacion-II/Champions/Champion.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Game/Game/GameLoop.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -81,7 +83,7 @@
       <workItem from="1657233715781" duration="13698000" />
       <workItem from="1657260700656" duration="1997000" />
       <workItem from="1657318993675" duration="18584000" />
-      <workItem from="1657403208325" duration="8305000" />
+      <workItem from="1657403208325" duration="15570000" />
     </task>
     <task id="LOCAL-00001" summary="TONS OF CHANGES">
       <created>1657001114476</created>
@@ -104,7 +106,14 @@
       <option name="project" value="LOCAL" />
       <updated>1657340585684</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="sistema de batalla ultra basico">
+      <created>1657423113555</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1657423113555</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -128,7 +137,40 @@
     <MESSAGE value="TONS OF CHANGES" />
     <MESSAGE value="codigo para generacion de champs en evaluacion 2, leer y escribir json en archivo" />
     <MESSAGE value="commit de archivos faltantes" />
-    <option name="LAST_COMMIT_MESSAGE" value="commit de archivos faltantes" />
+    <MESSAGE value="sistema de batalla ultra basico" />
+    <option name="LAST_COMMIT_MESSAGE" value="sistema de batalla ultra basico" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Evaluacion-II/Game.cs</url>
+          <line>49</line>
+          <properties documentPath="$PROJECT_DIR$/Evaluacion-II/Game.cs" initialLine="49" containingFunctionPresentation="method 'Update'">
+            <startOffsets>
+              <option value="1221" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1305" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Evaluacion-II/Champions/Champion.cs</url>
+          <line>35</line>
+          <properties documentPath="$PROJECT_DIR$/Evaluacion-II/Champions/Champion.cs" initialLine="35" containingFunctionPresentation="method 'AutoAttack'">
+            <startOffsets>
+              <option value="1044" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1193" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

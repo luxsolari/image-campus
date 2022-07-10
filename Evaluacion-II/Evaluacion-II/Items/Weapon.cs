@@ -2,16 +2,16 @@
 
 public class Weapon : Item
 {
-    private float bonusDamage;
-    private float bonusAgility;
-    private float bonusCriticalChance;
-    private float bonusCriticalRate;
+    public float BonusDamage { get; set; }
+    public float BonusAgility { get; set;}
+    public float BonusCriticalChance { get; set; }
+    public float BonusCriticalRate { get; set; }
 
     public Weapon(string? name, float bonusDamage, float bonusAgility, float bonusCriticalChance, float bonusCriticalRate) : base(name)
     {
-        this.bonusDamage = bonusDamage;
-        this.bonusAgility = bonusAgility;
-        this.bonusCriticalChance = bonusCriticalChance;
-        this.bonusCriticalRate = bonusCriticalRate;
+        this.BonusDamage = bonusDamage;
+        this.BonusAgility = bonusAgility;
+        this.BonusCriticalChance = bonusCriticalChance;
+        this.BonusCriticalRate = bonusCriticalRate;
     }
 }
