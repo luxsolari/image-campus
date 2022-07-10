@@ -42,6 +42,7 @@ public class Game
         else
         {
             Console.WriteLine($"----------------");
+            Console.WriteLine($"{player1.Name} ataca!");
             float bonusCriticalChance = 0.0f;
             foreach (Item item in player1.inventory)
             {
@@ -60,7 +61,8 @@ public class Game
                     if (item is Weapon) bonusCriticalChance += ((item as Weapon)!).BonusCriticalChance;
                 }
                 Console.WriteLine($"----------------");
-                if (random.NextSingle() >= 1 - (player1.Stats.CriticalChance + bonusCriticalChance)) 
+                Console.WriteLine($"{player2.Name} ataca!");
+                if (random.NextSingle() >= 1 - (player2.Stats.CriticalChance + bonusCriticalChance)) 
                     isCritical = true;
                 this.player2.AutoAttack(player1, AttackType.Normal, isCritical: ref isCritical);    
             }

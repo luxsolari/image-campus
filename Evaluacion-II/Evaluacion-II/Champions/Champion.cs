@@ -23,26 +23,33 @@ public class Champion
         Stats = stats;
         CurrentHealth = Stats.MaxHealth;
         PrimaryRole = primaryRole;
-        this.inventory = new List<Item>() { new Weapon("Trinity's Force", 333f, 
-            333f, 0.33f, 0.033f) };
+        this.inventory = new List<Item>() { new Weapon("Trinity's Force", 33.3f, 
+            33.3f, 0.33f, 1.033f) };
     }
     public void AutoAttack(Champion target, AttackType attackType, ref bool isCritical)
     {
-        float bonusCriticalRate = 0.0f;
+        float effectiveCritRate = this.Stats.CriticalRate;
         foreach (Item item in this.inventory)
         {
-            if (item is Weapon) bonusCriticalRate += ((item as Weapon)!).BonusCriticalRate;
+            if (item is Weapon) effectiveCritRate += ((item as Weapon)!).BonusCriticalRate;
         }
-        float attackBaseDamage  = isCritical ? this.Stats.AttackDamage * (this.Stats.CriticalRate + bonusCriticalRate): 
-            this.Stats.AttackDamage;
-        float targetBaseDefense = target.Stats.Armor - this.Stats.ArmorPenetration;
-        
-        if (isCritical) 
-            Console.WriteLine("El golpe es critico!");
-        // adicionar daño bonus de los items
-        // adicionar defensa bonus de los items
 
-        float battleDamage = attackBaseDamage - targetBaseDefense;
+        float effectiveAttackDmg = this.Stats.AttackDamage;
+        foreach (Item item in inventory)
+        {
+            if (item is Weapon) effectiveAttackDmg += (item as Weapon)!.BonusDamage;
+        }
+
+        if (isCritical)
+        {
+            Console.WriteLine("El golpe es critico!");
+            effectiveAttackDmg *= effectiveCritRate;
+        }
+
+        float effectiveTargetDefense = target.Stats.Armor - this.Stats.ArmorPenetration;
+        
+        // todo: adicionar defensa bonus de los items
+        float battleDamage = Math.Clamp(effectiveAttackDmg - effectiveTargetDefense, min: 0.0f, max: float.MaxValue);
         target.ReceiveDamage(battleDamage);
 
     }
@@ -59,7 +66,7 @@ public class Champion
         else
             this.CurrentHealth -= battleDamage;
         
-        Console.WriteLine($"{this.Name} received {battleDamage} damage. HP: {this.CurrentHealth}/{this.Stats.MaxHealth}");
+        Console.WriteLine($"{this.Name} recibio {battleDamage} daño. HP: {this.CurrentHealth.ToString("0.##")}/{this.Stats.MaxHealth}");
     }
 
     public void PrintInfo()

@@ -4,13 +4,10 @@
     <projectFile>Evaluacion-II/Evaluacion-II.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="89313555-ebed-4112-91f8-1f40a829a16f" name="Changes" comment="sistema de batalla ultra basico">
-      <change afterPath="$PROJECT_DIR$/Evaluacion-II/Enums/AttackType.cs" afterDir="false" />
+    <list default="true" id="89313555-ebed-4112-91f8-1f40a829a16f" name="Changes" comment="Batalla con calculos de daño, chequeos de vida, calculo de criticos.">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Evaluacion-II/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Evaluacion-II/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Evaluacion-II/Champions/Champion.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Evaluacion-II/Champions/Champion.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Evaluacion-II/Champions/ChampionGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Evaluacion-II/Champions/ChampionGenerator.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Evaluacion-II/Game.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Evaluacion-II/Game.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Evaluacion-II/Items/Weapon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Evaluacion-II/Items/Weapon.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,7 +80,7 @@
       <workItem from="1657233715781" duration="13698000" />
       <workItem from="1657260700656" duration="1997000" />
       <workItem from="1657318993675" duration="18584000" />
-      <workItem from="1657403208325" duration="15570000" />
+      <workItem from="1657403208325" duration="17434000" />
     </task>
     <task id="LOCAL-00001" summary="TONS OF CHANGES">
       <created>1657001114476</created>
@@ -113,7 +110,14 @@
       <option name="project" value="LOCAL" />
       <updated>1657423113555</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Batalla con calculos de daño, chequeos de vida, calculo de criticos.">
+      <created>1657432218137</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1657432218137</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -138,39 +142,8 @@
     <MESSAGE value="codigo para generacion de champs en evaluacion 2, leer y escribir json en archivo" />
     <MESSAGE value="commit de archivos faltantes" />
     <MESSAGE value="sistema de batalla ultra basico" />
-    <option name="LAST_COMMIT_MESSAGE" value="sistema de batalla ultra basico" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Evaluacion-II/Game.cs</url>
-          <line>49</line>
-          <properties documentPath="$PROJECT_DIR$/Evaluacion-II/Game.cs" initialLine="49" containingFunctionPresentation="method 'Update'">
-            <startOffsets>
-              <option value="1221" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1305" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Evaluacion-II/Champions/Champion.cs</url>
-          <line>35</line>
-          <properties documentPath="$PROJECT_DIR$/Evaluacion-II/Champions/Champion.cs" initialLine="35" containingFunctionPresentation="method 'AutoAttack'">
-            <startOffsets>
-              <option value="1044" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1193" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Batalla con calculos de daño, chequeos de vida, calculo de criticos." />
+    <option name="LAST_COMMIT_MESSAGE" value="Batalla con calculos de daño, chequeos de vida, calculo de criticos." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
