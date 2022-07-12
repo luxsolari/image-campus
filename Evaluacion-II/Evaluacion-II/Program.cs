@@ -1,5 +1,6 @@
 ﻿using System.Text.Json;
 using Evaluacion_II.Champions;
+using Evaluacion_II.Items;
 
 namespace Evaluacion_II;
 public static class Program
@@ -8,6 +9,7 @@ public static class Program
     {
         Champion player1Champion = ChampionGenerator.CreateNewChampion();
         Champion player2Champion = ChampionGenerator.CreateNewChampion();
+
         Game game = new Game(player1Champion, player2Champion);
         game.Play();
 

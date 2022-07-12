@@ -28,37 +28,37 @@ public static class ChampionGenerator
         switch (championRole)
         {
             case Role.Fighter:
-                baseStats = new BaseStats(modAttackDamage: 2f, modAgility: 1.1f, modMaxHealth: 1.2f, modArmor: 0.9f,
+                baseStats = new BaseStats(modAttackDamage: 1.6f, modAgility: 1.1f, modMaxHealth: 1.2f, modArmor: 0.9f,
                     modMagicResist: 0.8f, modHealthRegen: 3f, modCritChance: 0.2f, modCritRate: 1.75f, 
                     new Resource(ResourceType.Energy, 100, 20));
                 break;
             case Role.Mage:
                 baseStats = new BaseStats(modAttackDamage: 0.65f, modAgility: 0.6f, modMaxHealth: 0.7f, modArmor: 0.6f,
-                    modMagicResist: 0.9f, modHealthRegen: 1.25f, modCritChance: 0.0f, modCritRate: 0.0f,
+                    modMagicResist: 0.9f, modHealthRegen: 1.25f, modCritChance: 0.0f, modCritRate: 1.0f,
                     new Resource(ResourceType.Energy, 100, 20));
                 break;
             case Role.Marksman:
-                baseStats = new BaseStats(modAttackDamage: 2.25f, modAgility: 1.25f, modMaxHealth: 0.5f, modArmor: 0.5f,
-                    modMagicResist: 0.5f, modHealthRegen: 1.25f, modCritChance: 0.3f, modCritRate: 1.75f,
+                baseStats = new BaseStats(modAttackDamage: 1.85f, modAgility: 1.25f, modMaxHealth: 0.5f, modArmor: 0.5f,
+                    modMagicResist: 0.5f, modHealthRegen: 1.25f, modCritChance: 0.2f, modCritRate: 1.75f,
                     new Resource(ResourceType.Energy, 100, 20));
                 break;
             case Role.Assassin:
-                baseStats = new BaseStats(modAttackDamage: 2f, modAgility: 1.5f, modMaxHealth: 1f, modArmor: 1f,
-                    modMagicResist: 1f, modHealthRegen: 1.2f, modCritChance: 0.3f, modCritRate: 1.85f,
+                baseStats = new BaseStats(modAttackDamage: 1.8f, modAgility: 1.5f, modMaxHealth: 1f, modArmor: 1f,
+                    modMagicResist: 1f, modHealthRegen: 1.2f, modCritChance: 0.2f, modCritRate: 1.85f,
                     new Resource(ResourceType.Energy, 100, 20));
                 break;
             case Role.Tank:
                 baseStats = new BaseStats(modAttackDamage: 0.6f, modAgility: 1f, modMaxHealth: 2f, modArmor: 2f,
-                    modMagicResist: 1.5f, modHealthRegen: 5f, modCritChance: 0.0f, modCritRate: 0.0f,
+                    modMagicResist: 1.5f, modHealthRegen: 5f, modCritChance: 0.0f, modCritRate: 1.0f,
                     new Resource(ResourceType.Energy, 100, 20));
                 break;
             case Role.Support:
                 baseStats = new BaseStats(modAttackDamage: 0.4f, modAgility: 0.8f, modMaxHealth: 1.2f, modArmor: 1.25f,
-                    modMagicResist: 1.15f, modHealthRegen: 3f, modCritChance: 0.0f, modCritRate: 0.0f,
+                    modMagicResist: 1.15f, modHealthRegen: 3f, modCritChance: 0.0f, modCritRate: 1.0f,
                     new Resource(ResourceType.Energy, 100, 20));
                 break;
             case Role.Specialist:
-                baseStats = new BaseStats(modAttackDamage: 1.75f, modAgility: 1.5f, modMaxHealth: 1.1f, modArmor: 1f,
+                baseStats = new BaseStats(modAttackDamage: 1.65f, modAgility: 1.5f, modMaxHealth: 1.1f, modArmor: 1f,
                     modMagicResist: 1f, modHealthRegen: 1.1f, modCritChance: 0.25f, modCritRate: 1.75f,
                     new Resource(ResourceType.Energy, 100, 20));
                 break;

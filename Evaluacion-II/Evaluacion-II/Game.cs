@@ -6,7 +6,7 @@ namespace Evaluacion_II;
 
 public class Game
 {
-    private int timer = 0;
+    private int turnCount = 1;
     private bool gameRunning = true;
     private Champion player1;
     private Champion player2;
@@ -25,10 +25,6 @@ public class Game
     
     private void Update()
     {
-
-        bool isCritical = false;
-        Random random = new Random();
-
         if (!player1.IsAlive())
         {
             gameRunning = false;
@@ -41,42 +37,26 @@ public class Game
         }
         else
         {
-            Console.WriteLine($"----------------");
-            Console.WriteLine($"{player1.Name} ataca!");
-            float bonusCriticalChance = 0.0f;
-            foreach (Item item in player1.inventory)
-            {
-                if (item is Weapon) bonusCriticalChance += ((item as Weapon)!).BonusCriticalChance;
-            }
-            if (random.NextSingle() >= 1 - (player1.Stats.CriticalChance + bonusCriticalChance)) 
-                isCritical = true;
-            this.player1.AutoAttack(player2, AttackType.Normal, isCritical: ref isCritical);
-            
+            Console.Clear();
+            Console.WriteLine($"-------------------------");
+            Console.WriteLine($"TURNO    {this.turnCount}");
+            Console.WriteLine($"-------------------------");
+            this.ProcessTurn(ref player1, ref player2);
             if (player2.IsAlive())
             {
-                isCritical = false;
-                bonusCriticalChance = 0.0f;
-                foreach (Item item in player2.inventory)
-                {
-                    if (item is Weapon) bonusCriticalChance += ((item as Weapon)!).BonusCriticalChance;
-                }
-                Console.WriteLine($"----------------");
-                Console.WriteLine($"{player2.Name} ataca!");
-                if (random.NextSingle() >= 1 - (player2.Stats.CriticalChance + bonusCriticalChance)) 
-                    isCritical = true;
-                this.player2.AutoAttack(player1, AttackType.Normal, isCritical: ref isCritical);    
+                this.ProcessTurn(ref player2, ref player1);
             }
             else
             {
+                Console.WriteLine($"{player1.Name} ha ganado la batalla!");
                 gameRunning = false;
-                Console.WriteLine($"{player1.Name} ha ganado la batalla.");
             }
-            
-            Console.WriteLine($"----------------");
+            Console.WriteLine($"-------------------------");
+            Console.WriteLine();
         }
 
-        timer++;
-        Thread.Sleep(1000);
+        turnCount++;
+        Thread.Sleep(2000);
     }
 
     private void Finish()
@@ -95,4 +75,60 @@ public class Game
         Finish();
     }
 
+    public void ProcessTurn(ref Champion turnPlayer, ref Champion target)
+    {
+        Random random = new Random();
+        
+        Console.WriteLine($"{turnPlayer.Name} - HP {turnPlayer.CurrentHealth:0}/{turnPlayer.Stats.MaxHealth:0}");
+        if (turnPlayer.IsChargingAttack)
+        {
+            turnPlayer.IsChargingAttack = false;
+            Console.WriteLine($"Libera un ataque cargado!");
+            Thread.Sleep(1000);
+            float effectiveCritChance = turnPlayer.Stats.CriticalChance;
+            
+            bool isCritical = random.NextSingle() <= (1 - effectiveCritChance);
+            turnPlayer.AutoAttack(target, AttackType.Charged, ref isCritical);
+        }
+        else
+        {
+            Console.WriteLine($"1-Auto-Ataque 2-Habilidades  3-Objetos  4-Defender");
+            Console.Write("->");
+            int opcionPlayer = Convert.ToInt16(Console.ReadLine());
+            switch (opcionPlayer)
+            {
+                case 1:
+                    Console.WriteLine($"1-Ataque rapido  2-Ataque Normal  3-Ataque Cargado");
+                    Console.Write("->");
+                    AttackType attackType = (AttackType) Convert.ToInt16(Console.ReadLine());
+                    if (attackType == AttackType.Charged)
+                    {
+                        Console.WriteLine($"{turnPlayer.Name} está preparando un ataque!");
+                        turnPlayer.IsChargingAttack = true;
+                    }
+                    else
+                    {
+                        float effectiveCritChance = turnPlayer.Stats.CriticalChance;
+                        if (attackType == AttackType.Fast)
+                            effectiveCritChance *= 1.25f;
+                
+                        bool isCritical = random.NextSingle() <= (1 - effectiveCritChance);
+                        turnPlayer.AutoAttack(target, attackType, ref isCritical);
+                    }
+                    break;
+                case 2:
+                    // Use skill
+                    Console.WriteLine("Aca iria un skill.... si tuviera uno");
+                    break;
+                case 3:
+                    // Use item
+                    Console.WriteLine("Aca usaria un item.... si tuviera uno");
+                    break;
+                case 4:
+                    // Defend
+                    Console.WriteLine("Aca defenderia... si pudiera");
+                    break;
+            }
+        }
+    }
 }

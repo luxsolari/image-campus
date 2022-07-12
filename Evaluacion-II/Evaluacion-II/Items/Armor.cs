@@ -2,8 +2,12 @@
 
 public class Armor : Item
 {
-    public Armor(string? name) : base(name)
-    {
+    public float BonusArmor { get; set; }
+    public float BonusMagicResist { get; set; }
 
+    public Armor(string? name, float bonusArmor, float bonusMagicResist) : base(name)
+    {
+        BonusArmor = bonusArmor;
+        BonusMagicResist = bonusMagicResist;
     }
 }
