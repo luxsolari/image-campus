@@ -4,17 +4,9 @@
     <projectFile>Evaluacion-II/Evaluacion-II.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="89313555-ebed-4112-91f8-1f40a829a16f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Evaluacion-II/Globals.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Evaluacion-II/Player.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Evaluacion-II/Utils/FileUtils.cs" afterDir="false" />
+    <list default="true" id="89313555-ebed-4112-91f8-1f40a829a16f" name="Changes" comment="Primer entregable para evaluacion II">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Evaluacion-II/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Evaluacion-II/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Evaluacion-II/Champions/BaseStats.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Evaluacion-II/Champions/BaseStats.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Evaluacion-II/Champions/Champion.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Evaluacion-II/Champions/Champion.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Evaluacion-II/Champions/ChampionGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Evaluacion-II/Utils/GeneratorUtils.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Evaluacion-II/Champions/Skill.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Evaluacion-II/Champions/Skill.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Evaluacion-II/Game.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Evaluacion-II/Game.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Evaluacion-II/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Evaluacion-II/Program.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +20,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/198a6261cebc324728dcc4c178edc5f2894123f711722c80e8557cbfd27651/ThrowHelper.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7a1ad32abaee44480b66c2c1fcee9628cca92a4cd272eced5781564201180/Number.Parsing.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/f3b9684f72bc2cc435eb694f7cc86eca8c240d2d1cefa1e8697a61f1f2f27f/SafeFileHandle.Windows.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/luxso/Code/image-campus/Evaluacion-II/Evaluacion-II/Champions/BaseStats.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/luxso/Code/image-campus/Evaluacion-II/Evaluacion-II/Champions/BaseStats.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/luxso/Code/image-campus/Evaluacion-II/Evaluacion-II/Champions/BaseStats.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/luxso/Code/image-campus/Evaluacion-II/Evaluacion-II/Champions/Champion.cs" root0="SKIP_HIGHLIGHTING" />
@@ -109,7 +102,7 @@
       <workItem from="1657582966942" duration="20532000" />
       <workItem from="1657636865769" duration="497000" />
       <workItem from="1657638176755" duration="48000" />
-      <workItem from="1657641681457" duration="29914000" />
+      <workItem from="1657641681457" duration="30951000" />
     </task>
     <task id="LOCAL-00001" summary="TONS OF CHANGES">
       <created>1657001114476</created>
@@ -153,7 +146,14 @@
       <option name="project" value="LOCAL" />
       <updated>1657637260112</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Primer entregable para evaluacion II">
+      <created>1657681119425</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1657681119425</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -180,7 +180,8 @@
     <MESSAGE value="sistema de batalla ultra basico" />
     <MESSAGE value="Batalla con calculos de daño, chequeos de vida, calculo de criticos." />
     <MESSAGE value="Sistema de batalla basico completado" />
-    <option name="LAST_COMMIT_MESSAGE" value="Sistema de batalla basico completado" />
+    <MESSAGE value="Primer entregable para evaluacion II" />
+    <option name="LAST_COMMIT_MESSAGE" value="Primer entregable para evaluacion II" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

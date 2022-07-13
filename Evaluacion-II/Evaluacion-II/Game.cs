@@ -1,5 +1,6 @@
 using Evaluacion_II.Champions;
 using Evaluacion_II.Enums;
+using Evaluacion_II.Items;
 using Evaluacion_II.Utils;
 
 namespace Evaluacion_II;
@@ -39,11 +40,97 @@ public class Game
         Console.WriteLine($"CREANDO UN NUEVO CAMPEON PARA EL JUGADOR {this.player1.Name}!");
         Console.WriteLine("--------------------------------------------------------------");
         this.player1Champion = GeneratorUtils.CreateNewChampion();
+
+        int opcionArmaInicial = 0;
+        int opcionArmorInicial = 0;
+        do
+        {
+            Console.WriteLine($"SELECCIONA TU ARMA INICIAL PARA {this.player1}");
+            Console.WriteLine($"1 - Tempestad de Luden (bueno para magos)    ");
+            Console.WriteLine($"2 - Eclipse (bueno para tiradores y asesinos)");
+            Console.WriteLine($"3 - Rompeavances (bueno para tanques y soportes)");
+            switch (opcionArmaInicial)
+            {
+                case 1:
+                    player1Champion.Inventory.Add(new Weapon("Tempestad de Luden", 0f, 120f, 15f, 0f, 0f));
+                    break;
+                case 2:
+                    player1Champion.Inventory.Add(new Weapon("Eclipse", 80f, 0, 15f, 0.15f, 0.05f));
+                    break;
+                case 3:
+                    player1Champion.Inventory.Add(new Weapon("Rompeavances", 60f, 20f, 25f, 0.25f, 0.1f));
+                    break;
+            }
+            opcionArmaInicial = Convert.ToInt16(Console.ReadLine());
+        } while (opcionArmaInicial < 1 || opcionArmaInicial > 2);
+        Console.Clear();
+        do
+        {
+            Console.WriteLine($"SELECCIONA TU ARMADURA INICIAL PARA {this.player1}");
+            Console.WriteLine($"1 - Velo de la Banshee (bueno para magos)");
+            Console.WriteLine($"2 - Filo de la Noche (bueno para tiradores y asesinos)");
+            Console.WriteLine($"3 - Apariencia Espiritual (bueno para tanques y soportes)");
+            switch (opcionArmorInicial)
+            {
+                case 1:
+                    player1Champion.Inventory.Add(new Armor("Velo de la Banshee", 30f, 60f));
+                    break;
+                case 2:
+                    player1Champion.Inventory.Add(new Armor("Filo de la Noche", 70f, 25f));
+                    break;
+                case 3:
+                    player1Champion.Inventory.Add(new Armor("Apariencia Espiritual", 50f, 100f));
+                    break;
+            }
+            opcionArmorInicial = Convert.ToInt16(Console.ReadLine());
+        } while (opcionArmorInicial < 1 || opcionArmorInicial > 2);
         
         Console.Clear();
         Console.WriteLine($"CREANDO UN NUEVO CAMPEON PARA EL JUGADOR {this.player2.Name}!");
         Console.WriteLine("--------------------------------------------------------------");
         this.player2Champion = GeneratorUtils.CreateNewChampion();
+        opcionArmaInicial = 0;
+        do
+        {
+            Console.WriteLine($"SELECCIONA TU ARMA INICIAL PARA {this.player1}");
+            Console.WriteLine($"1 - Tempestad de Luden (bueno para magos)    ");
+            Console.WriteLine($"2 - Eclipse (bueno para tiradores y asesinos)");
+            Console.WriteLine($"3 - Rompeavances (bueno para tanques y soportes)");
+            switch (opcionArmaInicial)
+            {
+                case 1:
+                    player1Champion.Inventory.Add(new Weapon("Tempestad de Luden", 0f, 120f, 15f, 0f, 0f));
+                    break;
+                case 2:
+                    player1Champion.Inventory.Add(new Weapon("Eclipse", 80f, 0, 15f, 0.15f, 0.05f));
+                    break;
+                case 3:
+                    player1Champion.Inventory.Add(new Weapon("Rompeavances", 60f, 20f, 25f, 0.25f, 0.1f));
+                    break;
+            }
+            opcionArmaInicial = Convert.ToInt16(Console.ReadLine());
+        } while (opcionArmaInicial < 1 || opcionArmaInicial > 2);
+        Console.Clear();
+        do
+        {
+            Console.WriteLine($"SELECCIONA TU ARMADURA INICIAL PARA {this.player1}");
+            Console.WriteLine($"1 - Velo de la Banshee (bueno para magos)");
+            Console.WriteLine($"2 - Filo de la Noche (bueno para tiradores y asesinos)");
+            Console.WriteLine($"3 - Apariencia Espiritual (bueno para tanques y soportes)");
+            switch (opcionArmorInicial)
+            {
+                case 1:
+                    player1Champion.Inventory.Add(new Armor("Velo de la Banshee", 30f, 60f));
+                    break;
+                case 2:
+                    player1Champion.Inventory.Add(new Armor("Filo de la Noche", 70f, 25f));
+                    break;
+                case 3:
+                    player1Champion.Inventory.Add(new Armor("Apariencia Espiritual", 50f, 100f));
+                    break;
+            }
+            opcionArmorInicial = Convert.ToInt16(Console.ReadLine());
+        } while (opcionArmorInicial < 1 || opcionArmorInicial > 2);
         
         this.player1.PlayerChampions.Add(player1Champion);
         this.player2.PlayerChampions.Add(player2Champion);
