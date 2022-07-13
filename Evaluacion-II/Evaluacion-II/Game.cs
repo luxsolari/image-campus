@@ -65,7 +65,7 @@ public class Game
                     player1Champion.Inventory.Add(new Weapon("Rompeavances", 60f, 20f, 25f, 0.25f, 0.1f));
                     break;
             }
-        } while (opcionArmaInicial < 1 || opcionArmaInicial > 2);
+        } while (opcionArmaInicial < 1 || opcionArmaInicial > 3);
         Console.Clear();
         do
         {
@@ -89,7 +89,7 @@ public class Game
                     player1Champion.Inventory.Add(new Armor("Apariencia Espiritual", 50f, 100f));
                     break;
             }
-        } while (opcionArmorInicial < 1 || opcionArmorInicial > 2);
+        } while (opcionArmorInicial < 1 || opcionArmorInicial > 3);
         
         Console.Clear();
         Console.WriteLine($"CREANDO UN NUEVO CAMPEON PARA EL JUGADOR {this.player2.Name}!");
@@ -118,7 +118,7 @@ public class Game
                     player1Champion.Inventory.Add(new Weapon("Rompeavances", 60f, 20f, 25f, 0.25f, 0.1f));
                     break;
             }
-        } while (opcionArmaInicial < 1 || opcionArmaInicial > 2);
+        } while (opcionArmaInicial < 1 || opcionArmaInicial > 3);
         Console.Clear();
         do
         {
@@ -142,7 +142,7 @@ public class Game
                     player1Champion.Inventory.Add(new Armor("Apariencia Espiritual", 50f, 100f));
                     break;
             }
-        } while (opcionArmorInicial < 1 || opcionArmorInicial > 2);
+        } while (opcionArmorInicial < 1 || opcionArmorInicial > 3);
         
         this.player1.PlayerChampions.Add(player1Champion);
         this.player2.PlayerChampions.Add(player2Champion);

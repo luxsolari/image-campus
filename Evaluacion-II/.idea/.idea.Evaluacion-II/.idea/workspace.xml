@@ -4,11 +4,9 @@
     <projectFile>Evaluacion-II/Evaluacion-II.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="89313555-ebed-4112-91f8-1f40a829a16f" name="Changes" comment="Armas y armaduras iniciales">
+    <list default="true" id="89313555-ebed-4112-91f8-1f40a829a16f" name="Changes" comment="Bugfixes en nombres y seleccion de arma y armadura">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Evaluacion-II/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Evaluacion-II/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Evaluacion-II/Game.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Evaluacion-II/Game.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Evaluacion-II/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Evaluacion-II/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Evaluacion-II/Utils/GeneratorUtils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Evaluacion-II/Utils/GeneratorUtils.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,7 +103,7 @@
       <workItem from="1657582966942" duration="20532000" />
       <workItem from="1657636865769" duration="497000" />
       <workItem from="1657638176755" duration="48000" />
-      <workItem from="1657641681457" duration="31452000" />
+      <workItem from="1657641681457" duration="31661000" />
     </task>
     <task id="LOCAL-00001" summary="TONS OF CHANGES">
       <created>1657001114476</created>
@@ -163,7 +161,14 @@
       <option name="project" value="LOCAL" />
       <updated>1657682068518</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Bugfixes en nombres y seleccion de arma y armadura">
+      <created>1657682652849</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1657682652849</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -192,7 +197,8 @@
     <MESSAGE value="Sistema de batalla basico completado" />
     <MESSAGE value="Primer entregable para evaluacion II" />
     <MESSAGE value="Armas y armaduras iniciales" />
-    <option name="LAST_COMMIT_MESSAGE" value="Armas y armaduras iniciales" />
+    <MESSAGE value="Bugfixes en nombres y seleccion de arma y armadura" />
+    <option name="LAST_COMMIT_MESSAGE" value="Bugfixes en nombres y seleccion de arma y armadura" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
