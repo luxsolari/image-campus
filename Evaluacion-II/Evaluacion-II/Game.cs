@@ -56,7 +56,7 @@ public class Game
             switch (opcionArmaInicial)
             {
                 case 1:
-                    player1Champion.Inventory.Add(new Weapon("Tempestad de Luden", 0f, 120f, 15f, 0f, 0f));
+                    player1Champion.Inventory.Add(new Weapon("Tempestad de Luden", 0f, 160f, 15f, 0f, 0f));
                     break;
                 case 2:
                     player1Champion.Inventory.Add(new Weapon("Eclipse", 80f, 0, 15f, 0.15f, 0.05f));

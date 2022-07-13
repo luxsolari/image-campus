@@ -20,12 +20,10 @@ public static class GeneratorUtils
     public static Champion CreateNewChampion()
     {
         Console.WriteLine("CREANDO NUEVO CAMPEON");
-
-        Console.Write("Ingresa el nombre del campeon: ");
         string championName;
         do
         {
-            Console.WriteLine("Ingresa tu nombre:");
+            Console.Write("Ingresa el nombre del campeon: ");
             championName = Console.ReadLine() ?? string.Empty;
         } while (championName.Trim().Length <= 0);
 
