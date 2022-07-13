@@ -22,7 +22,12 @@ public static class FileUtils
     /// Si el artchivo existía previamente, sobreescribe su contenido.
     public static void SerializeToJSONFile<T>(ref T list, ref string filePath)
     {
-        string jsonString = JsonSerializer.Serialize(list);
+        //JsonSerializerOptions settings = new JsonSerializerOptions({ TypeNameHandling = TypeNameHandling.All };
+        var options = new JsonSerializerOptions()
+        {
+            WriteIndented = true,
+        };
+        string jsonString = JsonSerializer.Serialize(list, list.GetType(), options);
         File.WriteAllText(filePath, jsonString);
     }
 }

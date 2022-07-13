@@ -7,6 +7,7 @@ public class Skill
     
     public float Cost { get; }
 
+    public Skill(){}
     public Skill(string name, float baseDamage, float cost)
     {
         Name = name;

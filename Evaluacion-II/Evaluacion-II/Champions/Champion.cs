@@ -1,4 +1,5 @@
-﻿using Evaluacion_II.Enums;
+﻿using System.Text.Json.Serialization;
+using Evaluacion_II.Enums;
 using Evaluacion_II.Items;
 
 namespace Evaluacion_II.Champions;
@@ -12,11 +13,20 @@ public class Champion
     public Role Role { get; set; }
     public BaseStats Stats { get; set; }
     
-    public List<Skill> Skills { get; set; }
-    public List<Item> Inventory { get; set; } = new List<Item>();
+    public List<object> Skills { get; set; }
+    
+    // Consideracion especial para permitir "serializacion polimorfica"
+    // https://stackoverflow.com/questions/8513042/json-net-serialize-deserialize-derived-types
+    // https://docs.microsoft.com/en-us/dotnet/standard/serialization/system-text-json-polymorphism
+    public List<object> Inventory { get; set; } = new List<object>();
     public List<Role> Strengths { get; } = new List<Role>();
     public List<Role> Resistances { get; } = new List<Role>();
 
+    public Champion()
+    {
+    }
+
+    [JsonConstructor]
     public Champion(string name, BaseStats stats, Role role, List<Role> strengths, List<Role> resistances)
     {
         Name = name;

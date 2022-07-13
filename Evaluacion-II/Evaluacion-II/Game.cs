@@ -109,13 +109,13 @@ public class Game
             switch (opcionArmaInicial)
             {
                 case 1:
-                    player1Champion.Inventory.Add(new Weapon("Tempestad de Luden", 0f, 120f, 15f, 0f, 0f));
+                    player2Champion.Inventory.Add(new Weapon("Tempestad de Luden", 0f, 160f, 15f, 0f, 0f));
                     break;
                 case 2:
-                    player1Champion.Inventory.Add(new Weapon("Eclipse", 80f, 0, 15f, 0.15f, 0.05f));
+                    player2Champion.Inventory.Add(new Weapon("Eclipse", 80f, 0, 15f, 0.15f, 0.05f));
                     break;
                 case 3:
-                    player1Champion.Inventory.Add(new Weapon("Rompeavances", 60f, 20f, 25f, 0.25f, 0.1f));
+                    player2Champion.Inventory.Add(new Weapon("Rompeavances", 60f, 20f, 25f, 0.25f, 0.1f));
                     break;
             }
         } while (opcionArmaInicial < 1 || opcionArmaInicial > 3);
@@ -133,13 +133,13 @@ public class Game
             switch (opcionArmorInicial)
             {
                 case 1:
-                    player1Champion.Inventory.Add(new Armor("Velo de la Banshee", 30f, 60f));
+                    player2Champion.Inventory.Add(new Armor("Velo de la Banshee", 30f, 60f));
                     break;
                 case 2:
-                    player1Champion.Inventory.Add(new Armor("Filo de la Noche", 70f, 25f));
+                    player2Champion.Inventory.Add(new Armor("Filo de la Noche", 70f, 25f));
                     break;
                 case 3:
-                    player1Champion.Inventory.Add(new Armor("Apariencia Espiritual", 50f, 100f));
+                    player2Champion.Inventory.Add(new Armor("Apariencia Espiritual", 50f, 100f));
                     break;
             }
         } while (opcionArmorInicial < 1 || opcionArmorInicial > 3);
@@ -192,7 +192,7 @@ public class Game
         }
 
         turnCount++;
-        Thread.Sleep(2000);
+        Console.ReadLine();
     }
 
     private void Finish()

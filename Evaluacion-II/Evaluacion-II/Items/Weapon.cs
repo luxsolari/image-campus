@@ -1,5 +1,8 @@
-﻿namespace Evaluacion_II.Items;
+﻿using System.Text.Json.Serialization;
 
+namespace Evaluacion_II.Items;
+
+[Serializable]
 public class Weapon : Item
 {
     public float BonusDamage { get; set; }
@@ -7,7 +10,7 @@ public class Weapon : Item
     public float BonusAgility { get; set;}
     public float BonusCriticalChance { get; set; }
     public float BonusCriticalRate { get; set; }
-
+    
     public Weapon(string? name, float bonusDamage, float bonusAbilityPower, float bonusAgility, float bonusCriticalChance, float bonusCriticalRate) : base(name)
     {
         this.BonusDamage = bonusDamage;

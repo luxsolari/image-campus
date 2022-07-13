@@ -1,17 +1,14 @@
-﻿namespace Evaluacion_II.Items;
+﻿using System.Text.Json.Serialization;
 
+namespace Evaluacion_II.Items;
+
+[Serializable]
 public abstract class Item
 {
-    private string? name;
+    public string? Name { get ; set ; }
 
     protected Item(string? name)
     {
         this.Name = name;
-    }
-
-    protected string? Name
-    {
-        get => name;
-        set => name = value;
     }
 }

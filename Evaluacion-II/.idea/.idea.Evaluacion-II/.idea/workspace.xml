@@ -4,9 +4,17 @@
     <projectFile>Evaluacion-II/Evaluacion-II.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="89313555-ebed-4112-91f8-1f40a829a16f" name="Changes" comment="Bugfixes en nombres y seleccion de arma y armadura">
+    <list default="true" id="a02da4b6-e328-431e-8ea6-389b4652630e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Evaluacion-II/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Evaluacion-II/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Evaluacion-II/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Evaluacion-II/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Evaluacion-II/Champions/Champion.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Evaluacion-II/Champions/Champion.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Evaluacion-II/Champions/Skill.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Evaluacion-II/Champions/Skill.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Evaluacion-II/Game.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Evaluacion-II/Game.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Evaluacion-II/Items/Armor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Evaluacion-II/Items/Armor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Evaluacion-II/Items/Consumable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Evaluacion-II/Items/Consumable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Evaluacion-II/Items/Item.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Evaluacion-II/Items/Item.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Evaluacion-II/Items/Weapon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Evaluacion-II/Items/Weapon.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Evaluacion-II/Utils/FileUtils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Evaluacion-II/Utils/FileUtils.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,37 +22,14 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/18c7de6a7132663af691f7f0e1c8e3c5f672c6a69b7844a1cd0d8bcf94d87e9/ThrowHelper.Serialization.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/198a6261cebc324728dcc4c178edc5f2894123f711722c80e8557cbfd27651/ThrowHelper.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7a1ad32abaee44480b66c2c1fcee9628cca92a4cd272eced5781564201180/Number.Parsing.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/f3b9684f72bc2cc435eb694f7cc86eca8c240d2d1cefa1e8697a61f1f2f27f/SafeFileHandle.Windows.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/luxso/Code/image-campus/Evaluacion-II/Evaluacion-II/Champions/BaseStats.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/luxso/Code/image-campus/Evaluacion-II/Evaluacion-II/Champions/BaseStats.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/luxso/Code/image-campus/Evaluacion-II/Evaluacion-II/Champions/BaseStats.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/luxso/Code/image-campus/Evaluacion-II/Evaluacion-II/Champions/Champion.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/luxso/Code/image-campus/Evaluacion-II/Evaluacion-II/Champions/Champion.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/luxso/Code/image-campus/Evaluacion-II/Evaluacion-II/Champions/Skill.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/luxso/Code/image-campus/Evaluacion-II/Evaluacion-II/Enums/Role.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/luxso/Code/image-campus/Evaluacion-II/Evaluacion-II/Enums/Role.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/luxso/Code/image-campus/Evaluacion-II/Evaluacion-II/Game.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/luxso/Code/image-campus/Evaluacion-II/Evaluacion-II/Game.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/luxso/Code/image-campus/Evaluacion-II/Evaluacion-II/Game.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/luxso/Code/image-campus/Evaluacion-II/Evaluacion-II/Items/Weapon.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/luxso/Code/image-campus/Evaluacion-II/Evaluacion-II/Items/Weapon.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/luxso/Code/image-campus/Evaluacion-II/Evaluacion-II/Program.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/luxso/Code/image-campus/Evaluacion-II/Evaluacion-II/Program.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/luxso/Code/image-campus/Evaluacion-II/Evaluacion-II/Program.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/luxso/Code/image-campus/Evaluacion-II/Evaluacion-II/Program.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/luxso/Code/image-campus/Game/Game/GameLoop.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../Game/Game/GameLoop.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/luxso/Code/image-campus/Game/Game/GameLoop.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/a9dbe8869135194d1c9164298b9e1fc1aa7f5391d2f0e7c06fdcd03179d3f16/JsonConverterOfT.ReadCore.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2BSEghug9axZrWNbBoR4KH1yrJ4" />
+  <component name="ProjectId" id="2BsA8AHXZ4RKkvV7dkjATfwdE6G" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -54,14 +39,12 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.C#&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RunManager">
     <configuration name="Evaluacion-II" type="DotNetProject" factoryName=".NET Project">
-      <option name="EXE_PATH" value="$PROJECT_DIR$/Evaluacion-II/bin/Debug/net6.0/Evaluacion-II" />
+      <option name="EXE_PATH" value="$PROJECT_DIR$/Evaluacion-II/bin/Debug/net6.0/Evaluacion-II.exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Evaluacion-II/bin/Debug/net6.0" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -82,93 +65,14 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="89313555-ebed-4112-91f8-1f40a829a16f" name="Changes" comment="" />
-      <created>1656891200261</created>
+      <changelist id="a02da4b6-e328-431e-8ea6-389b4652630e" name="Changes" comment="" />
+      <created>1657684258402</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1656891200261</updated>
-      <workItem from="1656891204559" duration="372000" />
-      <workItem from="1656990015051" duration="431000" />
-      <workItem from="1656990592457" duration="6037000" />
-      <workItem from="1656997308199" duration="3537000" />
-      <workItem from="1657033555149" duration="8177000" />
-      <workItem from="1657064691123" duration="2214000" />
-      <workItem from="1657067457598" duration="60000" />
-      <workItem from="1657117270669" duration="372000" />
-      <workItem from="1657233715781" duration="13698000" />
-      <workItem from="1657260700656" duration="1997000" />
-      <workItem from="1657318993675" duration="18584000" />
-      <workItem from="1657403208325" duration="17434000" />
-      <workItem from="1657577890540" duration="4079000" />
-      <workItem from="1657582966942" duration="20532000" />
-      <workItem from="1657636865769" duration="497000" />
-      <workItem from="1657638176755" duration="48000" />
-      <workItem from="1657641681457" duration="31661000" />
+      <updated>1657684258402</updated>
+      <workItem from="1657684282798" duration="4030000" />
+      <workItem from="1657689063032" duration="1140000" />
     </task>
-    <task id="LOCAL-00001" summary="TONS OF CHANGES">
-      <created>1657001114476</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1657001114476</updated>
-    </task>
-    <task id="LOCAL-00002" summary="codigo para generacion de champs en evaluacion 2, leer y escribir json en archivo">
-      <created>1657340519247</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1657340519247</updated>
-    </task>
-    <task id="LOCAL-00003" summary="commit de archivos faltantes">
-      <created>1657340585684</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1657340585684</updated>
-    </task>
-    <task id="LOCAL-00004" summary="sistema de batalla ultra basico">
-      <created>1657423113555</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1657423113555</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Batalla con calculos de daño, chequeos de vida, calculo de criticos.">
-      <created>1657432218137</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1657432218137</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Sistema de batalla basico completado">
-      <created>1657637260112</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1657637260112</updated>
-    </task>
-    <task id="LOCAL-00007" summary="Primer entregable para evaluacion II">
-      <created>1657681119425</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1657681119425</updated>
-    </task>
-    <task id="LOCAL-00008" summary="Armas y armaduras iniciales">
-      <created>1657682068518</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1657682068518</updated>
-    </task>
-    <task id="LOCAL-00009" summary="Bugfixes en nombres y seleccion de arma y armadura">
-      <created>1657682652849</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1657682652849</updated>
-    </task>
-    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -189,19 +93,5 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="TONS OF CHANGES" />
-    <MESSAGE value="codigo para generacion de champs en evaluacion 2, leer y escribir json en archivo" />
-    <MESSAGE value="commit de archivos faltantes" />
-    <MESSAGE value="sistema de batalla ultra basico" />
-    <MESSAGE value="Batalla con calculos de daño, chequeos de vida, calculo de criticos." />
-    <MESSAGE value="Sistema de batalla basico completado" />
-    <MESSAGE value="Primer entregable para evaluacion II" />
-    <MESSAGE value="Armas y armaduras iniciales" />
-    <MESSAGE value="Bugfixes en nombres y seleccion de arma y armadura" />
-    <option name="LAST_COMMIT_MESSAGE" value="Bugfixes en nombres y seleccion de arma y armadura" />
-  </component>
-  <component name="XSLT-Support.FileAssociations.UIState">
-    <expand />
-    <select />
   </component>
 </project>
