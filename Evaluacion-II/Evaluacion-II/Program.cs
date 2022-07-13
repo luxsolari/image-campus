@@ -24,8 +24,8 @@ public static class Program
             Console.WriteLine();
             Console.WriteLine("  MENU PRINCIPAL  ");
             Console.WriteLine("------------------");
-            Console.WriteLine("1 - Iniciar con Jugador nuevo ");
-            Console.WriteLine("2 - Iniciar con Jugador guardado");
+            Console.WriteLine("1 - Iniciar con Jugadores nuevos ");
+            Console.WriteLine("2 - Iniciar con Jugadores guardados");
             Console.WriteLine("3 - Rankings      ");
             Console.WriteLine("4 - Salir         ");
             Console.WriteLine("------------------");

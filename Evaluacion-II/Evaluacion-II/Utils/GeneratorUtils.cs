@@ -22,7 +22,12 @@ public static class GeneratorUtils
         Console.WriteLine("CREANDO NUEVO CAMPEON");
 
         Console.Write("Ingresa el nombre del campeon: ");
-        string championName = Console.ReadLine() ?? "Unnamed";
+        string championName;
+        do
+        {
+            Console.WriteLine("Ingresa tu nombre:");
+            championName = Console.ReadLine() ?? string.Empty;
+        } while (championName.Trim().Length <= 0);
 
         Console.WriteLine("Selecciona la clase de tu Campeon:");
         Console.WriteLine("1 - Luchador     ");

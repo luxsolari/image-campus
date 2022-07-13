@@ -4,9 +4,11 @@
     <projectFile>Evaluacion-II/Evaluacion-II.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="89313555-ebed-4112-91f8-1f40a829a16f" name="Changes" comment="Primer entregable para evaluacion II">
+    <list default="true" id="89313555-ebed-4112-91f8-1f40a829a16f" name="Changes" comment="Armas y armaduras iniciales">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Evaluacion-II/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Evaluacion-II/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Evaluacion-II/Game.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Evaluacion-II/Game.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Evaluacion-II/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Evaluacion-II/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Evaluacion-II/Utils/GeneratorUtils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Evaluacion-II/Utils/GeneratorUtils.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +30,7 @@
     <setting file="mock://C:/Users/luxso/Code/image-campus/Evaluacion-II/Evaluacion-II/Champions/Skill.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/luxso/Code/image-campus/Evaluacion-II/Evaluacion-II/Enums/Role.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/luxso/Code/image-campus/Evaluacion-II/Evaluacion-II/Enums/Role.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/luxso/Code/image-campus/Evaluacion-II/Evaluacion-II/Game.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/luxso/Code/image-campus/Evaluacion-II/Evaluacion-II/Game.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/luxso/Code/image-campus/Evaluacion-II/Evaluacion-II/Game.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/luxso/Code/image-campus/Evaluacion-II/Evaluacion-II/Items/Weapon.cs" root0="SKIP_HIGHLIGHTING" />
@@ -102,7 +105,7 @@
       <workItem from="1657582966942" duration="20532000" />
       <workItem from="1657636865769" duration="497000" />
       <workItem from="1657638176755" duration="48000" />
-      <workItem from="1657641681457" duration="30951000" />
+      <workItem from="1657641681457" duration="31452000" />
     </task>
     <task id="LOCAL-00001" summary="TONS OF CHANGES">
       <created>1657001114476</created>
@@ -153,7 +156,14 @@
       <option name="project" value="LOCAL" />
       <updated>1657681119425</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Armas y armaduras iniciales">
+      <created>1657682068518</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1657682068518</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -181,7 +191,8 @@
     <MESSAGE value="Batalla con calculos de daño, chequeos de vida, calculo de criticos." />
     <MESSAGE value="Sistema de batalla basico completado" />
     <MESSAGE value="Primer entregable para evaluacion II" />
-    <option name="LAST_COMMIT_MESSAGE" value="Primer entregable para evaluacion II" />
+    <MESSAGE value="Armas y armaduras iniciales" />
+    <option name="LAST_COMMIT_MESSAGE" value="Armas y armaduras iniciales" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

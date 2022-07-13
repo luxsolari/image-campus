@@ -45,10 +45,14 @@ public class Game
         int opcionArmorInicial = 0;
         do
         {
-            Console.WriteLine($"SELECCIONA TU ARMA INICIAL PARA {this.player1}");
+            Console.Clear();
+            Console.WriteLine($"SELECCIONA TU ARMA INICIAL PARA {this.player1Champion.Name}");
             Console.WriteLine($"1 - Tempestad de Luden (bueno para magos)    ");
             Console.WriteLine($"2 - Eclipse (bueno para tiradores y asesinos)");
             Console.WriteLine($"3 - Rompeavances (bueno para tanques y soportes)");
+            Console.WriteLine("--------------------------------------------------------------");
+            Console.Write("-> ");
+            opcionArmaInicial = Convert.ToInt16(Console.ReadLine());
             switch (opcionArmaInicial)
             {
                 case 1:
@@ -61,15 +65,18 @@ public class Game
                     player1Champion.Inventory.Add(new Weapon("Rompeavances", 60f, 20f, 25f, 0.25f, 0.1f));
                     break;
             }
-            opcionArmaInicial = Convert.ToInt16(Console.ReadLine());
         } while (opcionArmaInicial < 1 || opcionArmaInicial > 2);
         Console.Clear();
         do
         {
-            Console.WriteLine($"SELECCIONA TU ARMADURA INICIAL PARA {this.player1}");
+            Console.Clear();
+            Console.WriteLine($"SELECCIONA TU ARMADURA INICIAL PARA {this.player1Champion.Name}");
             Console.WriteLine($"1 - Velo de la Banshee (bueno para magos)");
             Console.WriteLine($"2 - Filo de la Noche (bueno para tiradores y asesinos)");
             Console.WriteLine($"3 - Apariencia Espiritual (bueno para tanques y soportes)");
+            Console.WriteLine("--------------------------------------------------------------");
+            Console.Write("-> ");
+            opcionArmorInicial = Convert.ToInt16(Console.ReadLine());
             switch (opcionArmorInicial)
             {
                 case 1:
@@ -82,7 +89,6 @@ public class Game
                     player1Champion.Inventory.Add(new Armor("Apariencia Espiritual", 50f, 100f));
                     break;
             }
-            opcionArmorInicial = Convert.ToInt16(Console.ReadLine());
         } while (opcionArmorInicial < 1 || opcionArmorInicial > 2);
         
         Console.Clear();
@@ -92,10 +98,14 @@ public class Game
         opcionArmaInicial = 0;
         do
         {
-            Console.WriteLine($"SELECCIONA TU ARMA INICIAL PARA {this.player1}");
+            Console.Clear();
+            Console.WriteLine($"SELECCIONA TU ARMA INICIAL PARA {this.player2Champion.Name}");
             Console.WriteLine($"1 - Tempestad de Luden (bueno para magos)    ");
             Console.WriteLine($"2 - Eclipse (bueno para tiradores y asesinos)");
             Console.WriteLine($"3 - Rompeavances (bueno para tanques y soportes)");
+            Console.WriteLine("--------------------------------------------------------------");
+            Console.Write("-> ");
+            opcionArmaInicial = Convert.ToInt16(Console.ReadLine());
             switch (opcionArmaInicial)
             {
                 case 1:
@@ -108,15 +118,18 @@ public class Game
                     player1Champion.Inventory.Add(new Weapon("Rompeavances", 60f, 20f, 25f, 0.25f, 0.1f));
                     break;
             }
-            opcionArmaInicial = Convert.ToInt16(Console.ReadLine());
         } while (opcionArmaInicial < 1 || opcionArmaInicial > 2);
         Console.Clear();
         do
         {
-            Console.WriteLine($"SELECCIONA TU ARMADURA INICIAL PARA {this.player1}");
+            Console.Clear();
+            Console.WriteLine($"SELECCIONA TU ARMADURA INICIAL PARA {this.player2Champion.Name}");
             Console.WriteLine($"1 - Velo de la Banshee (bueno para magos)");
             Console.WriteLine($"2 - Filo de la Noche (bueno para tiradores y asesinos)");
             Console.WriteLine($"3 - Apariencia Espiritual (bueno para tanques y soportes)");
+            Console.WriteLine("--------------------------------------------------------------");
+            Console.Write("-> ");
+            opcionArmorInicial = Convert.ToInt16(Console.ReadLine());
             switch (opcionArmorInicial)
             {
                 case 1:
@@ -129,7 +142,6 @@ public class Game
                     player1Champion.Inventory.Add(new Armor("Apariencia Espiritual", 50f, 100f));
                     break;
             }
-            opcionArmorInicial = Convert.ToInt16(Console.ReadLine());
         } while (opcionArmorInicial < 1 || opcionArmorInicial > 2);
         
         this.player1.PlayerChampions.Add(player1Champion);
