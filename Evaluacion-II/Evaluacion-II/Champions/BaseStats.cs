@@ -1,5 +1,6 @@
 namespace Evaluacion_II.Champions;
 
+[Serializable]
 public struct BaseStats
 {
     // Offensive stats
@@ -50,11 +51,17 @@ public struct BaseStats
     public override string ToString()
     {
         string statsString = $"Attack Damage: {this.AttackDamage}\n" +
-                             $"Agility      : {this.Agility}\n" +
+                             $"Ability Power: {this.AbilityPower}\n" +
+                             
                              $"Max Health   : {this.MaxHealth}\n" +
                              $"Health Regen : {this.HealthRegen}\n" +
+                             
                              $"Armor        : {this.Armor}\n" +
                              $"Magic Resist : {this.MagicResist}\n" +
+                             
+                             $"Crit. Chance : {this.CriticalChance * 100:0}%\n" +
+                             $"Crit. Rate   : {this.CriticalRate * 100:0}%\n" +
+                             
                              $"Max {this.Resource.Type}   : {this.Resource.MaxResourceAmount}\n" +
                              $"{this.Resource.Type} Regen : {this.Resource.ResourceRegenAmount}\n";
         return statsString;
