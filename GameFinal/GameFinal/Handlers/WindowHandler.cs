@@ -2,7 +2,7 @@
 using SFML.System;
 using SFML.Window;
 
-namespace GameFinal;
+namespace GameFinal.Handlers;
 
 public class WindowHandler
 {
@@ -20,7 +20,7 @@ public class WindowHandler
     public WindowHandler()
     {
         this.windowTitle = "Window";
-        this.windowSize = new Vector2u(640, 480);
+        this.windowSize = new Vector2u(800, 800);
         this.isFullScreen = false;
         this.isDone = false;
         this.Create();
@@ -40,9 +40,12 @@ public class WindowHandler
         Styles style = (isFullScreen ? Styles.Fullscreen : Styles.Default);
         VideoMode videoMode = new VideoMode(this.windowSize.X, this.windowSize.Y);
         this.window = new RenderWindow(videoMode, this.windowTitle, style);
+        this.window.SetFramerateLimit(60);
 
         this.window.Closed += this.OnWindowClose;
         this.window.Resized += this.OnWindowResize;
+        this.window.LostFocus += this.OnWindowLoseFocus;
+        this.window.GainedFocus += this.OnWindowGainFocus;
     }
 
     public void StartDraw()
@@ -73,6 +76,10 @@ public class WindowHandler
         this.window.Draw(drawable);
     }
 
+    public RenderWindow GetRenderWindow()
+    {
+        return this.window;
+    }
     ~WindowHandler()
     {
         this.window.Close();
@@ -89,7 +96,7 @@ public class WindowHandler
         }
         else
         {
-            this.windowSize = new Vector2u(1280, 720);
+            this.windowSize = new Vector2u(800, 800);
         }
         this.window.Close();
         this.Create();
@@ -103,5 +110,15 @@ public class WindowHandler
     private void OnWindowResize(object? sender, SizeEventArgs e)
     {
         Console.WriteLine("Window has been resized!");
+    }
+    
+    private void OnWindowLoseFocus(object? sender, EventArgs eventArgs)
+    {
+        Console.WriteLine("Window has lost focus!");
+    }
+    
+    private void OnWindowGainFocus(object? sender, EventArgs eventArgs)
+    {
+        Console.WriteLine("Window has gained focus!");
     }
 }
