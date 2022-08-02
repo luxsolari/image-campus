@@ -76,7 +76,8 @@ public class World
             player.IncreaseScore();
             player.IncreaseSpeed();
             Console.WriteLine($"Lives: {player.GetLives()} Score: {player.GetScore()} Speed: {player.GetSpeed()}  Length: {player.GetSnakeBody().Count}");
-            this.RespawnApple();
+            if (!player.HasLost()) 
+                this.RespawnApple();
         }
 
         int gridSizeX = (int)(this.windowSize.X / this.blockSize);

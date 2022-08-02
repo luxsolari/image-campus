@@ -1,5 +1,6 @@
 ﻿using System;
 using GameFinal.Handlers;
+using GameFinal.States;
 using SFML.Graphics;
 using SFML.System;
 using SFML.Window;
@@ -10,14 +11,8 @@ namespace GameFinal
     {
         static void Main(string[] args)
         {
-            GameHandler gameHandler = new GameHandler();
-            while (!gameHandler.WindowHandler.IsDone)
-            {
-                gameHandler.ProcessInput();
-                gameHandler.Update();
-                gameHandler.Render();
-                gameHandler.RestartClock();
-            }
+            WindowHandler windowHandler = new WindowHandler("One More Snake", new Vector2u(Globals.WindowWidthResolution, Globals.WindowHeightResolution));
+            StatesController statesController = new StatesController(windowHandler);
         }
     }
 }

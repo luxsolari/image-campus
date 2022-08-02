@@ -5,12 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="378dd7c1-97a3-4e35-81d3-0d4796929619" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/GameFinal/Globals.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GameFinal/States/LoopState.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GameFinal/States/MainMenuState.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GameFinal/States/StatesController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GameFinal/UI/Button.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GameFinal/UI/HUD.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.GameFinal/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GameFinal/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GameFinal/Entities/Snake.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GameFinal/Entities/Snake.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GameFinal/Entities/World.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GameFinal/Entities/World.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GameFinal/Globals.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GameFinal/Globals.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GameFinal/Handlers/GameHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GameFinal/States/GameState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GameFinal/Handlers/WindowHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GameFinal/Handlers/WindowHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GameFinal/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GameFinal/Program.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/cf4b14b02ff94a8589626fa5288ddc783800/5b/3d041c27/Clock.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e7ae59a2a552d07c407e78c6e2c08f67eba535af/Font.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -23,15 +38,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "settings.editor.selected.configurable": "preferences.sourceCode.C#",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.C#&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="GameFinal" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="$PROJECT_DIR$/GameFinal/bin/Debug/net6.0/GameFinal" />
@@ -61,13 +76,26 @@
       <option name="presentableId" value="Default" />
       <updated>1659184415443</updated>
       <workItem from="1659184425908" duration="1658000" />
+      <workItem from="1659410182890" duration="5780000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>

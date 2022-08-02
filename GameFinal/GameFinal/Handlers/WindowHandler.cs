@@ -8,7 +8,7 @@ public class WindowHandler
 {
     private RenderWindow window = null!;
     private Vector2u windowSize;
-    private string windowTitle;
+    private readonly string windowTitle;
 
     private bool isDone;
     private bool isFullScreen;
@@ -16,15 +16,6 @@ public class WindowHandler
     public bool IsDone => isDone;
     public bool IsFullscreen => isFullScreen;
     public Vector2u WindowSize => windowSize;
-
-    public WindowHandler()
-    {
-        this.windowTitle = "Window";
-        this.windowSize = new Vector2u(800, 800);
-        this.isFullScreen = false;
-        this.isDone = false;
-        this.Create();
-    }
 
     public WindowHandler(string title, Vector2u size)
     {
@@ -40,7 +31,7 @@ public class WindowHandler
         Styles style = (isFullScreen ? Styles.Fullscreen : Styles.Default);
         VideoMode videoMode = new VideoMode(this.windowSize.X, this.windowSize.Y);
         this.window = new RenderWindow(videoMode, this.windowTitle, style);
-        this.window.SetFramerateLimit(60);
+        this.window.SetFramerateLimit(Globals.FPSLimit);
 
         this.window.Closed += this.OnWindowClose;
         this.window.Resized += this.OnWindowResize;
@@ -66,11 +57,6 @@ public class WindowHandler
         }
     }
 
-    public void FinishDraw()
-    {
-        this.window.Display();
-    }
-    
     public void Draw(Drawable drawable)
     {
         this.window.Draw(drawable);
@@ -96,7 +82,7 @@ public class WindowHandler
         }
         else
         {
-            this.windowSize = new Vector2u(800, 800);
+            this.windowSize = new Vector2u(Globals.GameFieldWidth, Globals.GameFieldWidth);
         }
         this.window.Close();
         this.Create();
@@ -121,4 +107,6 @@ public class WindowHandler
     {
         Console.WriteLine("Window has gained focus!");
     }
+    
+    
 }

@@ -182,13 +182,10 @@ public class Snake
     public void Reset()
     {
         this.snakeBody.Clear();
-        this.snakeBody.Add(new SnakeSegment(0,snakeStartPos.X + 1, 3));
-        this.snakeBody.Add(new SnakeSegment(1,snakeStartPos.X + 1, 2));
-        this.snakeBody.Add(new SnakeSegment(2,snakeStartPos.X + 1, 1));
         this.SetDirection(Direction.None);
         this.speed = 5;
         this.score = 0;
-        -- this.lives;
+        this.lives = 0;
     }
 
     public void Move()
